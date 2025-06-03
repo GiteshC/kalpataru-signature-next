@@ -1,0 +1,56 @@
+.privacySec{margin: 200px auto ; @include wrapper;width: 70%;
+    .secHeading{
+        font-family: $fontMarcellus; display: flex; justify-content: center; margin-bottom:50px;
+        h1{
+            @include font100; font-weight: $fontW400; color: #1A3C96; text-transform: uppercase; text-align: center;
+        }
+    }
+    .secWrapper{font-family: $fontUrbanist; 
+        p{  @include font20; color: #14234B; font-weight: $fontW500; margin-bottom: 30px;line-height: 164%;
+        }
+        h2{ @include font32;font-family: $fontMarcellus; margin: 60px 0 25px 0; font-weight: $fontW400; color: #1A3C96; text-transform:uppercase;line-height: 164%;    
+        }
+        h3{@include font30; font-family: $fontMarcellus; margin: 60px 0 25px 0; font-weight: $fontW400; color: #1A3C96; text-transform:uppercase;line-height: 164%;    
+        }
+        h4{ @include font28;font-family: $fontMarcellus; margin: 60px 0 25px 0;  font-weight: $fontW400; color: #1A3C96; text-transform:uppercase;line-height: 164%;    
+        }
+        h5{@include font24; font-family: $fontMarcellus; margin: 60px 0 25px 0; font-weight: $fontW400; color: #1A3C96; text-transform:uppercase;line-height: 164%;    
+        }
+        h6{ @include font20;font-family: $fontMarcellus; margin: 60px 0 25px 0;  font-weight: $fontW400; color: #1A3C96; text-transform:uppercase;line-height: 164%;    
+        }
+    }
+     
+    @media screen and (max-width:1600px) {margin: 180px auto; width: 75%;;
+        .secHeading{margin-bottom:45px;}
+        .secWrapper{
+            p{  margin-bottom: 25px;}
+            h2, h3, h4, h5, h6{ margin: 50px 0 22px 0; }
+        } 
+    }
+
+    @media screen and (max-width:1400px) {margin: 150px auto; width: 80%;
+        .secHeading{margin-bottom:40px;}
+        .secWrapper{
+            p{  margin-bottom: 20px;}
+            h2, h3, h4, h5, h6{ margin: 40px 0 20px 0; }
+        } 
+    }
+
+    @media screen and (max-width:1200px) {margin: 120px auto; width: 90%;
+        .secHeading{margin-bottom:35px;}
+        .secWrapper{
+            p{  margin-bottom: 16px;}
+            h2, h3, h4, h5, h6{ margin: 35px 0 16px 0; }
+        } 
+    }
+
+    @media screen and (max-width:768px) {margin: 80px auto; width: 100%;
+        .secHeading{margin-bottom:45px;}
+        .secWrapper{
+            p{  margin-bottom: 32px;}
+            h2, h3, h4, h5, h6{ margin: 54px 0 24px 0; }
+        } 
+    }
+}
+
+

@@ -1,0 +1,17 @@
+//BASE CSS
+@import 'base/_global.scss'; //Global CSS
+
+//MODULE CSS
+@import 'module/_header.scss'; //Header CSS
+@import 'module/_footer.scss'; //Footer CSS
+
+//PAGES CSS
+@import 'pages/_homepage.scss'; //Homepage CSS
+@import 'pages/_project-details.scss';   //Project Details CSS
+@import 'pages/_signature-essence.scss'; //Signature Essence CSS
+@import 'pages/_signature-residences.scss'; //Project Listing CSS
+@import 'pages/_pincodes.scss';  //Pincodes CSS
+@import 'pages/news-media.scss';  //News-media CSS
+@import 'pages/_signature-experience.scss';  //Signature Experience CSS
+@import 'pages/signature-philosophy.scss'; //Signature Philosophy CSS
+@import 'pages/privacy-policy'; //Privacy Policy CSS
