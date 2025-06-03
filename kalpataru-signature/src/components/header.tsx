@@ -13,7 +13,7 @@ export function Header(){
                 </div>
                 <div className="centerLogo">
                     <Link href={'/'}>
-                    <Image className="headerLogo" src="/images/headerlogo.svg" alt="logo" width={0} height={0} priority />
+                        <Image className="headerLogo" src="/images/headerlogo.svg" alt="logo" width={0} height={0} priority />
                     </Link>
                 </div>
                 <div className="rightMenu">
