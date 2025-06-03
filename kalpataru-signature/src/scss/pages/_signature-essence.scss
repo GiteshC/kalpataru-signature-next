@@ -1,3 +1,4 @@
+@use '../base/global' as *;
 .pincodesMapsec{margin-bottom: 150px;
     .signatureWrapper{@include wrapper;
         .secHeading{text-align: center; margin: 0px auto 70px;width: 80%;margin-left: auto;

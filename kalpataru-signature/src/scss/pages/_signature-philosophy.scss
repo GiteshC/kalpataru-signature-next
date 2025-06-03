@@ -1,3 +1,5 @@
+@use '../base/global' as *;
+
 .sign-philosopy-sec{margin-bottom: 160px;
     .sec-wrapper{@include wrapper;
         .philosophy-container{display: flex; justify-content: space-between;
