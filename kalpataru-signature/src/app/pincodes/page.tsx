@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function PincodePage() {
   return (
     <div>
@@ -171,11 +173,11 @@ export default function PincodePage() {
         <div className="overlay" id="overlay">
           <div className="popupmenuLogo">
             <a href="index.html">
-              <img src="images/headerlogo.svg" />
+              <Image style={{width: '100%!important', height: '100%!important'}} src="/images/headerlogo.svg" width={0} height={0} alt="" />
             </a>
           </div>
           <button className="closeButtonmenu">
-            <img src="images/popup-close-icon.svg" />
+            <Image style={{width: '100%!important', height: '100%!important'}} src="/images/popup-close-icon.svg" width={0} height={0} alt="" />
           </button>
           <nav className="overlay-menu">
             <ul>
@@ -194,7 +196,7 @@ export default function PincodePage() {
               <li className="menuLinks dropdownMenu">
                 <a>
                   Our Collection
-                  <img src="images/header-mbl-dropdown-arrow.svg" />
+                  <Image style={{width: '100%!important', height: '100%!important'}} src="/images/header-mbl-dropdown-arrow.svg" width={0} height={0} alt="" />
                 </a>
                 <div className="dropdownMbl">
                   <ul>
@@ -210,12 +212,12 @@ export default function PincodePage() {
                   </ul>
                 </div>
               </li>
-              {/* <li class="trigger"><a>Request to Private Preview <img src="images/req-arrow.svg"> </a></li> */}
+              {/* <li class="trigger"><a>Request to Private Preview <Image src="images/req-arrow.svg"> </a></li> */}
             </ul>
             <div className="headerminiLinks">
               <a href="news-media.html">News &amp; Media</a>
               <a className="trigger reqCta ctaBluetext">
-                Request a Private Preview <img src="images/req-arrow.svg" />
+                Request a Private Preview <Image style={{width: '100%!important', height: '100%!important'}} src="/images/req-arrow.svg" width={0} height={0} alt="" />
               </a>
             </div>
           </nav>
@@ -225,7 +227,7 @@ export default function PincodePage() {
       <section className="homebannerSec projectdetBanner">
         <div className="videoBox">
           <video autoPlay muted loop playsInline preload="metadata">
-            <source src="images/homepage-banner.mp4" type="video/mp4" />
+            <source src="/images/homepage-video.mp4" type="video/mp4" />
           </video>
         </div>
         <div className="homebannerWrapper homebannerContent">
@@ -262,40 +264,21 @@ export default function PincodePage() {
                 <span>
                   <div className="single-item">
                     <div>
-                      <img
-                        src="./images/kalpataru-oceana1.webp"
-                        className="desktopImg"
-                      />
-                      <img
-                        src="./images/kalpataru-oceana1-mob.webp"
-                        className="mobileImg"
-                      />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-oceana1.webp" className="desktopImg" width={0} height={0} alt="" />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-oceana1-mob.webp" className="mobileImg" width={0} height={0} alt="" />
                     </div>
                     <div>
-                      <img
-                        src="./images/kalpataru-oceana2.webp"
-                        className="desktopImg"
-                      />
-                      <img
-                        src="./images/kalpataru-oceana2-mob.webp"
-                        className="mobileImg"
-                      />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-oceana2.webp" className="desktopImg" width={0} height={0} alt="" />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-oceana2-mob.webp" className="mobileImg" width={0} height={0} alt="" />
                     </div>
                     <div>
-                      <img
-                        src="./images/kalpataru-oceana3.webp"
-                        className="desktopImg"
-                      />
-                      <img
-                        src="./images/kalpataru-oceana3-mob.webp"
-                        className="mobileImg"
-                      />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-oceana3.webp" className="desktopImg" width={0} height={0} alt="" />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-oceana3-mob.webp" className="mobileImg" width={0} height={0} alt="" />
                     </div>
                   </div>
                 </span>
               </div>
               <div className="signPincodedata">
-                {/* <p class="section-text-up"><span>Kalpataru Oceana</span></p> */}
                 <h3 className="section-text-up">
                   <span>Prabhadevi, 400025</span>
                 </h3>
@@ -307,24 +290,9 @@ export default function PincodePage() {
                     meant for a privileged few. And rightly so.
                   </span>
                 </p>
-                {/* <div class="singPincodedatalist">
-                      <span>
-                          <ul>
-                              <li><img src="./images/pincode-northfacing.svg" >
-                                  <p>North Facing</p>
-                              </li>
-                              <li><img src="./images/pincode-seaview.svg" >
-                                  <p>Sea View</p>
-                              </li>
-                              <li><img src="./images/pincode-outdoor.svg" >
-                                  <p>Outdoor Terrace</p>
-                              </li>
-                          </ul>
-                      </span>
-                  </div> */}
                 <span>
                   <a className="ctaBluetext" href="project-details.html">
-                    View Project <img src="./images/view-project-arrow.svg" />
+                    View Project <Image style={{width: '100%!important', height: '100%!important'}} src="/images/view-project-arrow.svg" width={0} height={0} alt="" />
                   </a>
                 </span>
               </div>
@@ -334,40 +302,21 @@ export default function PincodePage() {
                 <span>
                   <div className="single-item">
                     <div>
-                      <img
-                        src="./images/kalpataru-azuro1.webp"
-                        className="desktopImg"
-                      />
-                      <img
-                        src="./images/kalpataru-azuro1-mob.webp"
-                        className="mobileImg"
-                      />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-azuro1.webp" className="desktopImg" width={0} height={0} alt="" />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-azuro1-mob.webp" className="mobileImg" width={0} height={0} alt="" />
                     </div>
                     <div>
-                      <img
-                        src="./images/kalpataru-azuro2.webp"
-                        className="desktopImg"
-                      />
-                      <img
-                        src="./images/kalpataru-azuro2-mob.webp"
-                        className="mobileImg"
-                      />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-azuro2.webp" className="desktopImg" width={0} height={0} alt="" />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-azuro2-mob.webp" className="mobileImg" width={0} height={0} alt="" />
                     </div>
                     <div>
-                      <img
-                        src="./images/kalpataru-azuro3.webp"
-                        className="desktopImg"
-                      />
-                      <img
-                        src="./images/kalpataru-azuro3-mob.webp"
-                        className="mobileImg"
-                      />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-azuro3.webp" className="desktopImg" width={0} height={0} alt="" />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-azuro3-mob.webp" className="mobileImg" width={0} height={0} alt="" />
                     </div>
                   </div>
                 </span>
               </div>
               <div className="signPincodedata">
-                {/* <p class="section-text-up"><span>Kalpataru Azuro</span></p> */}
                 <h3 className="section-text-up">
                   <span>Nepean sea road, 400006</span>
                 </h3>
@@ -379,24 +328,9 @@ export default function PincodePage() {
                     continues to be so.
                   </span>
                 </p>
-                {/* <div class="singPincodedatalist">
-                      <span>
-                          <ul>
-                              <li><img src="./images/pincode-northfacing.svg" >
-                                  <p>North Facing</p>
-                              </li>
-                              <li><img src="./images/pincode-seaview.svg" >
-                                  <p>Sea View</p>
-                              </li>
-                              <li><img src="./images/pincode-outdoor.svg" >
-                                  <p>Outdoor Terrace</p>
-                              </li>
-                          </ul>
-                      </span>
-                  </div> */}
                 <span>
                   <a className="ctaBluetext" href="project-details.html">
-                    View Project <img src="./images/view-project-arrow.svg" />
+                    View Project <Image style={{width: '100%!important', height: '100%!important'}} src="/images/view-project-arrow.svg" width={0} height={0} alt="" />
                   </a>
                 </span>
               </div>
@@ -406,40 +340,21 @@ export default function PincodePage() {
                 <span>
                   <div className="single-item">
                     <div>
-                      <img
-                        src="./images/kalpataru-prive1.webp"
-                        className="desktopImg"
-                      />
-                      <img
-                        src="./images/kalpataru-prive1-mob.webp"
-                        className="mobileImg"
-                      />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-prive1.webp" className="desktopImg" width={0} height={0} alt="" />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-prive1-mob.webp" className="mobileImg" width={0} height={0} alt="" />
                     </div>
                     <div>
-                      <img
-                        src="./images/kalpataru-prive2.webp"
-                        className="desktopImg"
-                      />
-                      <img
-                        src="./images/kalpataru-prive2-mob.webp"
-                        className="mobileImg"
-                      />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-prive2.webp" className="desktopImg" width={0} height={0} alt="" />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-prive2-mob.webp" className="mobileImg" width={0} height={0} alt="" />
                     </div>
                     <div>
-                      <img
-                        src="./images/kalpataru-prive3.webp"
-                        className="desktopImg"
-                      />
-                      <img
-                        src="./images/kalpataru-prive3-mob.webp"
-                        className="mobileImg"
-                      />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-prive3.webp" className="desktopImg" width={0} height={0} alt="" />
+                      <Image style={{width: '100%!important', height: '100%!important'}} src="/images/kalpataru-prive3-mob.webp" className="mobileImg" width={0} height={0} alt="" />
                     </div>
                   </div>
                 </span>
               </div>
               <div className="signPincodedata">
-                {/* <p class="section-text-up"><span>Kalpataru Privé</span></p> */}
                 <h3 className="section-text-up">
                   <span>amount Road, 400026</span>
                 </h3>
@@ -453,7 +368,7 @@ export default function PincodePage() {
                 </p>
                 <span>
                   <a className="ctaBluetext" href="project-details.html">
-                    View Project <img src="./images/view-project-arrow.svg" />
+                    View Project <Image style={{width: '100%!important', height: '100%!important'}} src="/images/view-project-arrow.svg" width={0} height={0} alt="" />
                   </a>
                 </span>
               </div>
@@ -464,8 +379,8 @@ export default function PincodePage() {
 
       <section className="requestSec reqNewSec">
         <div className="requestBG">
-          <img src="images/request-previewbg.webp" className="desktopImg" />
-          <img src="images/request-preview-mobile.webp" className="mobileImg" />
+          <Image style={{width: '100%!important', height: '100%!important'}} src="/images/request-previewbg.webp" className="desktopImg" width={0} height={0} alt="" />
+          <Image style={{width: '100%!important', height: '100%!important'}} src="/images/request-preview-mobile.webp" className="mobileImg" width={0} height={0} alt="" />
         </div>
         <div className="requestWrapper requestContent reqNewContent">
           <div className="secHeading newSecHeading ">
@@ -474,7 +389,7 @@ export default function PincodePage() {
                 <span>
                   {" "}
                   Request a Private Preview{" "}
-                  <img src="images/cta-arrow-white.svg" />
+                  <Image style={{width: '100%!important', height: '100%!important'}} src="/images/cta-arrow-white.svg" width={0} height={0} alt="" />
                 </span>
               </div>
             </h2>
@@ -570,14 +485,14 @@ export default function PincodePage() {
           <div className="headerLogo">
             <a href="index.html">
               {" "}
-              <img src="images/headerlogo.svg" className="desktopImg" />
+              <Image style={{width: '100%!important', height: '100%!important'}} src="/images/headerlogo.svg" className="desktopImg" width={0} height={0} alt="" />
             </a>
           </div>
           <span className="close-button">
-            <img src="images/popup-close-icon.svg" className="mobileImg" />
+            <Image style={{width: '100%!important', height: '100%!important'}}   src="/images/popup-close-icon.svg" className="mobileImg" width={0} height={0} alt="" />
           </span>
           <span className="close-buttonTwo">
-            <img src="images/backarrow-modal.svg" />
+            <Image style={{width: '100%!important', height: '100%!important'}} src="/images/backarrow-modal.svg" width={0} height={0} alt="" />
           </span>
           <div className="modal-content">
             <div className="meetingModal">
@@ -600,11 +515,9 @@ export default function PincodePage() {
                   />
                   <div className="inputNumber">
                     <select id="country" name="country">
-                      {/* You can add more options as needed */}
                       <option value={+91}>+91</option>
                       <option value={+44}>+44</option>
                       <option value={+51}>+51</option>
-                      {/* Add more countries as needed */}
                     </select>
                     <input
                       type="tel"
