@@ -1,9 +1,3 @@
-@use '../base/global' as *;
-
-.bannerHeading{
-    color: red;
-}
-
 .homebannerSec{position: relative; height: 100vh;overflow: hidden;margin-bottom: 160px;
     .videoBox{height: 100%;
         video{position: absolute;top: 0;left: 0;right: 0;width: 100%;height: 100%;object-fit: cover;}
