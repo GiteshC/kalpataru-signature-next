@@ -1,0 +1,30 @@
+import React from "react";
+
+const BannerComponent = ({ isPageLoad, mainHeading, para }: { isPageLoad: boolean, mainHeading: String, para:  String },  ) => {
+  return (
+    <section className="homebannerSec projectdetBanner">
+      <div className="videoBox">
+        <video autoPlay muted loop playsInline preload="metadata">
+          <source src="/images/homepage-video.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div className="homebannerWrapper homebannerContent">
+        <div className="secHeading philosopy-banner">
+          <h1
+            className={`swift-up-text ${isPageLoad ? "new-swift-up-text" : ""}`}
+          >
+            <span>{mainHeading}</span>
+          </h1>
+          <p className="bannerTextanimation">
+            <span>{para}</span>
+          </p>
+        </div>
+      </div>
+      <div className="scrollText">
+        <h3>Scroll to Explore</h3>
+      </div>
+    </section>
+  );
+};
+
+export default BannerComponent;

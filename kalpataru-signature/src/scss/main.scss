@@ -1,17 +1,17 @@
 //BASE CSS
-@import 'base/_global.scss'; //Global CSS
+@use 'base/_global.scss'; //Global CSS
 
 //MODULE CSS
-@import 'module/_header.scss'; //Header CSS
-@import 'module/_footer.scss'; //Footer CSS
+@use 'module/_header.scss'; //Header CSS
+@use 'module/_footer.scss'; //Footer CSS
 
 //PAGES CSS
-@import 'pages/_homepage.scss'; //Homepage CSS
-@import 'pages/_project-details.scss';   //Project Details CSS
-@import 'pages/_signature-essence.scss'; //Signature Essence CSS
-@import 'pages/_signature-residences.scss'; //Project Listing CSS
-@import 'pages/_pincodes.scss';  //Pincodes CSS
-@import 'pages/news-media.scss';  //News-media CSS
-@import 'pages/_signature-experience.scss';  //Signature Experience CSS
-@import 'pages/signature-philosophy.scss'; //Signature Philosophy CSS
-@import 'pages/privacy-policy'; //Privacy Policy CSS
+@use 'pages/_homepage.scss'; //Homepage CSS
+@use 'pages/_project-details.scss';   //Project Details CSS
+@use 'pages/_signature-essence.scss'; //Signature Essence CSS
+@use 'pages/_signature-residences.scss'; //Project Listing CSS
+@use 'pages/_pincodes.scss';  //Pincodes CSS
+@use 'pages/news-media.scss';  //News-media CSS
+@use 'pages/_signature-experience.scss';  //Signature Experience CSS
+@use 'pages/signature-philosophy.scss'; //Signature Philosophy CSS
+@use 'pages/privacy-policy'; //Privacy Policy CSS
