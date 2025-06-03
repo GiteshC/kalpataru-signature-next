@@ -230,6 +230,7 @@ $fontUrbanist: 'Urbanist', sans-serif;
 /************************************************ Common CSS **************************************************/
 html{ scroll-behavior: smooth;}
 body{
+    background-color: #ccc;
     position: relative;
     font-family: $fontUrbanist;
     overflow-x: hidden;
