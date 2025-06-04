@@ -1,4 +1,5 @@
-@use '../base/global' as *;
+@use '../base/_global.scss' as *;
+
 .privacySec{margin: 200px auto ; @include wrapper;width: 70%;
     .secHeading{
         font-family: $fontMarcellus; display: flex; justify-content: center; margin-bottom:50px;

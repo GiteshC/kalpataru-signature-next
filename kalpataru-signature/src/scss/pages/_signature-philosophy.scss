@@ -1,4 +1,4 @@
-@use '../base/global' as *;
+@use '../base/_global.scss' as *;
 
 .sign-philosopy-sec{margin-bottom: 160px;
     .sec-wrapper{@include wrapper;
