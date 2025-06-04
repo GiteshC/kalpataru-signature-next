@@ -1,4 +1,5 @@
-@use '../base/global' as *;
+@use '../base/_global.scss' as *;
+
 .projectdetBanner{
     .homebannerContent.homebannerContent{
         h3{@include font28;font-weight: $fontW700;line-height: normal;color: #fff;margin-top: 32px;}

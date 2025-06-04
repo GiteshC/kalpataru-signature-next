@@ -1,4 +1,4 @@
-@use '../base/global' as *;
+@use '../base/_global.scss' as *;
 
 footer{margin: 200px 0px 70px;
     .footerWrapper{@include wrapper;
