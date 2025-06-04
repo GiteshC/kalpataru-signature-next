@@ -303,6 +303,8 @@ body{
             @keyframes swift-up {
                 to {
                     top: 0;
+                    font-style: normal;
+                    color: #FFF;
                 }
             }    
         }
@@ -324,7 +326,6 @@ body{
 .fancybox-toolbar{
     .fancybox-button{color: #fff;background: #fff;}
 }
-
 
 .signatureVideo, .philo-houseOfFirst-sec, .homebannerSec {position: relative;
     .videoBox::after, .secVideoBox::after{content: "";position: absolute;top: 0;left: 0;right: 0;height: 100%;width: 100%;background: linear-gradient(0deg, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.32) 100%);}
@@ -674,7 +675,7 @@ img {max-width: 100%;}
 .slick-track {display: flex !important;}
 .slick-slide {height: inherit !important;}
 
-.ctaOne { padding: 20px 40px;@include font18;font-weight: $fontW600;display: inline-flex;align-items: center;justify-content: center;cursor: pointer;border-radius: 18px;  color: #FFFFFF;text-decoration: none; transition: 0.5s all ease-in-out;
+.ctaOne {padding: 20px 40px;@include font18;font-weight: $fontW600;display: inline-flex;align-items: center;justify-content: center;cursor: pointer;border-radius: 18px;  color: #FFFFFF;text-decoration: none; transition: 0.5s all ease-in-out;
     img{margin-left: 10px; margin-right:14px;transition: 0.3s all ease-in-out;}
     &:hover{color: #FFFFFF;
         img{ transition: 0.3s all ease-in-out; transform: translateX(50%);}

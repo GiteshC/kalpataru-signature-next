@@ -1,7 +1,12 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import BannerComponent from "@/components/BannerComponent";
 
 export default function Home() {
+  const [isPageLoad, setIsPageLoad] = useState(false);
+  useEffect(() => {
+    setIsPageLoad(true);
+  }, []);
 
   useEffect(() => {
     const hasBanner = document.querySelector(".animationBanner");
@@ -113,24 +118,13 @@ export default function Home() {
   }, []); // Empty dependency array means this runs once on mount
   return (
     <div>
-      <section className="homebannerSec">
-        <div className="videoBox">
-          <video autoPlay muted loop playsInline preload="metadata">
-            <source src="/images/homepage-video.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div className="homebannerWrapper homebannerContent">
-          <div className="secHeading">
-            <h1 className="swift-up-text new-swift-up-text"><span>Signature Collection</span></h1>
-            <p className="bannerTextanimation bannerTextanimationnew">
-              <span>Fine Living. Finer Experiences</span>
-            </p>
-          </div>
-        </div>
-        <div className="scrollText scrollTextnew">
-          <h3>Scroll to Explore</h3>
-        </div>
-      </section>
+
+      <BannerComponent
+        isPageLoad={isPageLoad}
+        bannerVideo="/images/homepage-video.mp4"
+        mainHeading="Signature Collection"
+        para="Fine Living. Finer Experiences"
+      />
 
       <section className="signatureSec" id="signature-philosophy">
         <div className="signatureWrapper">

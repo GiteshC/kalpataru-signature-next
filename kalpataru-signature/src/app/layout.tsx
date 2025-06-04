@@ -1,7 +1,18 @@
 import type { Metadata } from "next";
+import { Marcellus, Urbanist } from "next/font/google";
 import "../scss/main.scss";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+
+const marcellus = Marcellus({
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const urbanist = Urbanist({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Kalpataru Signature",
@@ -14,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${marcellus.className} ${urbanist.className}`}>
         <Header />
         {children}
         <Footer />
