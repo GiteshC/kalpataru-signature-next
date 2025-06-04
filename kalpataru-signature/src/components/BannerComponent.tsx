@@ -13,7 +13,7 @@ const BannerComponent = ({ isPageLoad, mainHeading, para }: { isPageLoad: boolea
           <h1
             className={`swift-up-text ${isPageLoad ? "new-swift-up-text" : ""}`}
           >
-            <span>{mainHeading}</span>
+            {mainHeading}
           </h1>
           <p className="bannerTextanimation">
             <span>{para}</span>
