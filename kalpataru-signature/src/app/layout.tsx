@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Marcellus, Urbanist } from "next/font/google";
+import '@fancyapps/ui/dist/fancybox/fancybox.css';
 import "../scss/main.scss";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
