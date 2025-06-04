@@ -1,11 +1,26 @@
 import React from "react";
+import usePageLoad from "@/hooks/usePageLoad";
 
-const BannerComponent = ({ isPageLoad, mainHeading, para }: { isPageLoad: boolean, mainHeading: String, para:  String },  ) => {
+const BannerComponent = ({
+  videoUrl,
+  mainHeading,
+  para,
+}: {
+  videoUrl: string,
+  mainHeading: string;
+  para: string;
+}) => {
+  const { isPageLoad } = usePageLoad();
+  const spanData = mainHeading.split(" ");
+  console.log(spanData);
+  console.log(videoUrl);
+  
+
   return (
     <section className="homebannerSec projectdetBanner">
       <div className="videoBox">
         <video autoPlay muted loop playsInline preload="metadata">
-          <source src="/images/homepage-video.mp4" type="video/mp4" />
+          <source src={videoUrl} type="video/mp4" />
         </video>
       </div>
       <div className="homebannerWrapper homebannerContent">
@@ -13,9 +28,17 @@ const BannerComponent = ({ isPageLoad, mainHeading, para }: { isPageLoad: boolea
           <h1
             className={`swift-up-text ${isPageLoad ? "new-swift-up-text" : ""}`}
           >
-            <span>{mainHeading}</span>
+            {spanData.map((el, i) => (
+              <span key={el} >
+                <i style={{ transitionDelay: `${i * 0.4}s`}}>{el}&nbsp;</i>
+              </span>
+            ))}
           </h1>
-          <p className="bannerTextanimation">
+          <p
+            className={`bannerTextanimation ${
+              isPageLoad ? "bannerTextanimationnew" : ""
+            }`}
+          >
             <span>{para}</span>
           </p>
         </div>
