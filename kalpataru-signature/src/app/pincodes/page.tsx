@@ -1,4 +1,5 @@
 'use client'
+import { useEffect } from "react";
 import Slider from "react-slick";
 
 export default function PincodePage() {
@@ -14,6 +15,115 @@ export default function PincodePage() {
     arrows: false,
     fade: false,
   };
+
+  useEffect(() => {
+    const hasBanner = document.querySelector(".animationBanner");
+
+    const addClass = (selector: string, className: string) => {
+      document.querySelectorAll(selector).forEach(el => el.classList.add(className));
+    };
+
+    const fadeOut = (selector: string, duration: number) => {
+      document.querySelectorAll(selector).forEach(el => {
+        (el as HTMLElement).style.transition = `opacity ${duration}ms`;
+        (el as HTMLElement).style.opacity = "0";
+        setTimeout(() => {
+          (el as HTMLElement).style.display = "none";
+        }, duration);
+      });
+    };
+
+    const fadeIn = (selector: string, duration: number) => {
+      document.querySelectorAll(selector).forEach(el => {
+        (el as HTMLElement).style.opacity = "0";
+        (el as HTMLElement).style.display = "block";
+        (el as HTMLElement).style.transition = `opacity ${duration}ms`;
+        setTimeout(() => {
+          (el as HTMLElement).style.opacity = "1";
+        }, 10);
+      });
+    };
+
+    const swiftUpTextAnimate = () => {
+      const swiftUpElements = document.querySelectorAll(".new-swift-up-text");
+      swiftUpElements.forEach(elem => {
+        const words = elem.textContent?.trim().split(" ") || [];
+        elem.innerHTML = "";
+        words.forEach(word => {
+          elem.innerHTML += `<span><i>${word}</i></span> `;
+        });
+        const children = elem.querySelectorAll("span > i");
+        children.forEach((node, index) => {
+          (node as HTMLElement).style.animationDelay = `${index * 0.4}s`;
+        });
+      });
+    };
+
+    if (hasBanner) {
+      addClass(".loader", "loaded");
+      addClass("body", "loaded");
+      fadeIn(".loader", 3000);
+
+      setTimeout(() => {
+        fadeOut(".loader", 3000);
+        addClass(".loaderLogoimg", "loaderImg");
+        addClass("header", "headerNew");
+        addClass(".letter", "letterNew");
+      }, 3000);
+
+      setTimeout(() => {
+        addClass(".headerWrapper ul", "innerMenulink");
+        addClass(".centerLogo", "centerLogonew");
+        addClass(".scrollText", "scrollTextnew");
+        addClass(".swift-up-text", "new-swift-up-text");
+        swiftUpTextAnimate();
+      }, 4000);
+
+      setTimeout(() => {
+        addClass(".bannerTextanimation", "bannerTextanimationnew");
+      }, 5000);
+
+      setTimeout(() => {
+        addClass(".loader", "loaded");
+        addClass("body", "loaded");
+      }, 60000);
+    } else {
+      addClass("header", "headerNew");
+      addClass(".headerWrapper ul", "innerMenulink");
+      addClass(".centerLogo", "centerLogonew");
+      addClass(".scrollText", "scrollTextnew");
+      addClass(".swift-up-text", "new-swift-up-text");
+      swiftUpTextAnimate();
+
+      setTimeout(() => {
+        addClass(".bannerTextanimation", "bannerTextanimationnew");
+      }, 1000);
+    }
+
+    const inViewport = () => {
+      const allElements = document.getElementsByClassName("section-text-up");
+      const windowHeight = window.innerHeight;
+
+      const elems = () => {
+        for (let i = 0; i < allElements.length; i++) {
+          const top = allElements[i].getBoundingClientRect().top;
+          if (top < windowHeight) {
+            allElements[i].classList.add("newClass");
+          } else {
+            allElements[i].classList.remove("newClass");
+          }
+        }
+      };
+
+      elems();
+      window.addEventListener("scroll", elems);
+
+      // Cleanup scroll listener
+      return () => window.removeEventListener("scroll", elems);
+    };
+
+    inViewport();
+  }, []);
 
   return (
     <div>
@@ -56,16 +166,40 @@ export default function PincodePage() {
                 <span>
                   <Slider className="single-item" {...settings}>
                     <div>
-                      <img src="/images/kalpataru-oceana1.webp" className="desktopImg" alt="" />
-                      <img src="/images/kalpataru-oceana1-mob.webp" className="mobileImg" alt="" />
+                      <img
+                        src="/images/kalpataru-oceana1.webp"
+                        className="desktopImg"
+                        alt=""
+                      />
+                      <img
+                        src="/images/kalpataru-oceana1-mob.webp"
+                        className="mobileImg"
+                        alt=""
+                      />
                     </div>
                     <div>
-                      <img src="/images/kalpataru-oceana2.webp" className="desktopImg" alt="" />
-                      <img src="/images/kalpataru-oceana2-mob.webp" className="mobileImg" alt="" />
+                      <img
+                        src="/images/kalpataru-oceana2.webp"
+                        className="desktopImg"
+                        alt=""
+                      />
+                      <img
+                        src="/images/kalpataru-oceana2-mob.webp"
+                        className="mobileImg"
+                        alt=""
+                      />
                     </div>
                     <div>
-                      <img src="/images/kalpataru-oceana3.webp" className="desktopImg" alt="" />
-                      <img src="/images/kalpataru-oceana3-mob.webp" className="mobileImg" alt="" />
+                      <img
+                        src="/images/kalpataru-oceana3.webp"
+                        className="desktopImg"
+                        alt=""
+                      />
+                      <img
+                        src="/images/kalpataru-oceana3-mob.webp"
+                        className="mobileImg"
+                        alt=""
+                      />
                     </div>
                   </Slider>
                 </span>
@@ -84,7 +218,8 @@ export default function PincodePage() {
                 </p>
                 <span>
                   <a className="ctaBluetext" href="project-details.html">
-                    View Project <img src="/images/view-project-arrow.svg" alt="" />
+                    View Project{" "}
+                    <img src="/images/view-project-arrow.svg" alt="" />
                   </a>
                 </span>
               </div>
@@ -94,16 +229,40 @@ export default function PincodePage() {
                 <span>
                   <Slider className="single-item" {...settings}>
                     <div>
-                      <img src="/images/kalpataru-azuro1.webp" className="desktopImg" alt="" />
-                      <img src="/images/kalpataru-azuro1-mob.webp" className="mobileImg" alt="" />
+                      <img
+                        src="/images/kalpataru-azuro1.webp"
+                        className="desktopImg"
+                        alt=""
+                      />
+                      <img
+                        src="/images/kalpataru-azuro1-mob.webp"
+                        className="mobileImg"
+                        alt=""
+                      />
                     </div>
                     <div>
-                      <img src="/images/kalpataru-azuro2.webp" className="desktopImg" alt="" />
-                      <img src="/images/kalpataru-azuro2-mob.webp" className="mobileImg" alt="" />
+                      <img
+                        src="/images/kalpataru-azuro2.webp"
+                        className="desktopImg"
+                        alt=""
+                      />
+                      <img
+                        src="/images/kalpataru-azuro2-mob.webp"
+                        className="mobileImg"
+                        alt=""
+                      />
                     </div>
                     <div>
-                      <img src="/images/kalpataru-azuro3.webp" className="desktopImg" alt="" />
-                      <img src="/images/kalpataru-azuro3-mob.webp" className="mobileImg" alt="" />
+                      <img
+                        src="/images/kalpataru-azuro3.webp"
+                        className="desktopImg"
+                        alt=""
+                      />
+                      <img
+                        src="/images/kalpataru-azuro3-mob.webp"
+                        className="mobileImg"
+                        alt=""
+                      />
                     </div>
                   </Slider>
                 </span>
@@ -122,7 +281,8 @@ export default function PincodePage() {
                 </p>
                 <span>
                   <a className="ctaBluetext" href="project-details.html">
-                    View Project <img src="/images/view-project-arrow.svg" alt="" />
+                    View Project{" "}
+                    <img src="/images/view-project-arrow.svg" alt="" />
                   </a>
                 </span>
               </div>
@@ -132,16 +292,40 @@ export default function PincodePage() {
                 <span>
                   <Slider className="single-item" {...settings}>
                     <div>
-                      <img src="/images/kalpataru-prive1.webp" className="desktopImg" alt="" />
-                      <img src="/images/kalpataru-prive1-mob.webp" className="mobileImg" alt="" />
+                      <img
+                        src="/images/kalpataru-prive1.webp"
+                        className="desktopImg"
+                        alt=""
+                      />
+                      <img
+                        src="/images/kalpataru-prive1-mob.webp"
+                        className="mobileImg"
+                        alt=""
+                      />
                     </div>
                     <div>
-                      <img src="/images/kalpataru-prive2.webp" className="desktopImg" alt="" />
-                      <img src="/images/kalpataru-prive2-mob.webp" className="mobileImg" alt="" />
+                      <img
+                        src="/images/kalpataru-prive2.webp"
+                        className="desktopImg"
+                        alt=""
+                      />
+                      <img
+                        src="/images/kalpataru-prive2-mob.webp"
+                        className="mobileImg"
+                        alt=""
+                      />
                     </div>
                     <div>
-                      <img src="/images/kalpataru-prive3.webp" className="desktopImg" alt="" />
-                      <img src="/images/kalpataru-prive3-mob.webp" className="mobileImg" alt="" />
+                      <img
+                        src="/images/kalpataru-prive3.webp"
+                        className="desktopImg"
+                        alt=""
+                      />
+                      <img
+                        src="/images/kalpataru-prive3-mob.webp"
+                        className="mobileImg"
+                        alt=""
+                      />
                     </div>
                   </Slider>
                 </span>
@@ -160,7 +344,8 @@ export default function PincodePage() {
                 </p>
                 <span>
                   <a className="ctaBluetext" href="project-details.html">
-                    View Project <img src="/images/view-project-arrow.svg" alt="" />
+                    View Project{" "}
+                    <img src="/images/view-project-arrow.svg" alt="" />
                   </a>
                 </span>
               </div>
@@ -171,30 +356,30 @@ export default function PincodePage() {
 
       <section className="requestSec reqNewSec pincodeRequestSec">
         <div className="requestBG">
-          <img src="/images/request-previewbg.webp" className="desktopImg" alt="" />
-          <img src="/images/request-preview-mobile.webp" className="mobileImg" alt="" />
+          <img
+            src="/images/request-previewbg.webp"
+            className="desktopImg"
+            alt=""
+          />
+          <img
+            src="/images/request-preview-mobile.webp"
+            className="mobileImg"
+            alt=""
+          />
         </div>
-        <div className="requestWrapper requestContent reqNewContent">
-          <div className="secHeading newSecHeading ">
-            <h2 className="section-text-up">
-              <div className="trigger">
-                <span>
-                  {" "}
-                  Request a Private Preview{" "}
+        <div className="requestWrapper requestContent">
+            <div className="secHeading">
+              <h2 className="section-text-up newClass">
+                <span>Signature Residence</span>
+              </h2>
+              <div className="triggertwo">
+                <a className="ctaOne" href="https://ixdtm.com/projects/kalpataru-signature-wp/signature-residences/">Explore More{" "}
                   <img src="/images/cta-arrow-white.svg" alt="" />
-                </span>
+                </a>
               </div>
-            </h2>
-          </div>
+            </div>
         </div>
       </section>
-
-      <div className="breadcrumbsSec">
-        <p>
-          <a href="/">Home &nbsp; / &nbsp;</a>{" "}
-          <a href="signature-essence.html">Essence &nbsp; / &nbsp;</a> Pincode
-        </p>
-      </div>
 
       {/* <div className="modal">
         <div className="modalInner">
