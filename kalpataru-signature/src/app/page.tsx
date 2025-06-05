@@ -12,11 +12,13 @@ export default function Home() {
     const hasBanner = document.querySelector(".animationBanner");
 
     const addClass = (selector: string, className: string) => {
-      document.querySelectorAll(selector).forEach(el => el.classList.add(className));
+      document
+        .querySelectorAll(selector)
+        .forEach((el) => el.classList.add(className));
     };
 
     const fadeOut = (selector: string, duration: number) => {
-      document.querySelectorAll(selector).forEach(el => {
+      document.querySelectorAll(selector).forEach((el) => {
         (el as HTMLElement).style.transition = `opacity ${duration}ms`;
         (el as HTMLElement).style.opacity = "0";
         setTimeout(() => {
@@ -26,7 +28,7 @@ export default function Home() {
     };
 
     const fadeIn = (selector: string, duration: number) => {
-      document.querySelectorAll(selector).forEach(el => {
+      document.querySelectorAll(selector).forEach((el) => {
         (el as HTMLElement).style.opacity = "0";
         (el as HTMLElement).style.display = "block";
         (el as HTMLElement).style.transition = `opacity ${duration}ms`;
@@ -38,10 +40,10 @@ export default function Home() {
 
     const swiftUpTextAnimate = () => {
       const swiftUpElements = document.querySelectorAll(".new-swift-up-text");
-      swiftUpElements.forEach(elem => {
+      swiftUpElements.forEach((elem) => {
         const words = elem.textContent?.trim().split(" ") || [];
         elem.innerHTML = "";
-        words.forEach(word => {
+        words.forEach((word) => {
           elem.innerHTML += `<span><i>${word}</i></span> `;
         });
         const children = elem.querySelectorAll("span > i");
@@ -118,10 +120,8 @@ export default function Home() {
   }, []); // Empty dependency array means this runs once on mount
   return (
     <div>
-
       <BannerComponent
-        isPageLoad={isPageLoad}
-        bannerVideo="/images/homepage-video.mp4"
+        videoUrl="/images/homepage-video.mp4"
         mainHeading="Signature Collection"
         para="Fine Living. Finer Experiences"
       />
@@ -129,11 +129,15 @@ export default function Home() {
       <section className="signatureSec" id="signature-philosophy">
         <div className="signatureWrapper">
           <div className="secHeading">
-            <h2 className="section-text-up newClass"><span>Signature Philosophy</span></h2>
-            <p className="section-text-up newClass"><span>The pursuit of luxury. Our ultimate obsession.</span></p>
+            <h2 className="section-text-up newClass">
+              <span>Signature Philosophy</span>
+            </h2>
+            <p className="section-text-up newClass">
+              <span>The pursuit of luxury. Our ultimate obsession.</span>
+            </p>
             <a href="" className="section-text-up ctaBluetext newClass">
-              <span>Explore More{" "}
-                <img src="/images/cta-arrow.svg" alt="" />
+              <span>
+                Explore More <img src="/images/cta-arrow.svg" alt="" />
               </span>
             </a>
           </div>
@@ -144,7 +148,11 @@ export default function Home() {
               <source src="/images/signature-philosophy.mp4" type="video/mp4" />
             </video>
           </div>
-          <a data-fancybox="" data-ratio="2" href="https://youtu.be/hN9fi92qncw?si=Sl1L3YBum54Y27ni">
+          <a
+            data-fancybox=""
+            data-ratio="2"
+            href="https://youtu.be/hN9fi92qncw?si=Sl1L3YBum54Y27ni"
+          >
             Play full video
           </a>
         </div>
@@ -153,11 +161,18 @@ export default function Home() {
       <section className="signatureSec" id="signature-philosophy">
         <div className="signatureWrapper">
           <div className="secHeading">
-            <h2 className="section-text-up newClass"><span>Signature ESSENCE</span></h2>
-            <p className="section-text-up newClass"><span>When luxury is honed over decades, it starts to embody perfection.</span></p>
+            <h2 className="section-text-up newClass">
+              <span>Signature ESSENCE</span>
+            </h2>
+            <p className="section-text-up newClass">
+              <span>
+                When luxury is honed over decades, it starts to embody
+                perfection.
+              </span>
+            </p>
             <a href="" className="section-text-up ctaBluetext newClass">
-              <span>Explore More{" "}
-                <img src="/images/cta-arrow.svg" alt="" />
+              <span>
+                Explore More <img src="/images/cta-arrow.svg" alt="" />
               </span>
             </a>
           </div>
@@ -168,7 +183,11 @@ export default function Home() {
               <source src="/images/signature-essence.mp4" type="video/mp4" />
             </video>
           </div>
-          <a data-fancybox="" data-ratio="2" href="https://youtu.be/hN9fi92qncw?si=Sl1L3YBum54Y27ni">
+          <a
+            data-fancybox=""
+            data-ratio="2"
+            href="https://youtu.be/hN9fi92qncw?si=Sl1L3YBum54Y27ni"
+          >
             Play full video
           </a>
         </div>
@@ -177,11 +196,15 @@ export default function Home() {
       <section className="signatureSec" id="signature-philosophy">
         <div className="signatureWrapper">
           <div className="secHeading">
-            <h2 className="section-text-up newClass"><span>SIGNATURE RESIDENCES</span></h2>
-            <p className="section-text-up newClass"><span>Where raising the bar is a matter of simply living.</span></p>
+            <h2 className="section-text-up newClass">
+              <span>SIGNATURE RESIDENCES</span>
+            </h2>
+            <p className="section-text-up newClass">
+              <span>Where raising the bar is a matter of simply living.</span>
+            </p>
             <a href="" className="section-text-up ctaBluetext newClass">
-              <span>Explore More{" "}
-                <img src="/images/cta-arrow.svg" alt="" />
+              <span>
+                Explore More <img src="/images/cta-arrow.svg" alt="" />
               </span>
             </a>
           </div>
@@ -192,7 +215,11 @@ export default function Home() {
               <source src="/images/signature-residences.mp4" type="video/mp4" />
             </video>
           </div>
-          <a data-fancybox="" data-ratio="2" href="https://youtu.be/hN9fi92qncw?si=Sl1L3YBum54Y27ni">
+          <a
+            data-fancybox=""
+            data-ratio="2"
+            href="https://youtu.be/hN9fi92qncw?si=Sl1L3YBum54Y27ni"
+          >
             Play full video
           </a>
         </div>
@@ -201,11 +228,15 @@ export default function Home() {
       <section className="signatureSec" id="signature-philosophy">
         <div className="signatureWrapper">
           <div className="secHeading">
-            <h2 className="section-text-up newClass"><span>SIGNATURE EXPERIENCES</span></h2>
-            <p className="section-text-up newClass"><span>Curating rare experiences. For rarest among us.</span></p>
+            <h2 className="section-text-up newClass">
+              <span>SIGNATURE EXPERIENCES</span>
+            </h2>
+            <p className="section-text-up newClass">
+              <span>Curating rare experiences. For rarest among us.</span>
+            </p>
             <a href="" className="section-text-up ctaBluetext newClass">
-              <span>Explore More{" "}
-                <img src="/images/cta-arrow.svg" alt="" />
+              <span>
+                Explore More <img src="/images/cta-arrow.svg" alt="" />
               </span>
             </a>
           </div>
@@ -216,7 +247,11 @@ export default function Home() {
               <source src="/images/signature-experience.mp4" type="video/mp4" />
             </video>
           </div>
-          <a data-fancybox="" data-ratio="2" href="https://youtu.be/hN9fi92qncw?si=Sl1L3YBum54Y27ni">
+          <a
+            data-fancybox=""
+            data-ratio="2"
+            href="https://youtu.be/hN9fi92qncw?si=Sl1L3YBum54Y27ni"
+          >
             Play full video
           </a>
         </div>
@@ -224,20 +259,30 @@ export default function Home() {
 
       <section className="requestSec reqNewSec">
         <div className="requestBG">
-          <img src="/images/requestBG.png" alt="request-bg" className="desktopImg" />
-          <img src="/images/request-private-viewmbl.png" alt="request-bg" className="mobileImg" />
+          <img
+            src="/images/requestBG.png"
+            alt="request-bg"
+            className="desktopImg"
+          />
+          <img
+            src="/images/request-private-viewmbl.png"
+            alt="request-bg"
+            className="mobileImg"
+          />
         </div>
         <div className="requestWrapper requestContent reqNewContent">
           <div className="secHeading newSecHeading">
             <h2 className="section-text-up">
               <div className="trigger">
-                <span>Request a Private Preview <img src="/images/cta-arrow-white.svg" alt="" /></span>
+                <span>
+                  Request a Private Preview{" "}
+                  <img src="/images/cta-arrow-white.svg" alt="" />
+                </span>
               </div>
             </h2>
           </div>
         </div>
       </section>
-
     </div>
   );
 }
