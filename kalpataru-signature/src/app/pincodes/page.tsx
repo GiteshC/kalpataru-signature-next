@@ -166,16 +166,8 @@ export default function PincodePage() {
                 <span>
                   <Slider className="single-item" {...settings}>
                     <div>
-                      <img
-                        src="/images/kalpataru-oceana1.webp"
-                        className="desktopImg"
-                        alt=""
-                      />
-                      <img
-                        src="/images/kalpataru-oceana1-mob.webp"
-                        className="mobileImg"
-                        alt=""
-                      />
+                      <img src="/images/kalpataru-oceana1.webp" className="desktopImg" alt="" />
+                      <img src="/images/kalpataru-oceana1-mob.webp" className="mobileImg" alt="" />
                     </div>
                     <div>
                       <img
