@@ -1,3 +1,4 @@
+'use client';
 import React from "react";
 import usePageLoad from "@/hooks/usePageLoad";
 
@@ -12,10 +13,7 @@ const BannerComponent = ({
 }) => {
   const { isPageLoad } = usePageLoad();
   const spanData = mainHeading.split(" ");
-  console.log(spanData);
-  console.log(videoUrl);
   
-
   return (
     <section className="homebannerSec projectdetBanner">
       <div className="videoBox">
