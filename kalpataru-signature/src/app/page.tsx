@@ -1,13 +1,8 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import BannerComponent from "@/components/BannerComponent";
 
 export default function Home() {
-  const [isPageLoad, setIsPageLoad] = useState(false);
-  useEffect(() => {
-    setIsPageLoad(true);
-  }, []);
-
   useEffect(() => {
     const hasBanner = document.querySelector(".animationBanner");
 
