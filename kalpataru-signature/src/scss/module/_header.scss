@@ -1,6 +1,6 @@
 @use '../base/_global.scss' as *;
 
-header{position: fixed;top: 0;left: 0;right: 0;transition: top 0.5s ease-in-out;background: transparent;width: 100%;z-index: 4;
+header{position: fixed;top: 0;left: 0;right: 0;transition: top 0.5s ease-in-out;background: transparent;width: 100%;z-index: 1001;
     &.headerNew{
         .headerWrapper ul li a,.headerWrapper .hamburgerDiv{opacity: 1;}
     }
