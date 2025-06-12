@@ -11,16 +11,16 @@ export function Footer(){
                         <div className="menu-projects-menu-container">
                             <ul id="menu-projects-menu" className="menu">
                                 <li id="menu-item-552" className="menu-item menu-item-type-post_type menu-item-object-residences menu-item-552">
-                                    <Link href={'/'}>Azuro</Link>
+                                    <Link href={'/project-detail'}>Azuro</Link>
                                 </li>
                                 <li id="menu-item-596" className="menu-item menu-item-type-post_type menu-item-object-residences menu-item-596">
-                                    <Link href={'/'}>Prive</Link>
+                                    <Link href={'/project-detail'}>Prive</Link>
                                 </li>
                                 <li id="menu-item-576" className="menu-item menu-item-type-post_type menu-item-object-residences menu-item-576">
-                                    <Link href={'/'}>Oceana</Link>
+                                    <Link href={'/project-detail'}>Oceana</Link>
                                 </li>
                                 <li id="menu-item-858" className="menu-item menu-item-type-post_type menu-item-object-residences menu-item-858">
-                                    <Link href={'/'}>Avana</Link>
+                                    <Link href={'/project-detail'}>Avana</Link>
                                 </li>
                             </ul>
                         </div>
@@ -30,16 +30,16 @@ export function Footer(){
                         <div className="menu-footer-menu-container">
                             <ul id="menu-footer-menu" className="menu">
                                 <li id="menu-item-553" className="menu-item menu-item-type-post_type menu-item-object-page menu-item-553">
-                                    <Link href={'/'}>Signature Residences</Link>
+                                    <Link href={'/signature-residences'}>Signature Residences</Link>
                                 </li>
                                 <li id="menu-item-554" className="menu-item menu-item-type-post_type menu-item-object-page menu-item-554">
-                                    <Link href={'/'}>Signature Experience</Link>
+                                    <Link href={'/signature-experience'}>Signature Experience</Link>
                                 </li>
                                 <li id="menu-item-555" className="menu-item menu-item-type-post_type menu-item-object-page menu-item-555">
-                                    <Link href={'/'}>Signature Philosophy</Link>
+                                    <Link href={'/signature-philosophy'}>Signature Philosophy</Link>
                                 </li>
                                 <li id="menu-item-556" className="menu-item menu-item-type-post_type menu-item-object-page menu-item-556">
-                                    <Link href={'/'}>Signature Essence</Link>
+                                    <Link href={'/signature-essence'}>Signature Essence</Link>
                                 </li>
                             </ul>
                         </div>

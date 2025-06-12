@@ -113,6 +113,7 @@ const SignaturePhilosophy = () => {
         mblImgUrl="/images/signature-essence-footer-mbl.webp"
         secHeading="Signature essence"
         subHeading="Explore the Essence"
+        pageUrl="signature-essence"
       />
     </>
   );

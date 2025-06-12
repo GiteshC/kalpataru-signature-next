@@ -2,23 +2,16 @@
 import BannerComponent from "@/components/BannerComponent";
 import ExploreCompoent from "@/components/ExploreCompoent";
 import useIsSecVisible from "@/hooks/useIsSecVisible";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Slider from "react-slick";
+import SliderComponent from "@/components/SliderComponent";
+import { experienceSlider } from "@/components/ArrowSliderComponent";
 
 export default function SignatureExperience() {
     const experienceSec = useRef(null);
     const { isSecInViewport : experienceSection } = useIsSecVisible(experienceSec);
-    const experienceSlider = {
-        dots: false,
-        autoplay: true,
-        infinite: true,
-        speed: 500,
-        autoplaySpeed: 3000,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: false,
-    };
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const totalSlides = 2;
     
     return (
         <>
@@ -67,11 +60,21 @@ export default function SignatureExperience() {
                     </div>
                 </div>
                 <div className="slider-container">
-                    <div className="slides-numbers" style={{display: "block"}}>
-                        <span className="active">01</span> <span>/</span> <span className="total">02</span>
+                    <div className="slides-numbers" style={{ display: "block" }}>
+                        <span className="active">
+                            {String(currentSlide + 1).padStart(2, "0")}
+                        </span>
+                        <span>/</span>
+                        <span className="total">
+                            {String(totalSlides).padStart(2, "0")}
+                        </span>
                     </div>
                     <div className="eventSlider">
-                        <Slider className="single-item" {...experienceSlider}>
+                        <SliderComponent setting={{...experienceSlider,
+                            beforeChange: (_oldIndex: number, newIndex: number) => {
+                                setCurrentSlide(newIndex);
+                            },
+                        }} >
                             <div className="eventDetails">
                                 <div className="eventImg">
                                     <img src="images/event-img-1-scaled.webp" alt="" />
@@ -90,7 +93,7 @@ export default function SignatureExperience() {
                                     <h3>Book Reading Club</h3>
                                 </div>
                             </div>
-                        </Slider>
+                        </SliderComponent>
                     </div>
                 </div>
             </section>

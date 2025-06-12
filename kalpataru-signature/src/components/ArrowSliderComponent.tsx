@@ -106,3 +106,15 @@ export const residentSlider = {
     },
   ],
 };
+
+export const experienceSlider = {
+  dots: false,
+  autoplay: true,
+  infinite: true,
+  speed: 500,
+  autoplaySpeed: 3000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  fade: false,
+};

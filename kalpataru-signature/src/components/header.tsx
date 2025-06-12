@@ -220,10 +220,10 @@ export function Header() {
                 <div className="rightMenu">
                     <ul>
                         <li className="menuLinks">
-                            <Link href={"/"}>Residences</Link>
+                            <Link href={"/signature-residences"}>Residences</Link>
                         </li>
                         <li className="menuLinks">
-                            <Link href={"/"}>Experience</Link>
+                            <Link href={"/signature-experience"}>Experience</Link>
                         </li>
                         <li>
                             <div className="hamburgerDiv" id="hamburgerDiv">
@@ -247,18 +247,18 @@ export function Header() {
                             <Link href={"/signature-essence"}>Signature Essence</Link>
                         </li>
                         <li className="menuLinks">
-                            <Link href={"/"}>Signature Residences</Link>
+                            <Link href={"/signature-residences"}>Signature Residences</Link>
                         </li>
                         <li className="menuLinks">
-                            <Link href={"/"}>Signature Experience</Link>
+                            <Link href={"/signature-experience"}>Signature Experience</Link>
                         </li>
                         <li className="menuLinks dropdownMenu">
                             <Link href={"/"}>Our Collection<img src="/images/header-mbl-dropdown-arrow.svg" alt="" title="" /></Link>
                             <div className="dropdownMbl">
                                 <ul>
-                                    <li><Link href={"/"}>Oceana, Prabhadevi</Link></li>
-                                    <li><Link href={"/"}>Azuro, Nepean Sea Road</Link></li>
-                                    <li><Link href={"/"}>Prive, Altamount Road</Link></li>
+                                    <li><Link href={"/project-detail"}>Oceana, Prabhadevi</Link></li>
+                                    <li><Link href={"/project-detail"}>Azuro, Nepean Sea Road</Link></li>
+                                    <li><Link href={"/project-detail"}>Prive, Altamount Road</Link></li>
                                 </ul>
                             </div>
                         </li>

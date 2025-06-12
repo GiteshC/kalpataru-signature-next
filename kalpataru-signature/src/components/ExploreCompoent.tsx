@@ -8,13 +8,16 @@ const ExploreCompoent = ({
   mblImgUrl,
   secHeading,
   subHeading,
+  pageUrl,
 }: {
   desktopImgUrl: string;
   mblImgUrl: string;
   secHeading: string;
   subHeading: string;
+  pageUrl: string;
 }) => {
 
+   console.log(pageUrl);
   const { isPageLoad } = usePageLoad();
   return (
     <section className="requestSec">
@@ -28,7 +31,7 @@ const ExploreCompoent = ({
             <span>{secHeading}</span>
           </h2>
           <Link
-            href="signature-essence.html"
+            href={`${pageUrl}`}
             className={`ctaOne section-text-up ${
               isPageLoad ? "newClass" : ""
             } `}
