@@ -3,10 +3,22 @@ import BannerComponent from "@/components/BannerComponent";
 import ExploreCompoent from "@/components/ExploreCompoent";
 import useIsSecVisible from "@/hooks/useIsSecVisible";
 import { useRef } from "react";
+import Slider from "react-slick";
 
 export default function SignatureExperience() {
     const experienceSec = useRef(null);
     const { isSecInViewport : experienceSection } = useIsSecVisible(experienceSec);
+    const experienceSlider = {
+        dots: false,
+        autoplay: true,
+        infinite: true,
+        speed: 500,
+        autoplaySpeed: 3000,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: false,
+    };
     
     return (
         <>
@@ -59,24 +71,26 @@ export default function SignatureExperience() {
                         <span className="active">01</span> <span>/</span> <span className="total">02</span>
                     </div>
                     <div className="eventSlider">
-                        <div className="eventDetails">
-                            <div className="eventImg">
-                                <img src="images/event-img-1-scaled.webp" alt="" />
+                        <Slider className="single-item" {...experienceSlider}>
+                            <div className="eventDetails">
+                                <div className="eventImg">
+                                    <img src="images/event-img-1-scaled.webp" alt="" />
+                                </div>
+                                <div className="eventName">
+                                    <h4>Date: Nov 15th - 25th</h4>
+                                    <h3>Yoga and Fitness</h3>
+                                </div>
                             </div>
-                            <div className="eventName">
-                                <h4>Date: Nov 15th - 25th</h4>
-                                <h3>Yoga and Fitness</h3>
+                            <div className="eventDetails">
+                                <div className="eventImg">
+                                    <img src="images/event-img-2-scaled.webp" alt="" />
+                                </div>
+                                <div className="eventName">
+                                    <h4>Date: Nov 8th - 10th</h4>
+                                    <h3>Book Reading Club</h3>
+                                </div>
                             </div>
-                        </div>
-                        <div className="eventDetails">
-                            <div className="eventImg">
-                                <img src="images/event-img-2-scaled.webp" alt="" />
-                            </div>
-                            <div className="eventName">
-                                <h4>Date: Nov 8th - 10th</h4>
-                                <h3>Book Reading Club</h3>
-                            </div>
-                        </div>
+                        </Slider>
                     </div>
                 </div>
             </section>
