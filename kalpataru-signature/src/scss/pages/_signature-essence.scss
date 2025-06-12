@@ -13,12 +13,13 @@
         .numberandDetails{
             .slides-numbers {display: none;left: 27%;right: 0;text-align: center;position: absolute;bottom: 116px;z-index: 2;
                 span{font-family: $fontMarcellus;font-weight: $fontW400;color: #19357F;}
-                .active {margin-right: -2px;@include font24;}
-                .total {margin-left: -3px;@include font16;}
+                .active {margin-right: 0px;@include font24;}
+                .total {margin-left: 0px;@include font16;}
             }
 
             .locationSlider{position: absolute;left: 0;right: 0;bottom: 60px;border-radius: 8px;background: #fff;width: 68%;margin: 0 auto;padding: 36px;
-                .innerContent{display: flex;align-items: flex-start;justify-content: space-between;
+                
+                .innerContent{display: flex !important; align-items: flex-start; justify-content: space-between;
                     .imgDiv{display: flex;width: 60%;justify-content: space-between;
                         img{width: 100%;height: 100%;object-fit: cover;}
                         .bigImg{width: calc(100% - 320px);
@@ -33,10 +34,14 @@
                     .pincodeDetails{width: 40%;margin-left: 36px;
                         h3{@include font42;font-weight: $fontW400;font-family: $fontMarcellus;line-height: normal;color: #19357F; }
                         p{@include font20;font-weight: $fontW500;line-height: normal;color: #5A6EA3;margin: 8px 0px 28px;width: 80%; }
-                        a{text-transform: none;}
+                        a{text-transform: none;
+                            img {display: inline-block !important;}
+                        }
+                         
                     }
                 }
-                .slick-prev,.slick-next {position: absolute;bottom: 20px;outline: none;top: unset;width: 50px;height: 50px;display: flex;align-items: center;justify-content: center;cursor: pointer;z-index: 2;transition: 0.3s all ease-in-out;
+                .slick-slider{position: unset !important;}
+                .slick-prev,.slick-next {position: absolute;bottom: 20px;outline: none;top: unset;width: 50px;height: 50px;display: flex;align-items: center;justify-content: center;cursor: pointer;z-index: 2;transition: 0.3s all ease-in-out; display: flex !important;
                     &::before {content: url(/images/slick-prev-luxury.svg);opacity: 0.2;transition: 0.3s all ease-in-out;scale: 0.7;}
                     &:hover{outline: none;transition: 0.3s all ease-in-out;
                         &::before{opacity: 1;transition: 0.3s all ease-in-out;}
@@ -182,7 +187,7 @@
             .numberandDetails{
                 .slides-numbers {bottom: -35px;left:0;}
                 .locationSlider{padding: 18px;position: unset;width: 100%;
-                    .innerContent{display: block;
+                    .innerContent{display: block !important;
                         .imgDiv{width: 100%;
                             .bigImg{width: calc(100% - 235px);}
                             .smallImg .innerSmallimg{width: 225px;
@@ -228,7 +233,7 @@
 }
 .essenceVidsec{margin-bottom: 150px; position: relative;
     .videoWrapperslider{overflow-x: hidden;
-        .innerBoxes{position: relative;margin: 0px 120px;display: flex;align-items: flex-start;justify-content: space-between;
+        .innerBoxes{position: relative; margin: 0px 120px;display: flex !important; align-items: flex-start;justify-content: space-between; width: auto !important;
             .videoMaindiv{width: 38%}
             .textDiv{
                 h2 {@include font64;font-weight: $fontW400;font-family: $fontMarcellus;position: relative;color: #19357F;line-height: normal;text-transform: uppercase}
@@ -244,7 +249,11 @@
                
             }
         }
-        
+        .slick-slider{
+            .slick-arrow{
+                &::before{opacity: 0;}
+            }
+        }
     }
     .sliderArrow{display: flex; align-items: center;position: absolute;bottom: 32px;left: 260px;z-index: 1;transform: translateX(-50%);
         .slick-arrow{width: 54px; height: 54px; outline: none; transition: 0.5s all ease-in-out; cursor: pointer; display: flex; align-items: center; justify-content: center;background: transparent;
@@ -256,8 +265,8 @@
     }
     .slides-numbers {display: none; margin: 0px 50px;
         span{font-family: $fontMarcellus;font-weight: $fontW400;color: #5A6EA3;}
-        .active {margin-right: -2px;@include font32;color: #19357F;}
-        .total {margin-left: -3px;@include font14;color: #5A6EA3;}
+        .active {margin-right: 0px;@include font32;color: #19357F;}
+        .total {margin-left: 0px;@include font14;color: #5A6EA3;}
     }
     @media screen and (max-width:1920px) {
         .videoWrapperslider .innerBoxes .bottomText{top: 32%;}
@@ -315,7 +324,7 @@
     }
     @media screen and (max-width:1024px) {margin-bottom: 130px;
         .videoWrapperslider{
-            .innerBoxes{margin: 0px 50px;display: block;
+            .innerBoxes{margin: 0px 50px;display: block !important;
                 .videoMaindiv{width: 100%;}
                 .textDiv{position: unset;text-align: center;
                     h2{
@@ -351,8 +360,6 @@
         .slides-numbers {margin: 0px 30px;}
     }
 }
-
-
 .residentsSec{margin-bottom: 160px;position: relative;
     .residentsWrapper{display: flex;justify-content: space-between;
         .secHeading{padding-left: 134px;width: 37%;margin-top: 65px;
@@ -367,7 +374,7 @@
                 .total {margin-left: -3px;@include font14;color: #5A6EA3;}
             }
             .residentSlider{
-                .innerBoxes{border: 1px solid #EBEBEB;background: #FBFBFB;margin:0px 12px;
+                .innerBoxes{border: 1px solid #EBEBEB;background: #FBFBFB;margin:0px 12px; width: auto !important;
                     .videoBox {position: relative;
                         img{width: 100%;}
                         .popupButton{position: absolute;top: 50%;transform: translateY(-50%);right: 0;left: 0;width: 50px;height: 50px;margin: 0 auto;}

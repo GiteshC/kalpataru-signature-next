@@ -1,3 +1,5 @@
+"use client";
+
 import usePageLoad from "@/hooks/usePageLoad";
 import Link from "next/link";
 

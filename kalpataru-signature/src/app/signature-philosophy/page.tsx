@@ -9,8 +9,9 @@ import { Fancybox } from "@fancyapps/ui";
 const SignaturePhilosophy = () => {
   const visionSec = useRef(null);
   const houseOfFirstSec = useRef(null);
-  const { isSecInViewport : visionSection } = useIsSecVisible(visionSec);
-  const { isSecInViewport : houseOfFirstSection } = useIsSecVisible(houseOfFirstSec);
+  const { isSecInViewport: visionSection } = useIsSecVisible(visionSec);
+  const { isSecInViewport: houseOfFirstSection } =
+    useIsSecVisible(houseOfFirstSec);
 
   useEffect(() => {
     Fancybox.bind("[data-fancybox]", {});
@@ -34,9 +35,7 @@ const SignaturePhilosophy = () => {
             >
               <span>The Pioneers of South Mumbai</span>
             </h2>
-            <p
-              className={`section-text-up ${visionSection ? "newClass" : ""}`}
-            >
+            <p className={`section-text-up ${visionSection ? "newClass" : ""}`}>
               <span>
                 Our founder's vision transformed South Mumbai from a collection
                 of stuffy mid-sized buildings to new residential properties that
@@ -68,13 +67,24 @@ const SignaturePhilosophy = () => {
           </div>
         </div>
       </section>
-      <section className="philo-vision-section philo-houseOfFirst-sec"  ref={houseOfFirstSec}>
+      <section
+        className="philo-vision-section philo-houseOfFirst-sec"
+        ref={houseOfFirstSec}
+      >
         <div className="vision-wrapper">
           <div className="visionHeadingSec hof-headingSec">
-            <h2 className={`section-text-up ${houseOfFirstSection ? "newClass" : ""}`}>
+            <h2
+              className={`section-text-up ${
+                houseOfFirstSection ? "newClass" : ""
+              }`}
+            >
               <span>House of firsts</span>
             </h2>
-            <p className={`section-text-up ${houseOfFirstSection ? "newClass" : ""}`}>
+            <p
+              className={`section-text-up ${
+                houseOfFirstSection ? "newClass" : ""
+              }`}
+            >
               <span>
                 A JOURNEY OF INNOVATION, IS OFTEN A JOURNEY MARKED BY MANY
                 FIRSTS.
