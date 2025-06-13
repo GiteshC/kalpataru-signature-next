@@ -53,6 +53,7 @@ const SignatureEssence = () => {
         videoUrl="/images/signature-essence.mp4"
         mainHeading="Signature Essence"
         para="When luxury is honed over decades, it starts to embody perfection."
+        address=""
       />
       <section className="signatureSec pincodesMapsec" ref={pincodeMapSecRef}>
         <div className="signatureWrapper">

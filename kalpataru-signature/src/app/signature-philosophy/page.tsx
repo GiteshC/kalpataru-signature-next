@@ -27,6 +27,7 @@ const SignaturePhilosophy = () => {
         videoUrl="/images/signature-philosophy.mp4"
         mainHeading="SIGNATURE PHILOSOPHY"
         para="The pursuit of luxury. Our ultimate obsession."
+        address=""
       />
       <section className="philo-vision-section" ref={visionSec}>
         <div className="vision-wrapper">
@@ -116,7 +117,7 @@ const SignaturePhilosophy = () => {
         subHeading="Explore the Essence"
         pageUrl="signature-essence"
       />
-      <PathComponent pageName="Philosophy" />
+      <PathComponent pageName="Philosophy" flag={false} subpage="" path="" />
     </>
   );
 };
