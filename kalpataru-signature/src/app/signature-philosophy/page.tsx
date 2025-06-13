@@ -5,6 +5,7 @@ import ExploreCompoent from "@/components/ExploreCompoent";
 import useIsSecVisible from "@/hooks/useIsSecVisible";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import { Fancybox } from "@fancyapps/ui";
+import PathComponent from "@/components/PathComponent";
 
 const SignaturePhilosophy = () => {
   const visionSec = useRef(null);
@@ -115,6 +116,7 @@ const SignaturePhilosophy = () => {
         subHeading="Explore the Essence"
         pageUrl="signature-essence"
       />
+      <PathComponent pageName="Philosophy" />
     </>
   );
 };

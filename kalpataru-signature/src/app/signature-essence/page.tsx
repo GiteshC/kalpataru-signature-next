@@ -13,6 +13,7 @@ import {
 import SliderComponent from "@/components/SliderComponent";
 import Slider from "react-slick";
 import { PrevArrow, NextArrow } from "@/components/ArrowSliderComponent";
+import PathComponent from "@/components/PathComponent";
 
 const SignatureEssence = () => {
   const [nav1, setNav1] = useState(null);
@@ -371,7 +372,9 @@ const SignatureEssence = () => {
         mblImgUrl="/images/signature-residences-footer-mbl.webp"
         secHeading="Signature Residences"
         subHeading="Explore our Projects"
+        pageUrl="signature-residences"
       />
+      <PathComponent pageName="Essence"/>
     </>
   );
 };

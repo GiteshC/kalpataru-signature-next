@@ -6,53 +6,34 @@ import { useState, useRef, useEffect } from "react";
 export function Header() {
     const [didScroll, setDidScroll] = useState(false);
     const [lastScrollTop, setLastScrollTop] = useState(0);
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [popUpDropdown, setPopupDropdown] = useState(false);
     const delta = 5;
     const headerRef = useRef<HTMLElement>(null);
 
+
+    const hamburgerHandler = () => {
+        setIsPopupOpen(true);
+        document.body.classList.toggle('hideScrollbar');
+        document.documentElement.classList.toggle('hideScrollbarhtml');
+    }
+    const closeHandler = () => {
+        setIsPopupOpen(false);
+        document.body.classList.remove('hideScrollbar');
+        document.documentElement.classList.remove('hideScrollbarhtml');
+    }
+
+    const dropdownHandler = () => {
+        setPopupDropdown(!popUpDropdown)
+    }
+
+    const linksHandler = () => {
+        setIsPopupOpen(false);
+        document.body.classList.remove('hideScrollbar');
+        document.documentElement.classList.remove('hideScrollbarhtml');
+    }
+    
     useEffect(() => {
-        // Toggle Button Click Handler
-        const toggleButton = document.getElementById('toggle');
-        const handleToggleClick = () => {
-            toggleButton?.classList.toggle('active');
-            document.querySelector('header')?.classList.toggle('hiddenspace');
-            document.getElementById('overlay')?.classList.toggle('open');
-            document.querySelectorAll('.modalHeader').forEach(el => el.classList.remove('show-modal'));
-            document.body.classList.toggle('hideScrollbar');
-            document.documentElement.classList.toggle('hideScrollbarhtml');
-        };
-        toggleButton?.addEventListener('click', handleToggleClick);
-
-        // Dropdown Menu Click Handler
-        const dropdowns = document.querySelectorAll('.dropdownMenu');
-        const handleDropdownClick = function(this: Element) {
-            this.classList.toggle('openDropdown');
-        };
-        dropdowns.forEach(dropdown => {
-            dropdown.addEventListener('click', handleDropdownClick);
-        });
-
-        // Header Menu Links Click Handler
-        const menuLinks = document.querySelectorAll('.headerWrapper ul .menuLinks');
-        const handleMenuLinkClick = () => {
-            document.getElementById('overlay')?.classList.remove('open');
-            document.getElementById('toggle')?.classList.remove('active');
-        };
-        menuLinks.forEach(link => {
-            link.addEventListener('click', handleMenuLinkClick);
-        });
-
-        // Close Menu Button Click Handler
-        const closeButtons = document.querySelectorAll('.closeButtonmenu');
-        const handleCloseClick = () => {
-            document.getElementById('overlay')?.classList.remove('open');
-            document.getElementById('toggle')?.classList.remove('active');
-            document.body.classList.remove('hideScrollbar');
-            document.documentElement.classList.remove('hideScrollbarhtml');
-        };
-        closeButtons.forEach(btn => {
-            btn.addEventListener('click', handleCloseClick);
-        });
-
         // Scroll Handler
         const handleScroll = () => {
             setDidScroll(true);
@@ -145,16 +126,7 @@ export function Header() {
 
         // Cleanup
         return () => {
-            toggleButton?.removeEventListener('click', handleToggleClick);
-            dropdowns.forEach(dropdown => {
-                dropdown.removeEventListener('click', handleDropdownClick);
-            });
-            menuLinks.forEach(link => {
-                link.removeEventListener('click', handleMenuLinkClick);
-            });
-            closeButtons.forEach(btn => {
-                btn.removeEventListener('click', handleCloseClick);
-            });
+           
             window.removeEventListener('scroll', handleScroll);
             clearInterval(scrollInterval);
 
@@ -168,7 +140,7 @@ export function Header() {
         };
     }, [didScroll, lastScrollTop]);
     return (
-        <header className="nav-down headerNew" id="main-header">
+        <header className={`nav-down headerNew ${isPopupOpen ? "hiddenspace" : ""} `} id="main-header">
             <div className="headerWrapper">
                 <div className="leftMenu">
                     <ul>
@@ -227,44 +199,49 @@ export function Header() {
                         </li>
                         <li>
                             <div className="hamburgerDiv" id="hamburgerDiv">
-                                <div className="button_container" id="toggle"><span className="top"></span><span
-                                        className="bottom"></span>
+                                <div className={`button_container ${isPopupOpen ? "active" : ""}`} id="toggle" onClick={hamburgerHandler}>
+                                    <span className="top"></span>
+                                    <span className="bottom"></span>
                                 </div>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div className="overlay" id="overlay">
-                <div className="popupmenuLogo"><a href="index.html"><img src="/images/headerlogo.svg" alt="" title="" /></a></div>
-                <button className="closeButtonmenu"><img src="/images/popup-close-icon.svg" alt="" title="" /></button>
+            <div className={`overlay ${isPopupOpen ? "open" : ""}`} id="overlay">
+                <div className="popupmenuLogo">
+                    <Link href={"/"} onClick={linksHandler}><img src="/images/headerlogo.svg" alt="" title="" /></Link>
+                </div>
+                <button className="closeButtonmenu" onClick={closeHandler}>
+                    <img src="/images/popup-close-icon.svg" alt="" title="" />
+                </button>
                 <nav className="overlay-menu">
                     <ul>
                         <li className="menuLinks">
-                            <Link href={"/signature-philosophy"}>Signature Philosophy</Link>
+                            <Link href={"/signature-philosophy"} onClick={linksHandler}>Signature Philosophy</Link>
                         </li>
                         <li className="menuLinks">
-                            <Link href={"/signature-essence"}>Signature Essence</Link>
+                            <Link href={"/signature-essence"} onClick={linksHandler}>Signature Essence</Link>
                         </li>
                         <li className="menuLinks">
-                            <Link href={"/signature-residences"}>Signature Residences</Link>
+                            <Link href={"/signature-residences"} onClick={linksHandler}>Signature Residences</Link>
                         </li>
                         <li className="menuLinks">
-                            <Link href={"/signature-experience"}>Signature Experience</Link>
+                            <Link href={"/signature-experience"} onClick={linksHandler}>Signature Experience</Link>
                         </li>
-                        <li className="menuLinks dropdownMenu">
-                            <Link href={"/"}>Our Collection<img src="/images/header-mbl-dropdown-arrow.svg" alt="" title="" /></Link>
+                        <li className={`menuLinks dropdownMenu ${popUpDropdown ? "openDropdown" : ""} `} onClick={dropdownHandler}>
+                            <a>Our Collection<img src="/images/header-mbl-dropdown-arrow.svg" alt="" title="" /></a>
                             <div className="dropdownMbl">
                                 <ul>
-                                    <li><Link href={"/project-detail"}>Oceana, Prabhadevi</Link></li>
-                                    <li><Link href={"/project-detail"}>Azuro, Nepean Sea Road</Link></li>
-                                    <li><Link href={"/project-detail"}>Prive, Altamount Road</Link></li>
+                                    <li><Link href={"/project-detail"} onClick={linksHandler}>Oceana, Prabhadevi</Link></li>
+                                    <li><Link href={"/project-detail"} onClick={linksHandler}>Azuro, Nepean Sea Road</Link></li>
+                                    <li><Link href={"/project-detail"} onClick={linksHandler}>Prive, Altamount Road</Link></li>
                                 </ul>
-                            </div>
+                            </div> 
                         </li>
                     </ul>
                     <div className="headerminiLinks">
-                        <Link href={"/"}>News & Media</Link>
+                        <Link href={"/"} onClick={linksHandler}>News & Media</Link>
                         <a className="trigger reqCta ctaBluetext">Request a Private Preview <img src="/images/req-arrow.svg" /></a>
                     </div>
                 </nav>
