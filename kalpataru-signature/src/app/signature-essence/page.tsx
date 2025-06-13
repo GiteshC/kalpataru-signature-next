@@ -373,8 +373,8 @@ const SignatureEssence = () => {
         secHeading="Signature Residences"
         subHeading="Explore our Projects"
         pageUrl="signature-residences"
-      />"
-      <PathComponent pageName="Essence" flag={false} subpage=""/>
+      />
+      <PathComponent pageName="Essence" flag={false} subpage="" path="" />
     </>
   );
 };

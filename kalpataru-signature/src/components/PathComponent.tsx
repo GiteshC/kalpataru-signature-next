@@ -5,17 +5,19 @@ const PathComponent = ({
   pageName,
   flag,
   subpage,
+  path
 }: {
   pageName: string;
   flag: boolean;
   subpage: string;
+  path: string,
 }) => {
   return (
     <div className="breadcrumbsSec">
       <p>
         <Link href={"/"}>Home &nbsp; / &nbsp;</Link>
         {flag && (
-          <Link href="signature-residences.html">{subpage} &nbsp; /&nbsp;</Link>
+          <Link href={`${path}`}>{subpage} &nbsp; /&nbsp;</Link>
         )}
         {pageName}
       </p>
