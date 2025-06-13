@@ -19,6 +19,7 @@ export default function SignatureExperience() {
                 videoUrl="/images/signature-experience.mp4"
                 mainHeading="Signature Experience"
                 para="It's rare to find experiences like this. Justifiably, only the rare find it."
+                address=""
             />
 
             <section className="signatureSec signExpimgsection" ref={experienceSec}>

@@ -6,10 +6,12 @@ const BannerComponent = ({
   videoUrl,
   mainHeading,
   para,
+  address
 }: {
   videoUrl: string,
   mainHeading: string;
   para: string;
+  address: string;
 }) => {
   const { isPageLoad } = usePageLoad();
   const spanData = mainHeading.split(" ");
@@ -27,8 +29,8 @@ const BannerComponent = ({
             className={`swift-up-text ${isPageLoad ? "new-swift-up-text" : ""}`}
           >
             {spanData.map((el, i) => (
-              <span key={el} >
-                <i style={{ transitionDelay: `${i * 0.4}s`}}>{el}&nbsp;</i>
+              <span key={el}>
+                <i style={{ transitionDelay: `${i * 0.4}s` }}>{el}&nbsp;</i>
               </span>
             ))}
           </h1>
@@ -39,6 +41,11 @@ const BannerComponent = ({
           >
             <span>{para}</span>
           </p>
+          {address && (
+            <h3 className={`bannerTextanimation`}>
+              <span>{address}</span>
+            </h3>
+          )}
         </div>
       </div>
       <div className="scrollText">

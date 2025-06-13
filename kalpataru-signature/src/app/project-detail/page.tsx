@@ -1,4 +1,6 @@
 "use client";
+import BannerComponent from "@/components/BannerComponent";
+import PathComponent from "@/components/PathComponent";
 import { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 
@@ -309,29 +311,8 @@ export default function ProjectDetail() {
 
   return (
     <div>
-      <section className="homebannerSec projectdetBanner">
-        <div className="videoBox">
-          <video autoPlay muted loop playsInline preload="metadata">
-            <source src="/images/project-azuro.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div className="homebannerWrapper homebannerContent">
-          <div className="secHeading">
-            <h1 className="swift-up-text">
-              <span>KALPATARU AZURO</span>{" "}
-            </h1>
-            <p className="bannerTextanimation">
-              <span> An homage to the ocean. And to luxury.</span>
-            </p>
-            <h3 className="bannerTextanimation">
-              <span>Nepean Sea Road, 400006</span>
-            </h3>
-          </div>
-        </div>
-        <div className="scrollText">
-          <h3>Scroll to Explore</h3>
-        </div>
-      </section>
+
+      <BannerComponent videoUrl="/images/project-azuro.mp4" mainHeading="KALPATARU AZURO" para="An homage to the ocean. And to luxury." address="Nepean Sea Road, 400006" />
 
       <section className="signatureSec">
         <div className="signatureWrapper">
@@ -549,15 +530,9 @@ export default function ProjectDetail() {
         </div>
       </section>
 
-      <div className="breadcrumbsSec">
-        <p>
-          <a href="index.html">Home &nbsp; / &nbsp;</a>{" "}
-          <a href="signature-residences.html">Residences &nbsp; / &nbsp;</a>{" "}
-          Azuro
-        </p>
-      </div>
+      <PathComponent pageName="Azuro" flag={true} subpage="Residences" path="signature-residences" />
 
-      <div className="modal">
+      {/* <div className="modal">
         <div className="modalInner">
           <div className="headerLogo">
             <a href="index.html">
@@ -592,11 +567,9 @@ export default function ProjectDetail() {
                   />
                   <div className="inputNumber">
                     <select id="country" name="country">
-                      {/* You can add more options as needed */}
                       <option value={+91}>+91</option>
                       <option value={+44}>+44</option>
                       <option value={+51}>+51</option>
-                      {/* Add more countries as needed */}
                     </select>
                     <input
                       type="tel"
@@ -611,7 +584,7 @@ export default function ProjectDetail() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
