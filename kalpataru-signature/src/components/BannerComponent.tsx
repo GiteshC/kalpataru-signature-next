@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import React from "react";
 import usePageLoad from "@/hooks/usePageLoad";
 
@@ -7,13 +7,13 @@ const BannerComponent = ({
   mainHeading,
   para,
 }: {
-  videoUrl: string,
+  videoUrl: string;
   mainHeading: string;
   para: string;
 }) => {
   const { isPageLoad } = usePageLoad();
   const spanData = mainHeading.split(" ");
-  
+
   return (
     <section className="homebannerSec projectdetBanner">
       <div className="videoBox">
@@ -27,8 +27,8 @@ const BannerComponent = ({
             className={`swift-up-text ${isPageLoad ? "new-swift-up-text" : ""}`}
           >
             {spanData.map((el, i) => (
-              <span key={el} >
-                <i style={{ transitionDelay: `${i * 0.4}s`}}>{el}&nbsp;</i>
+              <span key={el}>
+                <i style={{ transitionDelay: `${i * 0.4}s` }}>{el}&nbsp;</i>
               </span>
             ))}
           </h1>
@@ -41,7 +41,7 @@ const BannerComponent = ({
           </p>
         </div>
       </div>
-      <div className="scrollText">
+      <div className={`scrollText ${isPageLoad ? "scrollTextnew" : ""}`}>
         <h3>Scroll to Explore</h3>
       </div>
     </section>
