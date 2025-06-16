@@ -4,6 +4,8 @@ const useIsSecVisible = (ref: any): { isSecInViewport: boolean } => {
   const [isSecInViewport, setIsSecInViewport] = useState(false);
 
   useEffect(() => {
+     if (!ref?.current) return;
+
     const observer = new IntersectionObserver(([entry]) => {
       setIsSecInViewport(entry.isIntersecting);
     });
@@ -12,7 +14,7 @@ const useIsSecVisible = (ref: any): { isSecInViewport: boolean } => {
     return () => {
       observer.disconnect();
     };
-  }, [ref]);
+  }, [ref?.current]);
 
   return { isSecInViewport };
 };

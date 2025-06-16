@@ -119,6 +119,7 @@ export default function Home() {
         videoUrl="/images/homepage-video.mp4"
         mainHeading="Signature Collection"
         para="Fine Living. Finer Experiences"
+        address=""
       />
 
       <section className="signatureSec" id="signature-philosophy">

@@ -10,14 +10,12 @@ const ExploreCompoent = ({
   subHeading,
   pageUrl,
 }: {
-  desktopImgUrl: string;
-  mblImgUrl: string;
-  secHeading: string;
-  subHeading: string;
-  pageUrl: string;
+  desktopImgUrl: any;
+  mblImgUrl: any;
+  secHeading: any;
+  subHeading: any;
+  pageUrl: any;
 }) => {
-
-   console.log(pageUrl);
   const { isPageLoad } = usePageLoad();
   return (
     <section className="requestSec">

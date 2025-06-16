@@ -15,13 +15,15 @@ const BannerComponent = ({
 }) => {
   const { isPageLoad } = usePageLoad();
   const spanData = mainHeading.split(" ");
-
+  
   return (
     <section className="homebannerSec projectdetBanner">
       <div className="videoBox">
-        <video autoPlay muted loop playsInline preload="metadata">
-          <source src={videoUrl} type="video/mp4" />
-        </video>
+        {videoUrl &&
+          <video autoPlay muted loop playsInline preload="metadata">
+            <source src={`${videoUrl}`} type="video/mp4" />
+          </video>
+        }
       </div>
       <div className="homebannerWrapper homebannerContent">
         <div className="secHeading philosopy-banner">

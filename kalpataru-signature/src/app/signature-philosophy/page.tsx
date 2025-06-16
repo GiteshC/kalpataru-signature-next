@@ -3,16 +3,23 @@ import { useEffect, useRef } from "react";
 import BannerComponent from "@/components/BannerComponent";
 import ExploreCompoent from "@/components/ExploreCompoent";
 import useIsSecVisible from "@/hooks/useIsSecVisible";
+import useGetPageData from "@/hooks/useGetPageData";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import { Fancybox } from "@fancyapps/ui";
 import PathComponent from "@/components/PathComponent";
+import ShimmerUi from "@/components/ShimmerUi";
 
 const SignaturePhilosophy = () => {
   const visionSec = useRef(null);
   const houseOfFirstSec = useRef(null);
   const { isSecInViewport: visionSection } = useIsSecVisible(visionSec);
   const { isSecInViewport: houseOfFirstSection } =
-    useIsSecVisible(houseOfFirstSec);
+  useIsSecVisible(houseOfFirstSec);
+  const { pageData, isLoading } = useGetPageData("pages/242");
+  
+  const sectionOne = pageData?.acf?.philosophy_components?.[0];
+  const sectionTwo = pageData?.acf?.philosophy_components?.[1];
+  const sectionThree = pageData?.acf?.philosophy_components?.[2];
 
   useEffect(() => {
     Fancybox.bind("[data-fancybox]", {});
@@ -21,104 +28,106 @@ const SignaturePhilosophy = () => {
     };
   }, []);
 
+    // if (isLoading) return <ShimmerUi />;
+  
   return (
+    
     <>
       <BannerComponent
-        videoUrl="/images/signature-philosophy.mp4"
-        mainHeading="SIGNATURE PHILOSOPHY"
-        para="The pursuit of luxury. Our ultimate obsession."
+        videoUrl={pageData?.acf?.banner_section?.video_link || ""}
+        mainHeading={pageData?.acf?.banner_section?.banner_heading || ""}
+        para={pageData?.acf?.banner_section?.banner_description || ""}
         address=""
       />
       <section className="philo-vision-section" ref={visionSec}>
-        <div className="vision-wrapper">
-          <div className="visionHeadingSec">
-            <h2
-              className={`section-text-up ${visionSection ? "newClass" : ""}`}
-            >
-              <span>The Pioneers of South Mumbai</span>
-            </h2>
-            <p className={`section-text-up ${visionSection ? "newClass" : ""}`}>
-              <span>
-                Our founder's vision transformed South Mumbai from a collection
-                of stuffy mid-sized buildings to new residential properties that
-                reflected an evolved aesthetic.
-              </span>
-            </p>
-          </div>
-          <div className="visionVideoSec">
-            <div className="secVideoBox">
-              <img
-                src="/images/swapnlok-philosophy-desktop.webp"
-                alt=""
-                className="desktopImg"
-              />
-              <img
-                src="/images/swapnlok-philosophy-mbl.webp"
-                alt=""
-                className="mobileImg"
-              />
-            </div>
-            <div className="secVideoContent">
-              <p>
-                Our pursuit of luxury is also a pursuit of perfection. From
-                living spaces, to lifestyle elements. From aesthetics, to
-                functionality. Our creations strive to elevate living
-                experiences to newer, unseen levels.
+        {sectionOne?.acf_fc_layout === "pioneers_section" && (
+          <div className="vision-wrapper">
+            <div className="visionHeadingSec">
+              <h2
+                className={`section-text-up ${visionSection ? "newClass" : ""}`}
+              >
+                <span>{sectionOne?.section_heading}</span>
+              </h2>
+              <p
+                className={`section-text-up ${visionSection ? "newClass" : ""}`}
+              >
+                <span>{sectionOne?.section_description}</span>
               </p>
             </div>
+            <div className="visionVideoSec">
+              <div className="secVideoBox">
+                <img
+                  src={sectionOne?.section_desktop_image?.url}
+                  alt=""
+                  className="desktopImg"
+                />
+                <img
+                  src={sectionOne?.section_mobile_image?.url}
+                  alt=""
+                  className="mobileImg"
+                />
+              </div>
+              <div className="secVideoContent">
+                <p>{sectionOne?.image_description}</p>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
       </section>
+
       <section
         className="philo-vision-section philo-houseOfFirst-sec"
         ref={houseOfFirstSec}
       >
-        <div className="vision-wrapper">
-          <div className="visionHeadingSec hof-headingSec">
-            <h2
-              className={`section-text-up ${
-                houseOfFirstSection ? "newClass" : ""
-              }`}
-            >
-              <span>House of firsts</span>
-            </h2>
-            <p
-              className={`section-text-up ${
-                houseOfFirstSection ? "newClass" : ""
-              }`}
-            >
-              <span>
-                A JOURNEY OF INNOVATION, IS OFTEN A JOURNEY MARKED BY MANY
-                FIRSTS.
-              </span>
-            </p>
-          </div>
-          <div className="visionVideoSec">
-            <div className="secVideoBox">
-              <video autoPlay muted loop playsInline preload="metadata">
-                <source src="images/house-of-first.mp4" type="video/mp4" />
-              </video>
+        {sectionTwo?.acf_fc_layout === "house_of_firsts" && (
+          <div className="vision-wrapper">
+            <div className="visionHeadingSec hof-headingSec">
+              <h2
+                className={`section-text-up ${
+                  houseOfFirstSection ? "newClass" : ""
+                }`}
+              >
+                <span>{sectionTwo?.section_heading}</span>
+              </h2>
+              <p
+                className={`section-text-up ${
+                  houseOfFirstSection ? "newClass" : ""
+                }`}
+              >
+                <span>{sectionTwo?.section_description}</span>
+              </p>
             </div>
-            <a
-              data-fancybox
-              data-type="video"
-              data-ratio="2"
-              href="https://www.youtube.com/watch?v=AIb9-GMnYD0"
-            >
-              Play full video
-            </a>
+            <div className="visionVideoSec">
+              <div className="secVideoBox">
+                <video autoPlay muted loop playsInline preload="metadata">
+                  <source src={sectionTwo.short_video} type="video/mp4" />
+                </video>
+              </div>
+              <a
+                data-fancybox
+                data-type="video"
+                data-ratio="2"
+                href={sectionTwo?.full_video_link}
+              >
+                {sectionTwo.cta_text}
+              </a>
+            </div>
           </div>
-        </div>
+        )}
       </section>
-      <ExploreCompoent
-        desktopImgUrl="/images/signature-essence-footer.webp"
-        mblImgUrl="/images/signature-essence-footer-mbl.webp"
-        secHeading="Signature essence"
-        subHeading="Explore the Essence"
-        pageUrl="signature-essence"
-      />
+
+      {sectionThree?.acf_fc_layout === "related_page_section" && (
+        <ExploreCompoent
+          desktopImgUrl={sectionThree?.box_desktop_image?.url}
+          mblImgUrl={sectionThree?.box_mobile_image?.url}
+          secHeading={sectionThree?.heading}
+          subHeading={sectionThree?.cta_text}
+          pageUrl={sectionThree?.cta_link}
+        />
+      )}
       <PathComponent pageName="Philosophy" flag={false} subpage="" path="" />
     </>
+    
   );
 };
 

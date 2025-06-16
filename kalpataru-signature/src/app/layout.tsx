@@ -8,6 +8,7 @@ import { Footer } from "@/components/footer";
 const marcellus = Marcellus({
   weight: "400",
   subsets: ["latin"],
+   display: "swap", 
 });
 
 const urbanist = Urbanist({
