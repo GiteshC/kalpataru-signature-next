@@ -104,6 +104,7 @@ export default function SignatureExperience() {
                 mblImgUrl="/images/signature-philosophy-footer-mbl.webp"
                 secHeading="Signature philosophy"
                 subHeading="Explore More"
+                pageUrl="signature-philosophy"
             />
         </>
     )
