@@ -3,11 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import BannerComponent from "@/components/BannerComponent";
 import ExploreCompoent from "@/components/ExploreCompoent";
 import PathComponent from "@/components/PathComponent";
-
-import Slider from "react-slick";
 import SliderComponent from "@/components/SliderComponent";
 import { luxuriesSlider, maestrosSlider } from "@/components/ArrowSliderComponent";
-import { PrevArrow, NextArrow } from "@/components/ArrowSliderComponent";
 
 export default function ProjectDetail() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -399,10 +396,10 @@ export default function ProjectDetail() {
                 RERA DETAILS
               </a>
             </div>
-            <ul className="inner" style={{ display: isMainAccordionOpen ? 'block' : 'none' }}>
+            <ul className={`inner ${isMainAccordionOpen ? 'show' : ''}`} style={{ display: isMainAccordionOpen ? 'block' : 'none' }}>
               {projectData.map((proj, index)=>(
                 <li key={proj.id}>
-                  <div className={`innerDescHeading toggle ${openAccordion === proj.id ? 'active' : ''}`} onClick={()=>handleAccordionClick(proj.id)}>
+                  <div className={`innerDescHeading toggle ${openAccordion === proj.id ? 'showDiv' : ''}`} onClick={()=>handleAccordionClick(proj.id)}>
                     <a href="#" onClick={(e) => e.preventDefault()} className="subHeadings">{proj.title}</a>
                   </div>
                   <div className="innerInfo" style={{display: openAccordion === proj.id ? 'block' : 'none', transition: 'all 0.3s ease-in-out'}}>
