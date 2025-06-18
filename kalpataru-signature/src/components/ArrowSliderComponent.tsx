@@ -118,3 +118,76 @@ export const experienceSlider = {
   arrows: true,
   fade: false,
 };
+
+export const luxuriesSlider = {
+  slidesToShow: 0.9,
+  slidesToScroll: 1,
+  arrows: true,
+  dots: false,
+  asNavFor: ".slider-holder",
+  centerMode: true,
+  centerPadding: "490px",
+  infinite: false,
+  responsive: [
+    {
+      breakpoint: 1930,
+      settings: {
+        slidesToShow: 0.8,
+        centerPadding: "480px",
+      },
+    },
+    {
+      breakpoint: 1600,
+      settings: {
+        centerPadding: "350px",
+      },
+    },
+    {
+      breakpoint: 1400,
+      settings: {
+        centerPadding: "320px",
+      },
+    },
+    {
+      breakpoint: 1285,
+      settings: {
+        centerPadding: "310px",
+      },
+    },
+    {
+      breakpoint: 1025,
+      settings: {
+        centerPadding: "220px",
+      },
+    },
+    {
+      breakpoint: 770,
+      settings: {
+        slidesToShow: 1,
+        centerPadding: "100px",
+      },
+    },
+    {
+      breakpoint: 690,
+      settings: {
+        slidesToShow: 1,
+        centerPadding: "50px",
+      },
+    },
+  ],
+}
+
+export const maestrosSlider = {
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: true,
+  dots: false,
+  asNavFor: ".maestrosSlider",
+  infinite: true,
+  pauseOnHover: false,
+  pauseOnFocus: false,
+  centerMode: false,
+  fade: true,
+  cssEase: "linear",
+  speed: 800,
+}

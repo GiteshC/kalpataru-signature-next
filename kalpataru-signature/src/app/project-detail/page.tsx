@@ -1,20 +1,20 @@
 "use client";
-import BannerComponent from "@/components/BannerComponent";
-import PathComponent from "@/components/PathComponent";
 import { useEffect, useRef, useState } from "react";
-import Slider from "react-slick";
-
-const addZeros = (num: number, length = 2): string => num.toString().padStart(length, "0");
+import BannerComponent from "@/components/BannerComponent";
+import ExploreCompoent from "@/components/ExploreCompoent";
+import PathComponent from "@/components/PathComponent";
+import SliderComponent from "@/components/SliderComponent";
+import { luxuriesSlider, maestrosSlider } from "@/components/ArrowSliderComponent";
 
 export default function ProjectDetail() {
-  const luxurySliderRef = useRef<Slider | null>(null);
-  const maestroSliderRef = useRef<Slider | null>(null);
-  const [totalSlides, setTotalSlides] = useState(0);
-  const [currentSlide, setCurrentSlide] = useState(1); 
-  const [totalHolderSlides, setTotalHolderSlides] = useState(0);
-  const [currentHolderSlide, setCurrentHolderSlide] = useState(1);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
   const [isMainAccordionOpen, setIsMainAccordionOpen] = useState(false);
+  const [nav1, setNav1] = useState(null);
+  const [nav2, setNav2] = useState(null);
+
+  const slider1 = useRef(null);
+  const slider2 = useRef(null);
 
   const handleAccordionClick = (id: number) => {
     setOpenAccordion(openAccordion === id ? null : id);
@@ -76,6 +76,13 @@ export default function ProjectDetail() {
       overlapImg1: "/images/luxuries-card-3.svg",
       text: "The edge of land and sea.",
     },
+    {
+      id: 4,
+      mediaImg1: "/images/kalpataru-detail-luxury3.webp",
+      mediaImg2: "/images/kalpataru-detail-luxury3-mob.webp",
+      overlapImg1: "/images/luxuries-card-3.svg",
+      text: "The edge of land and sea.",
+    },
   ];
 
   const projectData = [
@@ -119,84 +126,15 @@ export default function ProjectDetail() {
       link: "https://maharera.mahaonline.gov.in/",
       image: "/images/rera-scanner.png"
     }
-  ];  
+  ]; 
 
-  const settings = {
-    arrows: true,
-    dots: false,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    infinite: true,
-    pauseOnHover: false,
-    pauseOnFocus: false,
-    centerMode: false,
-    fade: true,
-    cssEase: "linear",
-    speed: 800,
-    afterChange: (current: number) => setCurrentSlide(current + 1),
-  };
-
-  const holderSettings = {
-    slidesToShow: 0.9,
-    slidesToScroll: 1,
-    centerMode: true,
-    centerPadding: "490px",
-    dots: false,
-    infinite: false,
-    afterChange: (index: number) => setCurrentHolderSlide(index + 1),
-    responsive: [
-      {
-        breakpoint: 1930,
-        settings: {
-          slidesToShow: 0.8,
-          centerPadding: "480px",
-        },
-      },
-      {
-        breakpoint: 1600,
-        settings: {
-          centerPadding: "350px",
-        },
-      },
-      {
-        breakpoint: 1400,
-        settings: {
-          centerPadding: "320px",
-        },
-      },
-      {
-        breakpoint: 1285,
-        settings: {
-          centerPadding: "310px",
-        },
-      },
-      {
-        breakpoint: 1025,
-        settings: {
-          centerPadding: "220px",
-        },
-      },
-      {
-        breakpoint: 770,
-        settings: {
-          slidesToShow: 1,
-          centerPadding: "100px",
-        },
-      },
-      {
-        breakpoint: 690,
-        settings: {
-          slidesToShow: 1,
-          centerPadding: "50px",
-        },
-      },
-    ],
-  }
+  const totalSlides = slides.length;
+  const totalHolderSlides = holderSlides.length;
 
   useEffect(() => {
-    setTotalSlides(slides.length);
-    setTotalHolderSlides(holderSlides.length);
-  }, [slides.length, holderSlides.length]);
+    setNav1(slider1.current);
+    setNav2(slider2.current);
+  }, []);
 
   useEffect(() => {
     const hasBanner = document.querySelector(".animationBanner");
@@ -351,23 +289,27 @@ export default function ProjectDetail() {
             <div className="slider-container">
               {holderSlides.length > 1 && (
                 <div className="slides-numbers" style={{ display: "block" }}>
-                  <span className="active">{addZeros(currentHolderSlide)}</span> / <span className="total">{addZeros(totalHolderSlides)}</span>
+                  <span className="active">{String(currentSlide + 1).padStart(2, "0")}</span> 
+                  <span>&nbsp;/&nbsp;</span>
+                  <span className="total">{String(totalHolderSlides).padStart(2, "0")}</span>
                 </div>
               )}
-              <Slider ref={luxurySliderRef} className="slider-holder" {...holderSettings}>
-                {holderSlides.map((slide, index) => (
-                  <div key={index} className="item">
-                    <div className="media-wrap">
-                      <img src={slide.mediaImg1} className="desktopImg" />
-                      <img src={slide.mediaImg2} className="mobileImg" />
+              <div className="slider-holder">
+                <SliderComponent setting={{...luxuriesSlider, asNavFor: nav1 ?? undefined, beforeChange: (_oldIndex: number, newIndex: number) => {setCurrentSlide(newIndex);},}} ref={slider1}>
+                  {holderSlides.map((slide, index) => (
+                    <div key={index} className="item">
+                      <div className="media-wrap">
+                        <img src={slide.mediaImg1} className="desktopImg" />
+                        <img src={slide.mediaImg2} className="mobileImg" />
+                      </div>
+                      <div className="overlapText">
+                        <img src={slide.overlapImg1} />
+                        <h3>{slide.text}</h3>
+                      </div>
                     </div>
-                    <div className="overlapText">
-                      <img src={slide.overlapImg1} />
-                      <h3>{slide.text}</h3>
-                    </div>
-                  </div>
-                ))}
-              </Slider>
+                  ))}
+                </SliderComponent>
+              </div>
             </div>
           </div>
         </div>
@@ -389,29 +331,33 @@ export default function ProjectDetail() {
           <div className="sliderArrow">
             {slides.length > 1 && (
               <div className="slides-numbers" style={{ display: "block" }}>
-                <span className="active">{addZeros(currentSlide)}</span> / <span className="total">{addZeros(totalSlides)}</span>
+                <span className="active">{String(currentSlide + 1).padStart(2, "0")}</span> 
+                <span>&nbsp;/&nbsp;</span>  
+                <span className="total">{String(totalSlides).padStart(2, "0")}</span>
               </div>
             )}
           </div>
-          <Slider className="maestrosSlider" ref={maestroSliderRef} {...settings}>
-            {slides.map((slide, index) => (
-              <div key={index} className="innerSliderbox">
-                <div className="imgDiv">
-                  <img src={slide.img} alt={slide.title} />
-                </div>
-                <div className="infoDiv">
-                  <div className="headingMain">
-                    <h3>{slide.title}</h3>
-                    <h5>{slide.subTitle}</h5>
+          <div className="maestrosSlider">
+            <SliderComponent setting={{...maestrosSlider, asNavFor: nav2 ?? undefined, beforeChange: (_oldIndex: number, newIndex: number) => {setCurrentSlide(newIndex);},}} ref={slider2}>
+              {slides.map((slide, index) => (
+                <div key={index} className="innerSliderbox">
+                  <div className="imgDiv">
+                    <img src={slide.img} alt={slide.title} />
                   </div>
-                  <div className="subHeadings">
-                    <h4>{slide.descHeading}</h4>
-                    <p>{slide.description}</p>
+                  <div className="infoDiv">
+                    <div className="headingMain">
+                      <h3>{slide.title}</h3>
+                      <h5>{slide.subTitle}</h5>
+                    </div>
+                    <div className="subHeadings">
+                      <h4>{slide.descHeading}</h4>
+                      <p>{slide.description}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </Slider>
+              ))}
+            </SliderComponent>
+          </div>
         </div>
       </section>
 
@@ -450,10 +396,10 @@ export default function ProjectDetail() {
                 RERA DETAILS
               </a>
             </div>
-            <ul className="inner" style={{ display: isMainAccordionOpen ? 'block' : 'none' }}>
+            <ul className={`inner ${isMainAccordionOpen ? 'show' : ''}`} style={{ display: isMainAccordionOpen ? 'block' : 'none' }}>
               {projectData.map((proj, index)=>(
                 <li key={proj.id}>
-                  <div className={`innerDescHeading toggle ${openAccordion === proj.id ? 'active' : ''}`} onClick={()=>handleAccordionClick(proj.id)}>
+                  <div className={`innerDescHeading toggle ${openAccordion === proj.id ? 'showDiv' : ''}`} onClick={()=>handleAccordionClick(proj.id)}>
                     <a href="#" onClick={(e) => e.preventDefault()} className="subHeadings">{proj.title}</a>
                   </div>
                   <div className="innerInfo" style={{display: openAccordion === proj.id ? 'block' : 'none', transition: 'all 0.3s ease-in-out'}}>
@@ -499,36 +445,7 @@ export default function ProjectDetail() {
         </div>
       </section>
 
-      <section className="requestSec">
-        <div className="requestBG">
-          <img
-            src="/images/signature-residences-footer.webp"
-            className="desktopImg"
-          />
-          <img
-            src="/images/signature-residences-footer-mbl.webp"
-            className="mobileImg"
-          />
-        </div>
-        <div className="requestWrapper requestContent">
-          <div className="secHeading">
-            <h2 className="section-text-up">
-              <span>Signature Residences</span>
-            </h2>
-            <div className="trigger">
-              <a
-                className="ctaOne section-text-up"
-                href="signature-residences.html"
-              >
-                <span>
-                  Explore our Projects
-                  <img src="/images/cta-arrow-white.svg" />
-                </span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ExploreCompoent desktopImgUrl="/images/signature-residences-footer.webp" mblImgUrl="/images/signature-residences-footer-mbl.webp" secHeading="Signature Residences" subHeading="Explore our Projects" pageUrl="signature-residences" />
 
       <PathComponent pageName="Azuro" flag={true} subpage="Residences" path="signature-residences" />
 
