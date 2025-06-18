@@ -14,27 +14,43 @@ import SliderComponent from "@/components/SliderComponent";
 import Slider from "react-slick";
 import { PrevArrow, NextArrow } from "@/components/ArrowSliderComponent";
 import PathComponent from "@/components/PathComponent";
+import useGetPageData from "@/hooks/useGetPageData";
+import { SignaturePinCode } from "@/utils/type";
 
 const SignatureEssence = () => {
-  const [nav1, setNav1] = useState(null);
-  const [nav2, setNav2] = useState(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = 3;
+  const pincodeSlider1 = useRef<Slider | null>(null);
+  const pincodeSlider2 = useRef<Slider | null>(null);
+  const [nav1, setNav1] = useState<Slider | null>(null);
+  const [nav2, setNav2] = useState<Slider | null>(null);
 
-  const slider1 = useRef(null);
-  const slider2 = useRef(null);
+  const [pincodesMapsecSlider, setPincodesMapsecSlider] = useState(0);
+  const [essenceVidsecSlider, setEssenceVidsecSlider] = useState(0);
+
+  const { pageData, isLoading } = useGetPageData("pages/234");
+
+  const sectionOne = pageData?.acf?.essence_components?.[0] as SignaturePinCode;
+  const sectionTwo = pageData?.acf?.essence_components?.[1];
+  const sectionThree = pageData?.acf?.essence_components?.[2];
+  const sectionFour = pageData?.acf?.essence_components?.[3];
 
   const sliderRef = useRef<Slider | null>(null);
 
-  const handlePrev = () => sliderRef.current?.slickPrev();
-  const handleNext = () => sliderRef.current?.slickNext();
+  const handleEssencePrev = () => sliderRef.current?.slickPrev();
+  const handleEssenceNext = () => sliderRef.current?.slickNext();
+
   const pincodeMapSecRef = useRef(null);
   const { isSecInViewport: pincodeMapSec } = useIsSecVisible(pincodeMapSecRef);
 
   useEffect(() => {
-    setNav1(slider1.current);
-    setNav2(slider2.current);
-  }, []);
+    if (
+      sectionOne?.acf_fc_layout === "pincodes_content" &&
+      pincodeSlider1.current &&
+      pincodeSlider2.current
+    ) {
+      setNav1(pincodeSlider1.current);
+      setNav2(pincodeSlider2.current);
+    }
+  }, [sectionOne]);
 
   useEffect(() => {
     Fancybox.bind("[data-fancybox]", {
@@ -47,334 +63,255 @@ const SignatureEssence = () => {
       Fancybox.destroy();
     };
   }, []);
+
   return (
     <>
       <BannerComponent
-        videoUrl="/images/signature-essence.mp4"
-        mainHeading="Signature Essence"
-        para="When luxury is honed over decades, it starts to embody perfection."
+        videoUrl={pageData?.acf?.banner_section?.video_link || ""}
+        mainHeading={pageData?.acf?.banner_section?.banner_heading || ""}
+        para={pageData?.acf?.banner_section?.banner_description || ""}
         address=""
       />
       <section className="signatureSec pincodesMapsec" ref={pincodeMapSecRef}>
-        <div className="signatureWrapper">
-          <div className="secHeading">
-            <h2
-              className={`section-text-up ${pincodeMapSec ? "newClass" : ""}`}
-            >
-              <span>SIGNATURE PIN CODES</span>
-            </h2>
-            <p className={`section-text-up ${pincodeMapSec ? "newClass" : ""}`}>
-              <span>
-                India's finest pin codes. Made so by our finest landmarks.
-              </span>
-            </p>
-          </div>
-        </div>
-        <div className="pincodesMap">
-          <div className="mapSlider">
-            <SliderComponent
-              setting={{
-                ...pincodesMapSec,
-                asNavFor: nav2 ?? undefined,
-                beforeChange: (_oldIndex: number, newIndex: number) => {
-                  setCurrentSlide(newIndex);
-                },
-              }}
-              ref={slider1}
-            >
-              <div className="bgMaps">
-                <img src="images/kala-ghoda-location.webp" />
+        {sectionOne?.acf_fc_layout === "pincodes_content" && (
+          <>
+            <div className="signatureWrapper">
+              <div className="secHeading">
+                <h2
+                  className={`section-text-up ${
+                    pincodeMapSec ? "newClass" : ""
+                  }`}
+                >
+                  <span>{sectionOne?.section_heading}</span>
+                </h2>
+                <p
+                  className={`section-text-up ${
+                    pincodeMapSec ? "newClass" : ""
+                  }`}
+                >
+                  <span>{sectionOne?.section_description}</span>
+                </p>
               </div>
-              <div className="bgMaps">
-                <img src="images/kala-ghoda-location.webp" />
-              </div>
-              <div className="bgMaps">
-                <img src="images/kala-ghoda-location.webp" />
-              </div>
-            </SliderComponent>
-          </div>
-          <div className="numberandDetails">
-            <div className="slides-numbers" style={{ display: "block" }}>
-              <span className="active">
-                {String(currentSlide + 1).padStart(2, "0")}
-              </span>
-              <span>/</span>
-              <span className="total">
-                {String(totalSlides).padStart(2, "0")}
-              </span>
             </div>
-            <div className="locationSlider">
-              <SliderComponent
-                setting={{
-                  ...pincodeMapSecNav,
-                  asNavFor: nav1 ?? undefined,
-                }}
-                ref={slider2}
-              >
-                <div className="innerContent">
-                  <div className="imgDiv">
-                    <div className="bigImg">
-                      <img src="images/pincodes-big-img-fold-1.webp" />
+            <div className="pincodesMap">
+              <div className="mapSlider">
+                <SliderComponent
+                  setting={{
+                    ...pincodesMapSec,
+                    asNavFor: nav2 ?? undefined,
+                    beforeChange: (_oldIndex: number, newIndex: number) => {
+                      setPincodesMapsecSlider(newIndex);
+                    },
+                  }}
+                  ref={pincodeSlider1}
+                >
+                  {sectionOne?.pincodes_properties?.map((el) => (
+                    <div className="bgMaps" key={el?.pincode_area_image?.id}>
+                      <img src={el?.pincode_area_image?.url} />
                     </div>
-                    <div className="smallImg">
-                      <div className="innerSmallimg">
-                        <img src="images/pincodes-small-img1-fold-1.webp" />
-                      </div>
-                      <div className="innerSmallimg">
-                        <img src="images/pincodes-small-img2-fold-1.webp" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="pincodeDetails">
-                    <h3>Nepean Sea Road, 400006</h3>
-                    <p>Where opulence meets oceanfront living</p>
-                    <a href="pincodes.html" className="ctaBluetext">
-                      Explore our Signature Pin Codes
-                      <img src="images/pincode-arrow.svg" />
-                    </a>
-                  </div>
+                  ))}
+                </SliderComponent>
+              </div>
+              <div className="numberandDetails">
+                <div className="slides-numbers" style={{ display: "block" }}>
+                  <span className="active">
+                    {String(pincodesMapsecSlider + 1).padStart(2, "0")}
+                  </span>
+                  <span>/</span>
+                  <span className="total">
+                    {String(sectionOne.pincodes_properties?.length).padStart(
+                      2,
+                      "0"
+                    )}
+                  </span>
                 </div>
-                <div className="innerContent">
-                  <div className="imgDiv">
-                    <div className="bigImg">
-                      <img src="images/pincodes-big-img-fold-2.webp" />
-                    </div>
-                    <div className="smallImg">
-                      <div className="innerSmallimg">
-                        <img src="images/pincodes-small-img1-fold-2.webp" />
+                <div className="locationSlider">
+                  <SliderComponent
+                    setting={{
+                      ...pincodeMapSecNav,
+                      asNavFor: nav1 ?? undefined,
+                    }}
+                    ref={pincodeSlider2}
+                  >
+                    {sectionOne?.pincodes_properties?.map((card, i) => (
+                      <div className="innerContent" key={i}>
+                        <div className="imgDiv">
+                          <div className="bigImg">
+                            <img
+                              src={
+                                card?.property_images?.property_big_image?.url
+                              }
+                            />
+                          </div>
+                          <div className="smallImg">
+                            <div className="innerSmallimg">
+                              <img
+                                src={
+                                  card?.property_images
+                                    ?.property_small_image_one?.url
+                                }
+                              />
+                            </div>
+                            <div className="innerSmallimg">
+                              <img
+                                src={
+                                  card?.property_images
+                                    ?.property_small_image_two?.url
+                                }
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div className="pincodeDetails">
+                          <h3>{card?.property_name}</h3>
+                          <p>{card?.property_description}</p>
+                          <a href={card?.cta_link} className="ctaBluetext">
+                            {card?.cta_text}
+                            <img src="images/pincode-arrow.svg" />
+                          </a>
+                        </div>
                       </div>
-                      <div className="innerSmallimg">
-                        <img src="images/pincodes-small-img2-fold-2.webp" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="pincodeDetails">
-                    <h3>Prabhedevi, 400025</h3>
-                    <p>Where seaside serenity meets urban sophistication</p>
-                    <a href="pincodes.html" className="ctaBluetext">
-                      Explore our Signature Pin Codes
-                      <img src="images/pincode-arrow.svg" />
-                    </a>
-                  </div>
+                    ))}
+                  </SliderComponent>
                 </div>
-                <div className="innerContent">
-                  <div className="imgDiv">
-                    <div className="bigImg">
-                      <img src="images/pincodes-big-img-fold-3.webp" />
-                    </div>
-                    <div className="smallImg">
-                      <div className="innerSmallimg">
-                        <img src="images/pincodes-small-img1-fold-3.webp" />
-                      </div>
-                      <div className="innerSmallimg">
-                        <img src="images/pincodes-small-img2-fold-3.webp" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="pincodeDetails">
-                    <h3>Altamount Road, 400026</h3>
-                    <p>The Pinnacle Address</p>
-                    <a href="pincodes.html" className="ctaBluetext">
-                      Explore our Signature Pin Codes
-                      <img src="images/pincode-arrow.svg" />
-                    </a>
-                  </div>
-                </div>
-              </SliderComponent>
+              </div>
             </div>
-          </div>
-        </div>
+          </>
+        )}
       </section>
+
       <section className="essenceVidsec">
-        <div className="videoWrapperslider">
-          <SliderComponent
-            ref={sliderRef}
-            setting={{
-              ...videoWrapperslider,
-              beforeChange: (_oldIndex: number, newIndex: number) => {
-                setCurrentSlide(newIndex);
-              },
-            }}
-          >
-            <div className="innerBoxes">
-              <div className="videoMaindiv">
-                <div className="textDiv">
-                  <h3>INTERVIEW WITH THE</h3>
-                  <h2>DESIGNER</h2>
-                </div>
-                <div className="bottomText">
-                  <h4>Abhishek Mathur</h4>
-                  <p>Director, Studio HBA Design Consultant</p>
-                </div>
-              </div>
-              <div className="videoDiv">
-                <a
-                  data-fancybox
-                  data-type="video"
-                  data-ratio="2"
-                  href="https://www.youtube.com/embed/h8RVuCjyO-g?autoplay=1&mute=1"
-                >
-                  <div className="video">
-                    <img src="images/abhishek-mathur.webp" />
-                    <div className="popupButton">
-                      <img
-                        src="images/resident-slider-arrow.svg"
-                        alt=""
-                        title=""
-                      />
+        {sectionTwo?.acf_fc_layout === "interview_section" && (
+          <>
+            <div className="videoWrapperslider">
+              <SliderComponent
+                ref={sliderRef}
+                setting={{
+                  ...videoWrapperslider,
+                  beforeChange: (_oldIndex: number, essNewIndex: number) => {
+                    setEssenceVidsecSlider(essNewIndex);
+                  },
+                }}
+              >
+                {sectionTwo?.interview_content?.map((el) => (
+                  <div key={el.video_thumbnail.id} className="innerBoxes">
+                    <div className="videoMaindiv">
+                      <div className="textDiv">
+                        <h3>{el.heading}</h3>
+                        <h2>{el.sub_heading}</h2>
+                      </div>
+                      <div className="bottomText">
+                        <h4>{el.designer_name}</h4>
+                        <p>{el.designer_designation}</p>
+                      </div>
                     </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div className="innerBoxes">
-              <div className="videoMaindiv">
-                <div className="textDiv">
-                  <h3>INTERVIEW WITH THE</h3>
-                  <h2>ARCHITECT</h2>
-                </div>
-                <div className="bottomText">
-                  <h4>HANS BROUWER</h4>
-                  <p>Founder, HB Designs Architectural Consultant</p>
-                </div>
-              </div>
-              <div className="videoDiv">
-                <a
-                  data-fancybox
-                  data-ratio="2"
-                  href="https://www.youtube.com/embed/G0lbFkRvYzU?autoplay=1&mute=1"
-                >
-                  <div className="video">
-                    <img src="images/hansbrouwer-architect-prive.webp" />
-                    <div className="popupButton">
-                      <img
-                        src="images/resident-slider-arrow.svg"
-                        alt=""
-                        title=""
-                      />
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div className="innerBoxes">
-              <div className="videoMaindiv">
-                <div className="textDiv">
-                  <h3>INTERVIEW WITH THE</h3>
-                  <h2>ARCHITECT</h2>
-                </div>
-                <div className="bottomText">
-                  <h4>HANS BROUWER</h4>
-                  <p>Founder, HB Designs Architectural Consultant</p>
-                </div>
-              </div>
-              <div className="videoDiv">
-                <a
-                  data-fancybox
-                  data-ratio="2"
-                  href="https://www.youtube.com/embed/Q6WdEQz-k2g'?autoplay=1&mute=1 "
-                >
-                  <div className="video">
-                    <img src="images/hansbrouwer-architect-azuro.webp" />
-                    <div className="popupButton">
-                      <img
-                        src="images/resident-slider-arrow.svg"
-                        alt=""
-                        title=""
-                      />
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </SliderComponent>
-        </div>
-        <div className="sliderArrow">
-          <PrevArrow className="maestroprev slick-arrow" onClick={handlePrev} />
-          <div className="slides-numbers" style={{ display: "block" }}>
-            <span className="active">
-              {String(currentSlide + 1).padStart(2, "0")}
-            </span>
-            <span>/</span>
-            <span className="total">
-              {String(totalSlides).padStart(2, "0")}
-            </span>
-          </div>
-          <NextArrow className="maestronext slick-arrow" onClick={handleNext} />
-        </div>
-      </section>
-      <section className="residentsSec">
-        <div className="residentsWrapper">
-          <div className="secHeading">
-            <h2>OUR RESIDENTS</h2>
-            <p>Only those who experience true luxury know it best.</p>
-          </div>
-          <div className="resCounterslider">
-            <div className="slides-numbers" style={{ display: "none" }}>
-              <span className="active">
-                {String(currentSlide + 1).padStart(2, "0")}
-              </span>
-              <span>/</span>
-              <span className="total">
-                {String(totalSlides).padStart(2, "0")}
-              </span>
-            </div>
-            <div className="residentSlider">
-              <SliderComponent setting={{ ...residentSlider }}>
-                <div className="innerBoxes">
-                  <div className="videoBox">
-                    <img src="images/madhurbaya-avanatestimonial-thumbnail.webp" />
-                    <div className="popupButton">
+                    <div className="videoDiv">
                       <a
                         data-fancybox
-                        data-ratio="4"
-                        href="https://www.youtube.com/embed/XenKI94naI0?autoplay=1&mute=1"
-                      >
-                        <img
-                          src="images/resident-slider-arrow.svg"
-                          alt=""
-                          title=""
-                        />
-                      </a>
-                    </div>
-                  </div>
-                  <div className="descriptionBox">
-                    <h3>"Building Exceptional Homes"</h3>
-                  </div>
-                </div>
-                <div className="innerBoxes">
-                  <div className="videoBox">
-                    <img src="images/mr-santhanam-amodatestimonial.webp" />
-                    <div className="popupButton">
-                      <a
-                        data-fancybox
+                        data-type="video"
                         data-ratio="2"
-                        href="https://www.youtube.com/embed/viptE0F8Jv8?autoplay=1&mute=1"
+                        href={el.video_link}
                       >
-                        <img
-                          src="images/resident-slider-arrow.svg"
-                          alt=""
-                          title=""
-                        />
+                        <div className="video">
+                          <img src={el.video_thumbnail.url} />
+                          <div className="popupButton">
+                            <img
+                              src="images/resident-slider-arrow.svg"
+                              alt=""
+                              title=""
+                            />
+                          </div>
+                        </div>
                       </a>
                     </div>
                   </div>
-                  <div className="descriptionBox">
-                    <h3>"A place to write your stories"</h3>
-                  </div>
-                </div>
+                ))}
               </SliderComponent>
             </div>
-          </div>
-        </div>
+            <div className="sliderArrow">
+              <PrevArrow
+                className="maestroprev slick-arrow"
+                onClick={handleEssencePrev}
+              />
+              <div className="slides-numbers" style={{ display: "block" }}>
+                <span className="active">
+                  {String(essenceVidsecSlider + 1).padStart(2, "0")}
+                </span>
+                <span>/</span>
+                <span className="total">
+                  {String(sectionTwo.interview_content?.length).padStart(
+                    2,
+                    "0"
+                  )}
+                </span>
+              </div>
+              <NextArrow
+                className="maestronext slick-arrow"
+                onClick={handleEssenceNext}
+              />
+            </div>
+          </>
+        )}
       </section>
-      <ExploreCompoent
-        desktopImgUrl="/images/signature-residences-footer.webp"
-        mblImgUrl="/images/signature-residences-footer-mbl.webp"
-        secHeading="Signature Residences"
-        subHeading="Explore our Projects"
-        pageUrl="signature-residences"
-      />
+
+      <section className="residentsSec">
+        {sectionThree?.acf_fc_layout === "residents_testimonials" && (
+          <div className="residentsWrapper">
+            <div className="secHeading">
+              <h2>{sectionThree.section_heading}</h2>
+              <p>{sectionThree.section_sub_heading}</p>
+            </div>
+            <div className="resCounterslider">
+              {/* <div className="slides-numbers" style={{ display: "none" }}>
+                <span className="active">
+                  {String(1 + 1).padStart(2, "0")}
+                </span>
+                <span>/</span>
+                <span className="total">
+                  {String(sectionThree.testimonials_content?.length).padStart(
+                    2,
+                    "0"
+                  )}
+                </span>
+              </div> */}
+              <div className="residentSlider">
+                <SliderComponent setting={{ ...residentSlider }}>
+                  {sectionThree.testimonials_content?.map((el) => (
+                    <div className="innerBoxes" key={el.video_thumbnail.id}>
+                      <div className="videoBox">
+                        <img src={el.video_thumbnail.url} />
+                        <div className="popupButton">
+                          <a data-fancybox data-ratio="4" href={el.video_link}>
+                            <img
+                              src="images/resident-slider-arrow.svg"
+                              alt=""
+                              title=""
+                            />
+                          </a>
+                        </div>
+                      </div>
+                      <div className="descriptionBox">
+                        <h3>{el.video_heading}</h3>
+                      </div>
+                    </div>
+                  ))}
+                </SliderComponent>
+              </div>
+            </div>
+          </div>
+        )}
+      </section>
+
+      {sectionFour?.acf_fc_layout === "related_page_section" && (
+        <ExploreCompoent
+          desktopImgUrl={sectionFour?.box_desktop_image?.url}
+          mblImgUrl={sectionFour?.box_mobile_image?.url}
+          secHeading={sectionFour?.heading}
+          subHeading={sectionFour?.cta_text}
+          pageUrl={sectionFour?.cta_link}
+        />
+      )}
+
       <PathComponent pageName="Essence" flag={false} subpage="" path="" />
     </>
   );
