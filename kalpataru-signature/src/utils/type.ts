@@ -5,10 +5,17 @@ export interface ImageData {
   height?: number;
 }
 
+export interface BannerOptions {
+  acf_fc_layout?: "banner_video";
+  banner_video_field?: string;
+}
+
 export interface BannerSection {
   video_link?: string;
   banner_heading?: string;
   banner_description?: string;
+  banner_options?: BannerOptions[];
+  project_location?: string;
 }
 
 export interface VisionSection {

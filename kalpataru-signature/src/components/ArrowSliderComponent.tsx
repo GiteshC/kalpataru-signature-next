@@ -191,3 +191,16 @@ export const maestrosSlider = {
   cssEase: "linear",
   speed: 800,
 }
+
+export const pincodeSlider = {
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  dots: true,
+  asNavFor: ".signinPincodeSlider",
+  autoplay: true,
+  infinite: true,
+  speed: 500,
+  autoplaySpeed: 3000,
+  fade: false,
+}
