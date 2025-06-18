@@ -29,7 +29,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${marcellus.className} ${urbanist.className}`}>
+      <body className={`${marcellus.className} ${urbanist.className}`} cz-shortcut-listen="true">
         <Header />
         {children}
         <Footer />
