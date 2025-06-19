@@ -66,7 +66,9 @@ const ClientSignatureEssence = ({ pageData }: any) => {
       <>
         <BannerComponent
           videoUrl={pageData?.acf?.banner_section?.video_link || ""}
+          imageUrl=""
           mainHeading={pageData?.acf?.banner_section?.banner_heading || ""}
+          bannerSubHeading=""
           para={pageData?.acf?.banner_section?.banner_description || ""}
           address=""
         />
@@ -314,7 +316,7 @@ const ClientSignatureEssence = ({ pageData }: any) => {
           />
         )}
 
-        <PathComponent pageName="Essence" flag={false} subpage="" path="" />
+        <PathComponent pageName="Essence" flag={false} subpage="" path="" pageData={pageData} />
       </>
     </>
   );
