@@ -73,7 +73,6 @@ export interface SignaturePinCode {
   section_description?: string;
   pincodes_properties?: PincodeProperty[];
 }
-
 export interface EssenceVideoSec {
   acf_fc_layout: "interview_section";
   interview_content?: EssenceVideoProperty[];

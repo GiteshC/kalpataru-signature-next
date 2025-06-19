@@ -1,10 +1,6 @@
 // File: pages/residences/kalpataru-azuro.js
-import RequestPreviewSection from "@/components/RequestPreviewSection";
-import SignatureResidencesSection from "@/components/SignatureResidencesSection";
-import Breadcrumbs from "@/components/Breadcrumbs";
-import Footer from "@/components/Footer";
 
-export default function KalpataruAzuro() {
+export function KalpataruAzuro() {
   return (
     <>
       <RequestPreviewSection />
@@ -16,7 +12,7 @@ export default function KalpataruAzuro() {
 }
 
 // File: components/RequestPreviewSection.jsx
-export default function RequestPreviewSection() {
+export function RequestPreviewSection() {
   return (
     <section className="requestSec reqNewSec">
       <div className="requestBG">
@@ -40,7 +36,7 @@ export default function RequestPreviewSection() {
 }
 
 // File: components/SignatureResidencesSection.jsx
-export default function SignatureResidencesSection() {
+export function SignatureResidencesSection() {
   return (
     <section className="signatureSec projectdetBeach">
       <div className="signatureWrapper">
@@ -62,7 +58,7 @@ export default function SignatureResidencesSection() {
 }
 
 // File: components/Breadcrumbs.jsx
-export default function Breadcrumbs() {
+export function Breadcrumbs() {
   return (
     <section className="breadcrumbSec">
       <div className="breadWrapper">
@@ -79,7 +75,7 @@ export default function Breadcrumbs() {
 }
 
 // File: components/Footer.jsx
-export default function Footer() {
+export function Footer() {
   return (
     <footer className="footerSec signatureFoot">
       <div className="footerImg">
@@ -91,10 +87,10 @@ export default function Footer() {
 
 // File: styles/globals.css
 /* Add all your global styles here */
-.requestSec { /* styles */ }
-.signatureSec { /* styles */ }
-.breadcrumbSec { /* styles */ }
-.footerSec { /* styles */ }
+// .requestSec { /* styles */ }
+// .signatureSec { /* styles */ }
+// .breadcrumbSec { /* styles */ }
+// .footerSec { /* styles */ }
 
 // File: next.config.js
 module.exports = {
