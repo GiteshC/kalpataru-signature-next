@@ -1,21 +1,24 @@
 'use client'
-import { sign } from "crypto";
+import BannerComponent from "@/components/BannerComponent";
+import ExploreCompoent from "@/components/ExploreCompoent";
 import { useEffect } from "react";
+import { pincodeSlider } from "@/components/ArrowSliderComponent";
+import SliderComponent from "@/components/SliderComponent";
 import Slider from "react-slick";
 
 export default function PincodePage() {
 
   const settings = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
     dots: true,
     autoplay: true,
     infinite: true,
     speed: 500,
     autoplaySpeed: 3000,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
     fade: false,
-  };
+  }
 
   useEffect(() => {
     const hasBanner = document.querySelector(".animationBanner");
@@ -128,29 +131,7 @@ export default function PincodePage() {
 
   return (
     <div>
-      <section className="homebannerSec projectdetBanner">
-        <div className="videoBox">
-          <video autoPlay muted loop playsInline preload="metadata">
-            <source src="/images/homepage-banner.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div className="homebannerWrapper homebannerContent">
-          <div className="secHeading">
-            <h1 className="swift-up-text">
-              <span>SIGNATURE PIN CODES</span>{" "}
-            </h1>
-            <p className="bannerTextanimation">
-              <span>
-                Iconic locations. Iconic luxury landmarks.
-                <br /> One common thread. Kalpataru.
-              </span>
-            </p>
-          </div>
-        </div>
-        <div className="scrollText">
-          <h3>Scroll to Explore</h3>
-        </div>
-      </section>
+      <BannerComponent videoUrl="/images/homepage-banner.mp4" mainHeading="SIGNATURE PIN CODES" para="Iconic locations. Iconic luxury landmarks. One common thread. Kalpataru." address="" />
 
       <section className="signPincodeSec">
         <div className="signPindcodeWrapper">
@@ -325,7 +306,7 @@ export default function PincodePage() {
               </div>
               <div className="signPincodedata">
                 <h3 className="section-text-up">
-                  <span>amount Road, 400026</span>
+                  <span>ALTAMOUNT Road, 400026</span>
                 </h3>
                 <p className="section-text-up newtext-p">
                   <span>
@@ -347,32 +328,7 @@ export default function PincodePage() {
         </div>
       </section>
 
-      <section className="requestSec reqNewSec pincodeRequestSec">
-        <div className="requestBG">
-          <img
-            src="/images/request-previewbg.webp"
-            className="desktopImg"
-            alt=""
-          />
-          <img
-            src="/images/request-preview-mobile.webp"
-            className="mobileImg"
-            alt=""
-          />
-        </div>
-        <div className="requestWrapper requestContent">
-            <div className="secHeading">
-              <h2 className="section-text-up newClass">
-                <span>Signature Residence</span>
-              </h2>
-              <div className="triggertwo">
-                <a className="ctaOne" href="https://ixdtm.com/projects/kalpataru-signature-wp/signature-residences/">Explore More{" "}
-                  <img src="/images/cta-arrow-white.svg" alt="" />
-                </a>
-              </div>
-            </div>
-        </div>
-      </section>
+      <ExploreCompoent desktopImgUrl="/images/request-previewbg.webp" mblImgUrl="/images/request-preview-mobile.webp" secHeading="Signature Residence" subHeading="Explore More" pageUrl="/signature-residences" />
 
       {/* <div className="modal">
         <div className="modalInner">

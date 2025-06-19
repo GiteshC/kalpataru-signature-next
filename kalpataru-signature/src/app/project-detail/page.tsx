@@ -5,6 +5,7 @@ import ExploreCompoent from "@/components/ExploreCompoent";
 import PathComponent from "@/components/PathComponent";
 import SliderComponent from "@/components/SliderComponent";
 import { luxuriesSlider, maestrosSlider } from "@/components/ArrowSliderComponent";
+import useGetPageData from '@/hooks/useGetPageData'
 
 export default function ProjectDetail() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -23,6 +24,7 @@ export default function ProjectDetail() {
   const handleMainAccordionClick = () => {
     setIsMainAccordionOpen(!isMainAccordionOpen);
   };
+  const { pageData, isLoading } = useGetPageData("pages/442");
 
   const slides = [
     {
@@ -250,7 +252,7 @@ export default function ProjectDetail() {
   return (
     <div>
 
-      <BannerComponent videoUrl="/images/project-azuro.mp4" mainHeading="KALPATARU AZURO" para="An homage to the ocean. And to luxury." address="Nepean Sea Road, 400006" />
+      <BannerComponent videoUrl={pageData?.acf?.banner_section?.banner_options?.[0]?.banner_video_field || ""} mainHeading={pageData?.acf?.banner_section?.banner_heading || ""} para={pageData?.acf?.banner_section?.banner_description || ""} address={pageData?.acf?.banner_section?.project_location || ""} />
 
       <section className="signatureSec">
         <div className="signatureWrapper">
