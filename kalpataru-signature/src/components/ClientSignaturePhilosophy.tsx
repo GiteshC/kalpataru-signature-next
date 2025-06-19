@@ -31,8 +31,10 @@ const ClientSignaturePhilosophy = ({ pageData }: any) => {
     <>
       <BannerComponent
         videoUrl={pageData?.acf?.banner_section?.video_link || ""}
+        imageUrl=""
         mainHeading={pageData?.acf?.banner_section?.banner_heading || ""}
         para={pageData?.acf?.banner_section?.banner_description || ""}
+        bannerSubHeading=""
         address=""
       />
       <section className="philo-vision-section" ref={visionSec}>
@@ -121,7 +123,7 @@ const ClientSignaturePhilosophy = ({ pageData }: any) => {
           pageUrl={sectionThree?.cta_link}
         />
       )}
-      <PathComponent pageName="Philosophy" flag={false} subpage="" path="" />
+      <PathComponent pageName="Philosophy" flag={false} subpage="" path="" pageData={pageData} />
     </>
   );
 };

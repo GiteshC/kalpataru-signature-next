@@ -5,17 +5,17 @@ import ExploreCompoent from "@/components/ExploreCompoent";
 import PathComponent from "@/components/PathComponent";
 import SliderComponent from "@/components/SliderComponent";
 import { luxuriesSlider, maestrosSlider } from "@/components/ArrowSliderComponent";
-import useGetPageData from '@/hooks/useGetPageData'
 
-export default function ProjectDetail() {
+export default function ProjectDetail({ pageData }: any) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
   const [isMainAccordionOpen, setIsMainAccordionOpen] = useState(false);
   const [nav1, setNav1] = useState(null);
   const [nav2, setNav2] = useState(null);
-
   const slider1 = useRef(null);
   const slider2 = useRef(null);
+  const sectionLast = pageData?.acf?.residences_components?.[pageData?.acf?.residences_components?.length - 1];
+
 
   const handleAccordionClick = (id: number) => {
     setOpenAccordion(openAccordion === id ? null : id);
@@ -24,7 +24,6 @@ export default function ProjectDetail() {
   const handleMainAccordionClick = () => {
     setIsMainAccordionOpen(!isMainAccordionOpen);
   };
-  const { pageData, isLoading } = useGetPageData("pages/442");
 
   const slides = [
     {
@@ -252,7 +251,7 @@ export default function ProjectDetail() {
   return (
     <div>
 
-      <BannerComponent videoUrl={pageData?.acf?.banner_section?.banner_options?.[0]?.banner_video_field || ""} mainHeading={pageData?.acf?.banner_section?.banner_heading || ""} para={pageData?.acf?.banner_section?.banner_description || ""} address={pageData?.acf?.banner_section?.project_location || ""} />
+      <BannerComponent videoUrl={pageData?.acf?.banner_section?.banner_options?.[0]?.banner_video_field || ""} imageUrl={pageData?.acf?.banner_section?.banner_options?.[0]?.banner_image_field?.url || ""} mainHeading={pageData?.acf?.banner_section?.project_banner_heading || ""} bannerSubHeading={pageData?.acf?.banner_section?.banner_sub_heading || ""} para={pageData?.acf?.banner_section?.banner_description || ""} address={pageData?.acf?.banner_section?.project_location || ""} />
 
       <section className="signatureSec">
         <div className="signatureWrapper">
@@ -436,9 +435,7 @@ export default function ProjectDetail() {
           <div className="secHeading newSecHeading ">
             <h2 className="section-text-up">
               <div className="trigger">
-                <span>
-                  {" "}
-                  Request A Private Preview{" "}
+                <span>Request A Private Preview
                   <img src="/images/cta-arrow-white.svg" />
                 </span>
               </div>
@@ -447,9 +444,11 @@ export default function ProjectDetail() {
         </div>
       </section>
 
-      <ExploreCompoent desktopImgUrl="/images/signature-residences-footer.webp" mblImgUrl="/images/signature-residences-footer-mbl.webp" secHeading="Signature Residences" subHeading="Explore our Projects" pageUrl="signature-residences" />
+      {sectionLast?.acf_fc_layout === "related_section" && (
+        <ExploreCompoent desktopImgUrl={sectionLast?.box_desktop_image?.url} mblImgUrl={sectionLast?.box_mobile_image?.url} secHeading={sectionLast?.heading} subHeading={sectionLast?.cta_text} pageUrl={sectionLast?.cta_link} />
+      )}
 
-      <PathComponent pageName="Azuro" flag={true} subpage="Residences" path="signature-residences" />
+      <PathComponent pageName={pageData?.acf?.breadcrumbs?.current_page_name || ""} flag={true} subpage={pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_text || ""} path={pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_link || ""} pageData={pageData} />
 
       {/* <div className="modal">
         <div className="modalInner">

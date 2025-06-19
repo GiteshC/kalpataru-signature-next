@@ -68,8 +68,10 @@ const SignatureEssence = () => {
     <>
       <BannerComponent
         videoUrl={pageData?.acf?.banner_section?.video_link || ""}
+        imageUrl=""
         mainHeading={pageData?.acf?.banner_section?.banner_heading || ""}
         para={pageData?.acf?.banner_section?.banner_description || ""}
+        bannerSubHeading=""
         address=""
       />
       <section className="signatureSec pincodesMapsec" ref={pincodeMapSecRef}>

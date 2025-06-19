@@ -5,17 +5,19 @@ const PathComponent = ({
   pageName,
   flag,
   subpage,
-  path
+  path,
+  pageData
 }: {
   pageName: string;
   flag: boolean;
   subpage: string;
   path: string,
+  pageData: any
 }) => {
   return (
     <div className="breadcrumbsSec">
       <p>
-        <Link href={"/"}>Home &nbsp; / &nbsp;</Link>
+        <Link href={pageData?.acf?.breadcrumbs?.parent_pages?.[0]?.parent_page_link || ""}>Home &nbsp; / &nbsp;</Link>
         {flag && (
           <Link href={`${path}`}>{subpage} &nbsp; /&nbsp;</Link>
         )}

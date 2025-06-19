@@ -131,7 +131,7 @@ export default function PincodePage() {
 
   return (
     <div>
-      <BannerComponent videoUrl="/images/homepage-banner.mp4" mainHeading="SIGNATURE PIN CODES" para="Iconic locations. Iconic luxury landmarks. One common thread. Kalpataru." address="" />
+      <BannerComponent videoUrl="/images/homepage-banner.mp4" imageUrl="" mainHeading="SIGNATURE PIN CODES" bannerSubHeading="" para="Iconic locations. Iconic luxury landmarks. One common thread. Kalpataru." address="" />
 
       <section className="signPincodeSec">
         <div className="signPindcodeWrapper">
