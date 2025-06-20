@@ -129,3 +129,4 @@ export interface ACF {
 export interface PageData {
   acf: ACF;
 }
+
