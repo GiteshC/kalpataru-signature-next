@@ -1,4 +1,5 @@
 import ClientSignatureEssence from "@/components/ClientSignatureEssence";
+import ShimmerUi from "@/components/ShimmerUi";
 import { fetchPageData } from "@/utils/wp-api";
 
 const SignatureEssence = async () => {

@@ -8,7 +8,7 @@ export interface ImageData {
 export interface BannerOptions {
   acf_fc_layout?: "banner_video" | "banner_image";
   banner_video_field?: string;
-  banner_image_field?: ImageData
+  banner_image_field?: ImageData;
 }
 
 export interface BannerSection {
@@ -18,7 +18,7 @@ export interface BannerSection {
   banner_description?: string;
   banner_options?: BannerOptions[];
   project_location?: string;
-  project_banner_heading? : string;
+  project_banner_heading?: string;
 }
 
 //Philloshophy Page API Types
@@ -59,7 +59,7 @@ type PincodeProperty = {
     property_small_image_one: ImageData;
     property_small_image_two: ImageData;
   };
-  pincode_area_image: ImageData; 
+  pincode_area_image: ImageData;
 };
 
 type EssenceVideoProperty = {
@@ -103,8 +103,7 @@ export type EssenceComponent =
   | SignaturePinCode
   | EssenceVideoSec
   | ResidentsSec
-  | ExploreTheEssence
-
+  | ExploreTheEssence;
 
 //Residences Page API Types
 export interface RelatedSection {
@@ -116,8 +115,7 @@ export interface RelatedSection {
   box_mobile_image?: ImageData;
 }
 
-export type ResidencesComponent =
-  | RelatedSection
+export type ResidencesComponent = RelatedSection;
 
 export interface ACF {
   banner_section?: BannerSection;
