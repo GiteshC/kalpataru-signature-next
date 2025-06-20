@@ -16,6 +16,7 @@ import { PrevArrow, NextArrow } from "@/components/ArrowSliderComponent";
 import PathComponent from "@/components/PathComponent";
 import useGetPageData from "@/hooks/useGetPageData";
 import { SignaturePinCode } from "@/utils/type";
+import Link from "next/link";
 
 const ClientSignatureEssence = ({ pageData }: any) => {
   const pincodeSlider1 = useRef<Slider | null>(null);
@@ -163,10 +164,10 @@ const ClientSignatureEssence = ({ pageData }: any) => {
                           <div className="pincodeDetails">
                             <h3>{card?.property_name}</h3>
                             <p>{card?.property_description}</p>
-                            <a href={card?.cta_link} className="ctaBluetext">
+                            <Link href={"/pincodes"} className="ctaBluetext">
                               {card?.cta_text}
                               <img src="images/pincode-arrow.svg" />
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       ))}
