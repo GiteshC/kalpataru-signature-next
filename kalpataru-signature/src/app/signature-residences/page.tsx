@@ -207,7 +207,7 @@ export default function Residence() {
                     <h3 className="signature-content-subheading">Nepean Sea Road, Mumbai</h3>
                     {/* <p class="signature-content-bodycopy sign-p-margin">Private seafront living. In its finest rendition.</p> */}
                     <p className="signature-content-bodycopy">Private seafront living. Inspired by the rhythm of the ocean. Infusing the finest luxuries created by man with the luxuries of nature.</p>
-                    <a href="project-details.html" className="ctaBluetext ">View Project <img src="images/signature-cta-arrow.svg" alt="" /></a>
+                    <a href="/residences/442" className="ctaBluetext ">View Project <img src="images/signature-cta-arrow.svg" alt="" /></a>
                     </div>
                 </div>
                 <div className="signaturebroucher-wrapper residence-item">
@@ -219,7 +219,7 @@ export default function Residence() {
                         <h3 className="signature-content-subheading">Altamount Road, Mumbai</h3>
                         {/* <p class="signature-content-bodycopy sign-p-margin">Private seafront living. In its finest rendition.</p> */}
                         <p className="signature-content-bodycopy">A thoughtfully curated lifestyle of one residnece per floor. Elevating living standards even in Mumbai's Billionaires' Row.</p>
-                        <a href="project-details.html" className="ctaBluetext">View Project <img src="images/signature-cta-arrow.svg" alt="" /></a>
+                        <a href="/residences/579" className="ctaBluetext">View Project <img src="images/signature-cta-arrow.svg" alt="" /></a>
                     </div>
                 </div>
                 <div className="signaturebroucher-wrapper residence-item">
@@ -231,7 +231,7 @@ export default function Residence() {
                         <h3 className="signature-content-subheading">Prabhadevi, Mumbai</h3>
                         {/* <p class="signature-content-bodycopy sign-p-margin">Private seafront living. In its finest rendition.</p> */}
                         <p className="signature-content-bodycopy">A haven of private living, overlooking the serene sea. A home meant for a privileged few. And rightly so.</p>
-                        <a href="project-details.html" className="ctaBluetext">View Project <img src="images/signature-cta-arrow.svg" alt="" /></a>
+                        <a href="/residences/562" className="ctaBluetext">View Project <img src="images/signature-cta-arrow.svg" alt="" /></a>
                     </div>
                 </div>
                 <div id="dataNotFound" style={{ display: "none" }}>No residences found.</div>

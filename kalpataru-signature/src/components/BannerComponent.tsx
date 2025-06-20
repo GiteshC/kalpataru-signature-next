@@ -4,12 +4,16 @@ import usePageLoad from "@/hooks/usePageLoad";
 
 const BannerComponent = ({
   videoUrl,
+  imageUrl,
   mainHeading,
+  bannerSubHeading,
   para,
   address
 }: {
   videoUrl: string;
+  imageUrl: string;
   mainHeading: string;
+  bannerSubHeading: string;
   para: string;
   address: string;
 }) => {
@@ -19,11 +23,13 @@ const BannerComponent = ({
   return (
     <section className="homebannerSec projectdetBanner">
       <div className="videoBox">
-        {videoUrl &&
+        {videoUrl ? (
           <video autoPlay muted loop playsInline preload="metadata">
             <source src={`${videoUrl}`} type="video/mp4" />
           </video>
-        }
+        ) : (
+          <img src={`${imageUrl}`} alt="" />
+        )}
       </div>
       <div className="homebannerWrapper homebannerContent">
         <div className="secHeading philosopy-banner">
@@ -43,11 +49,16 @@ const BannerComponent = ({
           >
             <span>{para}</span>
           </p>
-          {address && (
-            <h3 className={`bannerTextanimation`}>
-              <span>{address}</span>
+          {bannerSubHeading && (
+            <h3 className={`bannerTextanimation ${isPageLoad ? "bannerTextanimationnew" : ""}`}>
+              <span>{bannerSubHeading}</span>
             </h3>
           )}
+          {address && (
+            <h3 className={`bannerTextanimation ${isPageLoad ? "bannerTextanimationnew" : ""}`}>
+              <span>{address}</span>
+            </h3>
+          )}          
         </div>
       </div>
       <div className={`scrollText ${isPageLoad ? "scrollTextnew" : ""}`}>
