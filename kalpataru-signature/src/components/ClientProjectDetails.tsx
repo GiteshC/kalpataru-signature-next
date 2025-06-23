@@ -4,7 +4,10 @@ import BannerComponent from "@/components/BannerComponent";
 import ExploreCompoent from "@/components/ExploreCompoent";
 import PathComponent from "@/components/PathComponent";
 import SliderComponent from "@/components/SliderComponent";
-import { luxuriesSlider, maestrosSlider } from "@/components/ArrowSliderComponent";
+import {
+  luxuriesSlider,
+  maestrosSlider,
+} from "@/components/ArrowSliderComponent";
 
 export default function ProjectDetail({ pageData }: any) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -14,8 +17,12 @@ export default function ProjectDetail({ pageData }: any) {
   const [nav2, setNav2] = useState(null);
   const slider1 = useRef(null);
   const slider2 = useRef(null);
-  const sectionLast = pageData?.acf?.residences_components?.[pageData?.acf?.residences_components?.length - 1];
 
+  console.log(pageData);
+
+  const sectionLast = pageData?.acf?.residences_components;
+  console.log(sectionLast, "24");
+  
 
   const handleAccordionClick = (id: number) => {
     setOpenAccordion(openAccordion === id ? null : id);
@@ -93,7 +100,7 @@ export default function ProjectDetail({ pageData }: any) {
       description:
         "MahaRERA Reg No: Kalpataru Radiance: B - Brilliance Reg. No: P51800000810. For further details, please visit",
       link: "https://maharera.mahaonline.gov.in/",
-      image: "/images/rera-scanner.png"
+      image: "/images/rera-scanner.png",
     },
     {
       id: 2,
@@ -101,7 +108,7 @@ export default function ProjectDetail({ pageData }: any) {
       description:
         "MahaRERA Reg No: Kalpataru Radiance: B - Brilliance Reg. No: P51800000810. For further details, please visit",
       link: "https://maharera.mahaonline.gov.in/",
-      image: "/images/rera-scanner.png"
+      image: "/images/rera-scanner.png",
     },
     {
       id: 3,
@@ -109,7 +116,7 @@ export default function ProjectDetail({ pageData }: any) {
       description:
         "MahaRERA Reg No: Kalpataru Radiance: B - Brilliance Reg. No: P51800000810. For further details, please visit",
       link: "https://maharera.mahaonline.gov.in/",
-      image: "/images/rera-scanner.png"
+      image: "/images/rera-scanner.png",
     },
     {
       id: 4,
@@ -117,7 +124,7 @@ export default function ProjectDetail({ pageData }: any) {
       description:
         "MahaRERA Reg No: Kalpataru Radiance: B - Brilliance Reg. No: P51800000810. For further details, please visit",
       link: "https://maharera.mahaonline.gov.in/",
-      image: "/images/rera-scanner.png"
+      image: "/images/rera-scanner.png",
     },
     {
       id: 5,
@@ -125,9 +132,9 @@ export default function ProjectDetail({ pageData }: any) {
       description:
         "MahaRERA Reg No: Kalpataru Radiance: B - Brilliance Reg. No: P51800000810. For further details, please visit",
       link: "https://maharera.mahaonline.gov.in/",
-      image: "/images/rera-scanner.png"
-    }
-  ]; 
+      image: "/images/rera-scanner.png",
+    },
+  ];
 
   const totalSlides = slides.length;
   const totalHolderSlides = holderSlides.length;
@@ -250,8 +257,24 @@ export default function ProjectDetail({ pageData }: any) {
 
   return (
     <div>
-
-      <BannerComponent videoUrl={pageData?.acf?.banner_section?.banner_options?.[0]?.banner_video_field || ""} imageUrl={pageData?.acf?.banner_section?.banner_options?.[0]?.banner_image_field?.url || ""} mainHeading={pageData?.acf?.banner_section?.project_banner_heading || ""} bannerSubHeading={pageData?.acf?.banner_section?.banner_sub_heading || ""} para={pageData?.acf?.banner_section?.banner_description || ""} address={pageData?.acf?.banner_section?.project_location || ""} />
+      <BannerComponent
+        videoUrl={
+          pageData?.acf?.banner_section?.banner_options?.[0]
+            ?.banner_video_field || ""
+        }
+        imageUrl={
+          pageData?.acf?.banner_section?.banner_options?.[0]?.banner_image_field
+            ?.url || ""
+        }
+        mainHeading={
+          pageData?.acf?.banner_section?.project_banner_heading || ""
+        }
+        bannerSubHeading={
+          pageData?.acf?.banner_section?.banner_sub_heading || ""
+        }
+        para={pageData?.acf?.banner_section?.banner_description || ""}
+        address={pageData?.acf?.banner_section?.project_location || ""}
+      />
 
       <section className="signatureSec">
         <div className="signatureWrapper">
@@ -290,13 +313,26 @@ export default function ProjectDetail({ pageData }: any) {
             <div className="slider-container">
               {holderSlides.length > 1 && (
                 <div className="slides-numbers" style={{ display: "block" }}>
-                  <span className="active">{String(currentSlide + 1).padStart(2, "0")}</span> 
+                  <span className="active">
+                    {String(currentSlide + 1).padStart(2, "0")}
+                  </span>
                   <span>&nbsp;/&nbsp;</span>
-                  <span className="total">{String(totalHolderSlides).padStart(2, "0")}</span>
+                  <span className="total">
+                    {String(totalHolderSlides).padStart(2, "0")}
+                  </span>
                 </div>
               )}
               <div className="slider-holder">
-                <SliderComponent setting={{...luxuriesSlider, asNavFor: nav1 ?? undefined, beforeChange: (_oldIndex: number, newIndex: number) => {setCurrentSlide(newIndex);},}} ref={slider1}>
+                <SliderComponent
+                  setting={{
+                    ...luxuriesSlider,
+                    asNavFor: nav1 ?? undefined,
+                    beforeChange: (_oldIndex: number, newIndex: number) => {
+                      setCurrentSlide(newIndex);
+                    },
+                  }}
+                  ref={slider1}
+                >
                   {holderSlides.map((slide, index) => (
                     <div key={index} className="item">
                       <div className="media-wrap">
@@ -332,14 +368,27 @@ export default function ProjectDetail({ pageData }: any) {
           <div className="sliderArrow">
             {slides.length > 1 && (
               <div className="slides-numbers" style={{ display: "block" }}>
-                <span className="active">{String(currentSlide + 1).padStart(2, "0")}</span> 
-                <span>&nbsp;/&nbsp;</span>  
-                <span className="total">{String(totalSlides).padStart(2, "0")}</span>
+                <span className="active">
+                  {String(currentSlide + 1).padStart(2, "0")}
+                </span>
+                <span>&nbsp;/&nbsp;</span>
+                <span className="total">
+                  {String(totalSlides).padStart(2, "0")}
+                </span>
               </div>
             )}
           </div>
           <div className="maestrosSlider">
-            <SliderComponent setting={{...maestrosSlider, asNavFor: nav2 ?? undefined, beforeChange: (_oldIndex: number, newIndex: number) => {setCurrentSlide(newIndex);},}} ref={slider2}>
+            <SliderComponent
+              setting={{
+                ...maestrosSlider,
+                asNavFor: nav2 ?? undefined,
+                beforeChange: (_oldIndex: number, newIndex: number) => {
+                  setCurrentSlide(newIndex);
+                },
+              }}
+              ref={slider2}
+            >
               {slides.map((slide, index) => (
                 <div key={index} className="innerSliderbox">
                   <div className="imgDiv">
@@ -362,51 +411,60 @@ export default function ProjectDetail({ pageData }: any) {
         </div>
       </section>
 
-      <section className="signatureSec projectdetBeach">
-        <div className="signatureWrapper">
-          <div className="secHeading">
-            <h2 className="section-text-up">
-              <span>
-                A home that stands out Both aesthetically And in its experience.
-              </span>
-            </h2>
-          </div>
-        </div>
-        <div className="signatureImg">
-          <div className="Viewimages">
-            <img src="/images/project-det-6thfold.png" className="desktopImg" />
-            <img
-              src="/images/project-det-6thfold-mobile.webp"
-              className="mobileImg"
-            />
-          </div>
-          <div className="innerText">
-            <h3>
-              Immerse yourself in the luxury of panoramic sea views, and revel
-              in the untold abundance around you.
-            </h3>
-          </div>
-        </div>
-      </section>
-
       <section className="reraContainer">
         <ul className="accordion">
           <li>
-            <div className={`mainHeadingdiv toggle ${isMainAccordionOpen ? 'showDiv' : ''}`} onClick={handleMainAccordionClick}>
-              <a href="#" onClick={(e) => e.preventDefault()} className="headingMain">
+            <div
+              className={`mainHeadingdiv toggle ${
+                isMainAccordionOpen ? "showDiv" : ""
+              }`}
+              onClick={handleMainAccordionClick}
+            >
+              <a
+                href="#"
+                onClick={(e) => e.preventDefault()}
+                className="headingMain"
+              >
                 RERA DETAILS
               </a>
             </div>
-            <ul className={`inner ${isMainAccordionOpen ? 'show' : ''}`} style={{ display: isMainAccordionOpen ? 'block' : 'none' }}>
-              {projectData.map((proj, index)=>(
+            <ul
+              className={`inner ${isMainAccordionOpen ? "show" : ""}`}
+              style={{ display: isMainAccordionOpen ? "block" : "none" }}
+            >
+              {projectData.map((proj, index) => (
                 <li key={proj.id}>
-                  <div className={`innerDescHeading toggle ${openAccordion === proj.id ? 'showDiv' : ''}`} onClick={()=>handleAccordionClick(proj.id)}>
-                    <a href="#" onClick={(e) => e.preventDefault()} className="subHeadings">{proj.title}</a>
+                  <div
+                    className={`innerDescHeading toggle ${
+                      openAccordion === proj.id ? "showDiv" : ""
+                    }`}
+                    onClick={() => handleAccordionClick(proj.id)}
+                  >
+                    <a
+                      href="#"
+                      onClick={(e) => e.preventDefault()}
+                      className="subHeadings"
+                    >
+                      {proj.title}
+                    </a>
                   </div>
-                  <div className="innerInfo" style={{display: openAccordion === proj.id ? 'block' : 'none', transition: 'all 0.3s ease-in-out'}}>
+                  <div
+                    className="innerInfo"
+                    style={{
+                      display: openAccordion === proj.id ? "block" : "none",
+                      transition: "all 0.3s ease-in-out",
+                    }}
+                  >
                     <div className="descDetils">
-                      <p>{proj.description}
-                        <a href="#" onClick={(e) => e.preventDefault()} target="_blank">{proj.link}</a>
+                      <p>
+                        {proj.description}
+                        <a
+                          href="#"
+                          onClick={(e) => e.preventDefault()}
+                          target="_blank"
+                        >
+                          {proj.link}
+                        </a>
                         This project is secured with ICICI Bank Limited. The No
                         Objection Certificate would be issued, at the relevant
                         time, if required.
@@ -435,7 +493,8 @@ export default function ProjectDetail({ pageData }: any) {
           <div className="secHeading newSecHeading ">
             <h2 className="section-text-up">
               <div className="trigger">
-                <span>Request A Private Preview
+                <span>
+                  Request A Private Preview
                   <img src="/images/cta-arrow-white.svg" />
                 </span>
               </div>
@@ -445,10 +504,26 @@ export default function ProjectDetail({ pageData }: any) {
       </section>
 
       {sectionLast?.acf_fc_layout === "related_section" && (
-        <ExploreCompoent desktopImgUrl={sectionLast?.box_desktop_image?.url} mblImgUrl={sectionLast?.box_mobile_image?.url} secHeading={sectionLast?.heading} subHeading={sectionLast?.cta_text} pageUrl={sectionLast?.cta_link} />
+        <ExploreCompoent
+          desktopImgUrl={sectionLast?.box_desktop_image?.url}
+          mblImgUrl={sectionLast?.box_mobile_image?.url}
+          secHeading={sectionLast?.heading}
+          subHeading={sectionLast?.cta_text}
+          pageUrl={sectionLast?.cta_link}
+        />
       )}
 
-      <PathComponent pageName={pageData?.acf?.breadcrumbs?.current_page_name || ""} flag={true} subpage={pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_text || ""} path={pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_link || ""} pageData={pageData} />
+      <PathComponent
+        pageName={pageData?.acf?.breadcrumbs?.current_page_name || ""}
+        flag={true}
+        subpage={
+          pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_text || ""
+        }
+        path={
+          pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_link || ""
+        }
+        pageData={pageData}
+      />
 
       {/* <div className="modal">
         <div className="modalInner">

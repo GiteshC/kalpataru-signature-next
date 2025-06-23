@@ -1,9 +1,17 @@
-import { fetchPageData } from "@/utils/wp-api";
+import { fetchPageData } from "@/Api/wp-api";
 import ClientProjectDetails from "@/components/ClientProjectDetails";
 
-const ProjectDetail = async ({ params }: { params: Promise<{ postId: string }> }) => {
-  const resolvedParams = await params;
-  const pageData = await fetchPageData(`posts/${resolvedParams.postId}`);
+const ProjectDetail = async ({
+  params,
+}: {
+  params: Promise<{ postId: string }>;
+}) => {
+  const { postId } = await params;
+  console.log(postId);
+
+  const pageData = await fetchPageData(`residences/${postId}`);
+  console.log(pageData);
+
   return <ClientProjectDetails pageData={pageData} />;
 };
 

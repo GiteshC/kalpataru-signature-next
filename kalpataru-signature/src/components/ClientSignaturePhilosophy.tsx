@@ -3,12 +3,22 @@ import { useEffect, useRef } from "react";
 import BannerComponent from "@/components/BannerComponent";
 import ExploreCompoent from "@/components/ExploreCompoent";
 import useIsSecVisible from "@/hooks/useIsSecVisible";
-import useGetPageData from "@/hooks/useGetPageData";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import { Fancybox } from "@fancyapps/ui";
 import PathComponent from "@/components/PathComponent";
-const ClientSignaturePhilosophy = ({ pageData }: any) => {
-  console.log(pageData, "11");
+import {
+  HouseOfFirstSection,
+  PhilosophyPageData,
+  VisionSection,
+} from "@/utils/philosophyTyps";
+import { ExploreTheEssence } from "@/utils/type";
+
+interface PhilosophyProps {
+  pageData: PhilosophyPageData;
+}
+
+const ClientSignaturePhilosophy = ({ pageData }: PhilosophyProps) => {
+  console.log(pageData);
 
   const visionSec = useRef(null);
   const houseOfFirstSec = useRef(null);
@@ -16,9 +26,12 @@ const ClientSignaturePhilosophy = ({ pageData }: any) => {
   const { isSecInViewport: houseOfFirstSection } =
     useIsSecVisible(houseOfFirstSec);
 
-  const sectionOne = pageData?.acf?.philosophy_components?.[0];
-  const sectionTwo = pageData?.acf?.philosophy_components?.[1];
-  const sectionThree = pageData?.acf?.philosophy_components?.[2];
+  const sectionOne = pageData?.acf?.philosophy_components?.[0] as VisionSection;
+  const sectionTwo = pageData?.acf
+    ?.philosophy_components?.[1] as HouseOfFirstSection;
+  const sectionThree = pageData?.acf
+    ?.philosophy_components?.[2] as ExploreTheEssence;
+  console.log(sectionOne);
 
   useEffect(() => {
     Fancybox.bind("[data-fancybox]", {});
@@ -29,14 +42,8 @@ const ClientSignaturePhilosophy = ({ pageData }: any) => {
 
   return (
     <>
-      <BannerComponent
-        videoUrl={pageData?.acf?.banner_section?.video_link || ""}
-        imageUrl=""
-        mainHeading={pageData?.acf?.banner_section?.banner_heading || ""}
-        para={pageData?.acf?.banner_section?.banner_description || ""}
-        bannerSubHeading=""
-        address=""
-      />
+      <BannerComponent bannerData={pageData?.acf?.banner_section} />
+
       <section className="philo-vision-section" ref={visionSec}>
         {sectionOne?.acf_fc_layout === "pioneers_section" && (
           <div className="vision-wrapper">
@@ -115,15 +122,16 @@ const ClientSignaturePhilosophy = ({ pageData }: any) => {
       </section>
 
       {sectionThree?.acf_fc_layout === "related_page_section" && (
-        <ExploreCompoent
-          desktopImgUrl={sectionThree?.box_desktop_image?.url}
-          mblImgUrl={sectionThree?.box_mobile_image?.url}
-          secHeading={sectionThree?.heading}
-          subHeading={sectionThree?.cta_text}
-          pageUrl={sectionThree?.cta_link}
-        />
+        <ExploreCompoent exploreData={sectionThree} />
       )}
-      <PathComponent pageName="Philosophy" flag={false} subpage="" path="" pageData={pageData} />
+
+      <PathComponent
+        pageName="Philosophy"
+        flag={false}
+        subpage=""
+        path=""
+        pageData={pageData}
+      />
     </>
   );
 };
