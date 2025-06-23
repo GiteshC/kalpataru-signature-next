@@ -14,8 +14,13 @@ export default function ProjectDetail({ pageData }: any) {
   const [nav2, setNav2] = useState(null);
   const slider1 = useRef(null);
   const slider2 = useRef(null);
-  const sectionLast = pageData?.acf?.residences_components?.[pageData?.acf?.residences_components?.length - 1];
-
+  const relatedSection = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "related_section");
+  const residencesSignature = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "residences_signature")
+  const residencesLuxuries = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "residences_luxuries")
+  const residencesMaestros = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "maestros_section")
+  const residencesHighlightSection = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "residences_highlight_section")
+  const residencesReraDetails = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "rera_details_section")
+  const residencesRequestPreview = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "request_preview_section")
 
   const handleAccordionClick = (id: number) => {
     setOpenAccordion(openAccordion === id ? null : id);
@@ -25,112 +30,8 @@ export default function ProjectDetail({ pageData }: any) {
     setIsMainAccordionOpen(!isMainAccordionOpen);
   };
 
-  const slides = [
-    {
-      id: 1,
-      img: "/images/our-maestros-slider-img1.webp",
-      title: "Hans Brouwer",
-      subTitle: "Founder, HB Designs",
-      descHeading: "Architectural Consultant",
-      description:
-        "A history of consistently delivering finely crafted, intelligently designed, highly sophisticated projects, makes HB Design the ideal partner for our pursuit of luxury.",
-    },
-    {
-      id: 2,
-      img: "/images/our-maestros-slider-img2.webp",
-      title: "WME Consultants",
-      subTitle: "Bengaluru, Karnataka",
-      descHeading: "Structural Consultant",
-      description:
-        "A firm that is committed to the principles of building in harmony with the environment. With a history of creating thoughtful frameworks that minimise any impact on the environment.",
-    },
-    {
-      id: 3,
-      img: "/images/our-maestros-slider-img3.webp",
-      title: "Landscape Tectonix",
-      subTitle: "Bangkok, Thailand",
-      descHeading: "LANDSCAPE CONSULTANT",
-      description:
-        "Established in 2005, Landscape Tectonix have international expertise in the residential, commercial and hospitality sectors. Landscape Tectonix has a philosophy of delivering the best service with each of its unique designs.",
-    },
-  ];
-
-  const holderSlides = [
-    {
-      id: 1,
-      mediaImg1: "/images/kalpataru-detail-luxury1.webp",
-      mediaImg2: "/images/kalpataru-detail-luxury1-mob.webp",
-      overlapImg1: "/images/luxuries-card-1.svg",
-      text: "The ocean isn't the same blue for everyone",
-    },
-    {
-      id: 2,
-      mediaImg1: "/images/kalpataru-detail-luxury2.webp",
-      mediaImg2: "/images/kalpataru-detail-luxury2-mob.webp",
-      overlapImg1: "/images/luxuries-card-2.svg",
-      text: "Built for beautiful sunsets",
-    },
-    {
-      id: 3,
-      mediaImg1: "/images/kalpataru-detail-luxury3.webp",
-      mediaImg2: "/images/kalpataru-detail-luxury3-mob.webp",
-      overlapImg1: "/images/luxuries-card-3.svg",
-      text: "The edge of land and sea.",
-    },
-    {
-      id: 4,
-      mediaImg1: "/images/kalpataru-detail-luxury3.webp",
-      mediaImg2: "/images/kalpataru-detail-luxury3-mob.webp",
-      overlapImg1: "/images/luxuries-card-3.svg",
-      text: "The edge of land and sea.",
-    },
-  ];
-
-  const projectData = [
-    {
-      id: 1,
-      title: "KALPATARU AZURO: A - TOWER 1",
-      description:
-        "MahaRERA Reg No: Kalpataru Radiance: B - Brilliance Reg. No: P51800000810. For further details, please visit",
-      link: "https://maharera.mahaonline.gov.in/",
-      image: "/images/rera-scanner.png"
-    },
-    {
-      id: 2,
-      title: "KALPATARU AZURO: B - TOWER 1",
-      description:
-        "MahaRERA Reg No: Kalpataru Radiance: B - Brilliance Reg. No: P51800000810. For further details, please visit",
-      link: "https://maharera.mahaonline.gov.in/",
-      image: "/images/rera-scanner.png"
-    },
-    {
-      id: 3,
-      title: "KALPATARU AZURO: A - TOWER 2",
-      description:
-        "MahaRERA Reg No: Kalpataru Radiance: B - Brilliance Reg. No: P51800000810. For further details, please visit",
-      link: "https://maharera.mahaonline.gov.in/",
-      image: "/images/rera-scanner.png"
-    },
-    {
-      id: 4,
-      title: "KALPATARU AZURO: B - TOWER 2",
-      description:
-        "MahaRERA Reg No: Kalpataru Radiance: B - Brilliance Reg. No: P51800000810. For further details, please visit",
-      link: "https://maharera.mahaonline.gov.in/",
-      image: "/images/rera-scanner.png"
-    },
-    {
-      id: 5,
-      title: "KALPATARU AZURO: C - TOWER 2",
-      description:
-        "MahaRERA Reg No: Kalpataru Radiance: B - Brilliance Reg. No: P51800000810. For further details, please visit",
-      link: "https://maharera.mahaonline.gov.in/",
-      image: "/images/rera-scanner.png"
-    }
-  ]; 
-
-  const totalSlides = slides.length;
-  const totalHolderSlides = holderSlides.length;
+  const totalSlides = residencesMaestros?.maestros_content?.length || 0;
+  const totalHolderSlides = residencesLuxuries?.luxuries_gallery?.length || 0;
 
   useEffect(() => {
     setNav1(slider1.current);
@@ -253,199 +154,167 @@ export default function ProjectDetail({ pageData }: any) {
 
       <BannerComponent videoUrl={pageData?.acf?.banner_section?.banner_options?.[0]?.banner_video_field || ""} imageUrl={pageData?.acf?.banner_section?.banner_options?.[0]?.banner_image_field?.url || ""} mainHeading={pageData?.acf?.banner_section?.project_banner_heading || ""} bannerSubHeading={pageData?.acf?.banner_section?.banner_sub_heading || ""} para={pageData?.acf?.banner_section?.banner_description || ""} address={pageData?.acf?.banner_section?.project_location || ""} />
 
-      <section className="signatureSec">
-        <div className="signatureWrapper">
-          <div className="secHeading">
-            <h2 className="section-text-up">
-              <span>ON THE CUSP OF THE SEA AND IN THE HEART OF THE CITY.</span>
-            </h2>
-            <p className="section-text-up">
-              <span>
-                Kalpataru Azuro pays homage to the magnificence of the sea.
-                Offering a living experience that truly feels connected to it.
-                And within its world, emulating the abundance that defines it.
-              </span>
-            </p>
+      {residencesSignature && (
+        <section className="signatureSec">
+          <div className="signatureWrapper">
+            <div className="secHeading">
+              <h2 className="section-text-up"><span>{residencesSignature?.section_heading}</span></h2>
+              <p className="section-text-up"><span>{residencesSignature?.section_description}</span></p>
+            </div>
           </div>
-        </div>
-        <div className="videoBox">
-          <img src="/images/azuro-img.webp" className="desktopImg" />
-          <img
-            src="/images/kalpataru-azuro-details-2-mobile.webp"
-            className="mobileImg"
-          />
-        </div>
-      </section>
+          <div className="videoBox">
+            <img src={residencesSignature?.desktop_image?.url} className="desktopImg" />
+            <img src={residencesSignature?.mobile_image?.url} className="mobileImg" />
+          </div>
+        </section>
+      )}
 
-      <section className="luxuriesSlider">
-        <div className="signatureWrapper">
-          <div className="secHeading">
-            <h2 className="section-text-up">
-              <span>
-                The finest luxuries. Often reserved for the finest among us.
-              </span>
-            </h2>
+      {residencesLuxuries && (
+        <section className="luxuriesSlider">
+          <div className="signatureWrapper">
+            <div className="secHeading">
+              <h2 className="section-text-up"><span>{residencesLuxuries?.section_heading}</span></h2>
+            </div>
+            <div className="wrapper">
+              <div className="slider-container">
+                {residencesLuxuries?.luxuries_gallery?.length > 1 && (
+                  <div className="slides-numbers" style={{ display: "block" }}>
+                    <span className="active">{String(currentSlide + 1).padStart(2, "0")}</span> 
+                    <span>&nbsp;/&nbsp;</span>
+                    <span className="total">{String(totalHolderSlides).padStart(2, "0")}</span>
+                  </div>
+                )}
+                <div className="slider-holder">
+                  <SliderComponent setting={{...luxuriesSlider, asNavFor: nav1 ?? undefined, beforeChange: (_oldIndex: number, newIndex: number) => {setCurrentSlide(newIndex);},}} ref={slider1}>
+                    {residencesLuxuries?.luxuries_gallery?.map((slide: any, index: number) => (
+                      <div key={index} className="item">
+                        <div className="media-wrap">
+                          <img src={slide.luxuries_desktop_image?.url} className="desktopImg" />
+                          <img src={slide.luxuries_mobile_image?.url} className="mobileImg" />
+                        </div>
+                        <div className="overlapText">
+                          <img src={slide.luxuries_heading_icon?.url} />
+                          <h3>{slide.luxuries_heading}</h3>
+                        </div>
+                      </div>
+                    ))}
+                  </SliderComponent>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="wrapper">
-            <div className="slider-container">
-              {holderSlides.length > 1 && (
+        </section>
+      )}
+
+      {residencesMaestros && (
+        <section className="maestrosSlidersec">
+          <div className="secHeading">
+            <h2 className="section-text-up"><span>{residencesMaestros?.section_heading}</span></h2>
+            <p className="section-text-up"><span>{residencesMaestros?.section_description}</span></p>
+          </div>
+          <div className="maestrosliderCounter">
+            <div className="sliderArrow">
+              {residencesMaestros?.maestros_content?.length > 1 && (
                 <div className="slides-numbers" style={{ display: "block" }}>
                   <span className="active">{String(currentSlide + 1).padStart(2, "0")}</span> 
-                  <span>&nbsp;/&nbsp;</span>
-                  <span className="total">{String(totalHolderSlides).padStart(2, "0")}</span>
+                  <span>&nbsp;/&nbsp;</span>  
+                  <span className="total">{String(totalSlides).padStart(2, "0")}</span>
                 </div>
               )}
-              <div className="slider-holder">
-                <SliderComponent setting={{...luxuriesSlider, asNavFor: nav1 ?? undefined, beforeChange: (_oldIndex: number, newIndex: number) => {setCurrentSlide(newIndex);},}} ref={slider1}>
-                  {holderSlides.map((slide, index) => (
-                    <div key={index} className="item">
-                      <div className="media-wrap">
-                        <img src={slide.mediaImg1} className="desktopImg" />
-                        <img src={slide.mediaImg2} className="mobileImg" />
+            </div>
+            <div className="maestrosSlider">
+              <SliderComponent setting={{...maestrosSlider, asNavFor: nav2 ?? undefined, beforeChange: (_oldIndex: number, newIndex: number) => {setCurrentSlide(newIndex);},}} ref={slider2}>
+                {residencesMaestros?.maestros_content?.map((slide: any, index: number) => (
+                  <div key={index} className="innerSliderbox">
+                    <div className="imgDiv">
+                      <img src={slide.maestros_image?.url} alt={slide.maestros_image?.title} />
+                    </div>
+                    <div className="infoDiv">
+                      <div className="headingMain">
+                        <h3>{slide.person_name}</h3>
+                        <h5>{slide.person_designation}</h5>
                       </div>
-                      <div className="overlapText">
-                        <img src={slide.overlapImg1} />
-                        <h3>{slide.text}</h3>
+                      <div className="subHeadings">
+                        <h4>{slide.heading}</h4>
+                        <p>{slide.description}</p>
                       </div>
                     </div>
-                  ))}
-                </SliderComponent>
-              </div>
+                  </div>
+                ))}
+              </SliderComponent>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      <section className="maestrosSlidersec">
-        <div className="secHeading">
-          <h2 className="section-text-up">
-            <span>OUR MAESTROS</span>
-          </h2>
-          <p className="section-text-up">
-            <span>
-              It takes true craft to master the art of luxury. And we've
-              partnered with its greatest practitioners.
-            </span>
-          </p>
-        </div>
-        <div className="maestrosliderCounter">
-          <div className="sliderArrow">
-            {slides.length > 1 && (
-              <div className="slides-numbers" style={{ display: "block" }}>
-                <span className="active">{String(currentSlide + 1).padStart(2, "0")}</span> 
-                <span>&nbsp;/&nbsp;</span>  
-                <span className="total">{String(totalSlides).padStart(2, "0")}</span>
-              </div>
-            )}
+      {residencesHighlightSection && (
+        <section className="signatureSec projectdetBeach">
+          <div className="signatureWrapper">
+            <div className="secHeading">
+              <h2 className="section-text-up"><span>{residencesHighlightSection?.section_heading}</span></h2>
+            </div>
           </div>
-          <div className="maestrosSlider">
-            <SliderComponent setting={{...maestrosSlider, asNavFor: nav2 ?? undefined, beforeChange: (_oldIndex: number, newIndex: number) => {setCurrentSlide(newIndex);},}} ref={slider2}>
-              {slides.map((slide, index) => (
-                <div key={index} className="innerSliderbox">
-                  <div className="imgDiv">
-                    <img src={slide.img} alt={slide.title} />
-                  </div>
-                  <div className="infoDiv">
-                    <div className="headingMain">
-                      <h3>{slide.title}</h3>
-                      <h5>{slide.subTitle}</h5>
+          <div className="signatureImg">
+            <div className="Viewimages">
+              <img src={residencesHighlightSection?.section_desktop_image?.url} className="desktopImg" />
+              <img src={residencesHighlightSection?.section_mobile_image?.url} className="mobileImg" />
+            </div>
+            <div className="innerText">
+              <h3>{residencesHighlightSection?.box_description}</h3>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {residencesReraDetails && (
+        <section className="reraContainer">
+          <ul className="accordion">
+            <li>
+              <div className={`mainHeadingdiv toggle ${isMainAccordionOpen ? 'showDiv' : ''}`} onClick={handleMainAccordionClick}>
+                <a href="#" onClick={(e) => e.preventDefault()} className="headingMain">{residencesReraDetails?.rera_heading}</a>
+              </div>
+              <ul className={`inner ${isMainAccordionOpen ? 'show' : ''}`} style={{ display: isMainAccordionOpen ? 'block' : 'none' }}>
+                {residencesReraDetails?.rera_detail_lists?.map((proj: any, index: number)=>(
+                  <li key={index}>
+                    <div className={`innerDescHeading toggle ${openAccordion === index ? 'showDiv' : ''}`} onClick={()=>handleAccordionClick(index)}>
+                      <a href="#" onClick={(e) => e.preventDefault()} className="subHeadings">{proj.rera_list_heading}</a>
                     </div>
-                    <div className="subHeadings">
-                      <h4>{slide.descHeading}</h4>
-                      <p>{slide.description}</p>
+                    <div className="innerInfo" style={{display: openAccordion === index ? 'block' : 'none', transition: 'all 0.3s ease-in-out'}}>
+                      <div className="descDetils">
+                        <p>
+                          <a href="https://maharera.mahaonline.gov.in/" onClick={(e) => e.preventDefault()} target="_blank">{proj.rera_list_description}</a>
+                        </p>
+                        <div className="scannerImg"><img src={proj.rera_list_image?.url} /></div>
+                      </div>
                     </div>
-                  </div>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          </ul>
+        </section>
+      )}
+
+      {residencesRequestPreview && (
+        <section className="requestSec reqNewSec">
+          <div className="requestBG">
+            <img src={residencesRequestPreview?.section_desktop_image?.url} className="desktopImg" />
+            <img src={residencesRequestPreview?.section_mobile_image?.url} className="mobileImg"  />
+          </div>
+          <div className="requestWrapper requestContent reqNewContent">
+            <div className="secHeading newSecHeading ">
+              <h2 className="section-text-up">
+                <div className="trigger">
+                  <span>{residencesRequestPreview?.section_heading} <img src="/images/cta-arrow-white.svg" /></span>
                 </div>
-              ))}
-            </SliderComponent>
-          </div>
-        </div>
-      </section>
-
-      <section className="signatureSec projectdetBeach">
-        <div className="signatureWrapper">
-          <div className="secHeading">
-            <h2 className="section-text-up">
-              <span>
-                A home that stands out Both aesthetically And in its experience.
-              </span>
-            </h2>
-          </div>
-        </div>
-        <div className="signatureImg">
-          <div className="Viewimages">
-            <img src="/images/project-det-6thfold.png" className="desktopImg" />
-            <img
-              src="/images/project-det-6thfold-mobile.webp"
-              className="mobileImg"
-            />
-          </div>
-          <div className="innerText">
-            <h3>
-              Immerse yourself in the luxury of panoramic sea views, and revel
-              in the untold abundance around you.
-            </h3>
-          </div>
-        </div>
-      </section>
-
-      <section className="reraContainer">
-        <ul className="accordion">
-          <li>
-            <div className={`mainHeadingdiv toggle ${isMainAccordionOpen ? 'showDiv' : ''}`} onClick={handleMainAccordionClick}>
-              <a href="#" onClick={(e) => e.preventDefault()} className="headingMain">
-                RERA DETAILS
-              </a>
+              </h2>
             </div>
-            <ul className={`inner ${isMainAccordionOpen ? 'show' : ''}`} style={{ display: isMainAccordionOpen ? 'block' : 'none' }}>
-              {projectData.map((proj, index)=>(
-                <li key={proj.id}>
-                  <div className={`innerDescHeading toggle ${openAccordion === proj.id ? 'showDiv' : ''}`} onClick={()=>handleAccordionClick(proj.id)}>
-                    <a href="#" onClick={(e) => e.preventDefault()} className="subHeadings">{proj.title}</a>
-                  </div>
-                  <div className="innerInfo" style={{display: openAccordion === proj.id ? 'block' : 'none', transition: 'all 0.3s ease-in-out'}}>
-                    <div className="descDetils">
-                      <p>{proj.description}
-                        <a href="#" onClick={(e) => e.preventDefault()} target="_blank">{proj.link}</a>
-                        This project is secured with ICICI Bank Limited. The No
-                        Objection Certificate would be issued, at the relevant
-                        time, if required.
-                      </p>
-                      <div className="scannerImg">
-                        <img src={proj.image} />
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </li>
-        </ul>
-      </section>
-
-      <section className="requestSec reqNewSec">
-        <div className="requestBG">
-          <img src="/images/request-previewbg.webp" className="desktopImg" />
-          <img
-            src="/images/request-preview-mobile.webp"
-            className="mobileImg"
-          />
-        </div>
-        <div className="requestWrapper requestContent reqNewContent">
-          <div className="secHeading newSecHeading ">
-            <h2 className="section-text-up">
-              <div className="trigger">
-                <span>Request A Private Preview
-                  <img src="/images/cta-arrow-white.svg" />
-                </span>
-              </div>
-            </h2>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {sectionLast?.acf_fc_layout === "related_section" && (
-        <ExploreCompoent desktopImgUrl={sectionLast?.box_desktop_image?.url} mblImgUrl={sectionLast?.box_mobile_image?.url} secHeading={sectionLast?.heading} subHeading={sectionLast?.cta_text} pageUrl={sectionLast?.cta_link} />
+      {relatedSection && (
+        <ExploreCompoent desktopImgUrl={relatedSection?.box_desktop_image?.url} mblImgUrl={relatedSection?.box_mobile_image?.url} secHeading={relatedSection?.heading} subHeading={relatedSection?.cta_text} pageUrl={relatedSection?.cta_link} />
       )}
 
       <PathComponent pageName={pageData?.acf?.breadcrumbs?.current_page_name || ""} flag={true} subpage={pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_text || ""} path={pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_link || ""} pageData={pageData} />

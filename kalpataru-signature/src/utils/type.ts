@@ -106,6 +106,27 @@ export type EssenceComponent =
   | ExploreTheEssence;
 
 //Residences Page API Types
+type LuxuriesGallery = {
+  luxuries_heading_icon? : ImageData;
+  luxuries_heading? : string;
+  luxuries_desktop_image? : ImageData;
+  luxuries_mobile_image? : ImageData;
+}
+
+type MaestrosContent = {
+  maestros_image? : ImageData;
+  person_name? : string;
+  person_designation? : string;
+  heading? : string;
+  description? : string;
+}
+
+type ReraDetailListsGallery = {
+  rera_list_heading? : string;
+  rera_list_description? : string;
+  rera_list_image? : ImageData;
+}
+
 export interface RelatedSection {
   acf_fc_layout: "related_section";
   heading?: string;
@@ -115,7 +136,49 @@ export interface RelatedSection {
   box_mobile_image?: ImageData;
 }
 
-export type ResidencesComponent = RelatedSection;
+export interface ResidencesSignature {
+  acf_fc_layout: "residences_signature";
+  section_heading?: string;
+  section_description?: string;
+  desktop_image?: ImageData;
+  mobile_image?: ImageData;
+}
+
+export interface ResidencesMaestros {
+  acf_fc_layout: "maestros_section";
+  section_heading?: string;
+  section_description?: string;
+  maestros_content : MaestrosContent[]
+}
+
+export interface ResidencesLuxuries {
+  acf_fc_layout: "residences_luxuries";
+  section_heading?: string;
+  luxuries_gallery : LuxuriesGallery[]
+}
+
+export interface ResidencesHighlightSection {
+  acf_fc_layout: "residences_highlight_section";
+  section_heading?: string;
+  section_desktop_image? : ImageData;
+  section_mobile_image? : ImageData;
+  box_description : string
+}
+
+export interface ResidencesReraDetails {
+  acf_fc_layout: "rera_details_section";
+  rera_heading?: string;
+  rera_detail_lists : ReraDetailListsGallery[]
+}
+
+export interface ResidencesRequestPreview {
+  acf_fc_layout: "request_preview_section";
+  section_heading?: string;
+  section_desktop_image? : ImageData;
+  section_mobile_image? : ImageData;
+}
+
+export type ResidencesComponent = RelatedSection | ResidencesSignature | ResidencesLuxuries | ResidencesMaestros | ResidencesHighlightSection | ResidencesReraDetails | ResidencesRequestPreview;
 
 export interface ACF {
   banner_section?: BannerSection;
@@ -127,4 +190,3 @@ export interface ACF {
 export interface PageData {
   acf: ACF;
 }
-
