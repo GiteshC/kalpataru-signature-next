@@ -115,12 +115,12 @@ export default function Home() {
   }, []); // Empty dependency array means this runs once on mount
   return (
     <div>
-      <BannerComponent
+      {/* <BannerComponent
         videoUrl="/images/homepage-video.mp4"
         mainHeading="Signature Collection"
         para="Fine Living. Finer Experiences"
         address=""
-      />
+      /> */}
 
       <section className="signatureSec" id="signature-philosophy">
         <div className="signatureWrapper">

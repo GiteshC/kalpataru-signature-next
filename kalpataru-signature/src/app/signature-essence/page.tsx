@@ -1,9 +1,10 @@
 import ClientSignatureEssence from "@/components/ClientSignatureEssence";
 import ShimmerUi from "@/components/ShimmerUi";
-import { fetchPageData } from "@/utils/wp-api";
+import { fetchPageData } from "@/Api/wp-api";
+import { EssencePageData } from "@/utils/essenceTyps";
 
 const SignatureEssence = async () => {
-  const pageData = await fetchPageData("pages/234");
+  const pageData: EssencePageData = await fetchPageData("pages/234");
   return <ClientSignatureEssence pageData={pageData} />;
 };
 

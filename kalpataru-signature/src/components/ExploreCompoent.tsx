@@ -1,27 +1,29 @@
 "use client";
 
 import usePageLoad from "@/hooks/usePageLoad";
+import { ExploreTheEssence } from "@/utils/type";
 import Link from "next/link";
 
-const ExploreCompoent = ({
-  desktopImgUrl,
-  mblImgUrl,
-  secHeading,
-  subHeading,
-  pageUrl,
-}: {
-  desktopImgUrl: any;
-  mblImgUrl: any;
-  secHeading: any;
-  subHeading: any;
-  pageUrl: any;
-}) => {
+interface ExploreSecProps {
+  exploreData?: ExploreTheEssence;
+}
+
+const ExploreCompoent = ({ exploreData }: ExploreSecProps) => {
+  if (!exploreData) return null;
+  const {
+    box_desktop_image: desktopImgUrl,
+    box_mobile_image: mblImgUrl,
+    cta_link: pageUrl,
+    cta_text: subHeading,
+    heading: secHeading,
+  } = exploreData;
+
   const { isPageLoad } = usePageLoad();
   return (
     <section className="requestSec">
       <div className="requestBG">
-        <img src={desktopImgUrl} alt="" className="desktopImg" />
-        <img src={mblImgUrl} alt="" className="mobileImg" />
+        <img src={desktopImgUrl?.url} alt="" className="desktopImg" />
+        <img src={mblImgUrl?.url} alt="" className="mobileImg" />
       </div>
       <div className="requestWrapper requestContent">
         <div className="secHeading">
@@ -46,3 +48,17 @@ const ExploreCompoent = ({
 };
 
 export default ExploreCompoent;
+
+//   {
+//   desktopImgUrl,
+//   mblImgUrl,
+//   secHeading,
+//   subHeading,
+//   pageUrl,
+// }: {
+//   desktopImgUrl: any;
+//   mblImgUrl: any;
+//   secHeading: any;
+//   subHeading: any;
+//   pageUrl: any;
+// }

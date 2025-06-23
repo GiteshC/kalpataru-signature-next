@@ -14,14 +14,14 @@ export default function SignatureExperience() {
 
   return (
     <>
-      <BannerComponent
+      {/* <BannerComponent
         videoUrl="/images/signature-experience.mp4"
         imageUrl=""
         mainHeading="Signature Experience"
         para="It's rare to find experiences like this. Justifiably, only the rare find it."
         bannerSubHeading=""
         address=""
-      />
+      /> */}
 
       <section className="signatureSec signExpimgsection" ref={experienceSec}>
         <div className="signatureWrapper">

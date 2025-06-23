@@ -4,7 +4,7 @@ import BannerComponent from "@/components/BannerComponent";
 import ExploreCompoent from "@/components/ExploreCompoent";
 import PathComponent from "@/components/PathComponent";
 import SliderComponent from "@/components/SliderComponent";
-import { luxuriesSlider, maestrosSlider } from "@/components/ArrowSliderComponent";
+import {luxuriesSlider, maestrosSlider} from "@/components/ArrowSliderComponent";
 
 export default function ProjectDetail({ pageData }: any) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -151,8 +151,7 @@ export default function ProjectDetail({ pageData }: any) {
 
   return (
     <div>
-
-      <BannerComponent videoUrl={pageData?.acf?.banner_section?.banner_options?.[0]?.banner_video_field || ""} imageUrl={pageData?.acf?.banner_section?.banner_options?.[0]?.banner_image_field?.url || ""} mainHeading={pageData?.acf?.banner_section?.project_banner_heading || ""} bannerSubHeading={pageData?.acf?.banner_section?.banner_sub_heading || ""} para={pageData?.acf?.banner_section?.banner_description || ""} address={pageData?.acf?.banner_section?.project_location || ""} />
+      <BannerComponent bannerData={pageData?.acf?.banner_section} />
 
       {residencesSignature && (
         <section className="signatureSec">
@@ -314,10 +313,20 @@ export default function ProjectDetail({ pageData }: any) {
       )}
 
       {relatedSection && (
-        <ExploreCompoent desktopImgUrl={relatedSection?.box_desktop_image?.url} mblImgUrl={relatedSection?.box_mobile_image?.url} secHeading={relatedSection?.heading} subHeading={relatedSection?.cta_text} pageUrl={relatedSection?.cta_link} />
+        <ExploreCompoent exploreData={relatedSection} />
       )}
 
-      <PathComponent pageName={pageData?.acf?.breadcrumbs?.current_page_name || ""} flag={true} subpage={pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_text || ""} path={pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_link || ""} pageData={pageData} />
+      <PathComponent
+        pageName={pageData?.acf?.breadcrumbs?.current_page_name || ""}
+        flag={true}
+        subpage={
+          pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_text || ""
+        }
+        path={
+          pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_link || ""
+        }
+        pageData={pageData}
+      />
 
       {/* <div className="modal">
         <div className="modalInner">
