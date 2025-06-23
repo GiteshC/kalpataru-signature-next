@@ -1,9 +1,9 @@
-'use client'
+"use client";
 import { useEffect, useState } from "react";
-import {PageData} from "../utils/type";
+import { PageData } from "../utils/type";
 
 const useGetPageData = (pageId: string) => {
-  const [pageData, setPageData] = useState<PageData | null>(null)
+  const [pageData, setPageData] = useState<PageData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const getPageData = async () => {
     try {
@@ -14,7 +14,6 @@ const useGetPageData = (pageId: string) => {
       setPageData(data);
       setIsLoading(false);
     } catch (err) {
-      console.log(err);
       setIsLoading(false);
     }
   };
