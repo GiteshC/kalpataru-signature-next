@@ -18,8 +18,6 @@ interface PhilosophyProps {
 }
 
 const ClientSignaturePhilosophy = ({ pageData }: PhilosophyProps) => {
-  console.log(pageData);
-
   const visionSec = useRef(null);
   const houseOfFirstSec = useRef(null);
   const { isSecInViewport: visionSection } = useIsSecVisible(visionSec);
@@ -31,7 +29,6 @@ const ClientSignaturePhilosophy = ({ pageData }: PhilosophyProps) => {
     ?.philosophy_components?.[1] as HouseOfFirstSection;
   const sectionThree = pageData?.acf
     ?.philosophy_components?.[2] as ExploreTheEssence;
-  console.log(sectionOne);
 
   useEffect(() => {
     Fancybox.bind("[data-fancybox]", {});

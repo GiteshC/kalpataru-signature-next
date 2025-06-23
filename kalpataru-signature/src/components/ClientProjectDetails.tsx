@@ -18,10 +18,10 @@ export default function ProjectDetail({ pageData }: any) {
   const slider1 = useRef(null);
   const slider2 = useRef(null);
 
-  console.log(pageData);
+
 
   const sectionLast = pageData?.acf?.residences_components;
-  console.log(sectionLast, "24");
+  
   
 
   const handleAccordionClick = (id: number) => {
