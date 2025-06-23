@@ -156,7 +156,6 @@ const ClientSingatureResidences = ({
     searchResult(resProjectData, searchText);
   }, [searchText]);
 
-
   return (
     <>
       <BannerComponent bannerData={pageData?.acf?.banner_section} />
@@ -179,10 +178,11 @@ const ClientSingatureResidences = ({
             </button>
           </div>
         </div>
-        <ResidenceProjects filterprojectData={filterprojectData} />
-        <div id="dataNotFound" style={{ display: "none" }}>
-          No residences found.
-        </div>
+        {filterprojectData.length !== 0 ? (
+          <ResidenceProjects filterprojectData={filterprojectData} />
+        ) : (
+          <div id="dataNotFound">No residences found.</div>
+        )}
       </section>
 
       <ExploreCompoent exploreData={pageData?.acf?.related_section} />
