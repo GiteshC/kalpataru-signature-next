@@ -5,8 +5,13 @@ import ExploreCompoent from "@/components/ExploreCompoent";
 import PathComponent from "@/components/PathComponent";
 import SliderComponent from "@/components/SliderComponent";
 import {luxuriesSlider, maestrosSlider} from "@/components/ArrowSliderComponent";
+import { ResidencesProjectACF } from "@/utils/residenceType";
 
-export default function ProjectDetail({ pageData }: any) {
+interface ProjectDetailProps{
+  pageData: ResidencesProjectACF
+}
+
+export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
   const [isMainAccordionOpen, setIsMainAccordionOpen] = useState(false);
@@ -14,6 +19,7 @@ export default function ProjectDetail({ pageData }: any) {
   const [nav2, setNav2] = useState(null);
   const slider1 = useRef(null);
   const slider2 = useRef(null);
+  
   const relatedSection = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "related_section");
   const residencesSignature = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "residences_signature")
   const residencesLuxuries = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "residences_luxuries")
@@ -312,21 +318,9 @@ export default function ProjectDetail({ pageData }: any) {
         </section>
       )}
 
-      {relatedSection && (
-        <ExploreCompoent exploreData={relatedSection} />
-      )}
+      {relatedSection && (<ExploreCompoent exploreData={relatedSection} />)}
 
-      <PathComponent
-        pageName={pageData?.acf?.breadcrumbs?.current_page_name || ""}
-        flag={true}
-        subpage={
-          pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_text || ""
-        }
-        path={
-          pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_link || ""
-        }
-        pageData={pageData}
-      />
+      <PathComponent pageName={pageData?.acf?.breadcrumbs?.current_page_name || ""} flag={true} subpage={pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_text || ""} path={pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_link || ""} pageData={pageData} />
 
       {/* <div className="modal">
         <div className="modalInner">

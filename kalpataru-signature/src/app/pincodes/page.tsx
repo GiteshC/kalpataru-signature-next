@@ -328,7 +328,7 @@ export default function PincodePage() {
         </div>
       </section>
 
-      <ExploreCompoent desktopImgUrl="/images/request-previewbg.webp" mblImgUrl="/images/request-preview-mobile.webp" secHeading="Signature Residence" subHeading="Explore More" pageUrl="/signature-residences" />
+      {/* <ExploreCompoent desktopImgUrl="/images/request-previewbg.webp" mblImgUrl="/images/request-preview-mobile.webp" secHeading="Signature Residence" subHeading="Explore More" pageUrl="/signature-residences" /> */}
 
       {/* <div className="modal">
         <div className="modalInner">

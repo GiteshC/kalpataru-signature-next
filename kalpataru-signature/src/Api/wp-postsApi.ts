@@ -8,5 +8,5 @@ export async function fetchPostsData(slug: string) {
     }
   );
   const postsData = await res.json();
-  return postsData?.[0];
+  return postsData;
 }
