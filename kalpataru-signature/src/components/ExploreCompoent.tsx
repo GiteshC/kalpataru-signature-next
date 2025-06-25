@@ -16,8 +16,11 @@ const ExploreCompoent = ({ exploreData }: ExploreSecProps) => {
     box_mobile_image: mblImgUrl,
     cta_link: pageUrl,
     cta_text: subHeading,
-    heading: secHeading,
+    heading,
+    section_heading
   } = exploreData;
+
+  const secHeading = heading || section_heading || "";
 
   const { isSecInViewport } = useIsSecVisible(ref);
   return (

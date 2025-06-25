@@ -28,6 +28,7 @@ export interface BannerSection {
 export interface ExploreTheEssence {
   acf_fc_layout?: "related_page_section";
   heading?: string;
+  section_heading?: string;
   cta_text?: string;
   cta_link?: string;
   box_desktop_image?: ImageData;
