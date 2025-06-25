@@ -1,6 +1,6 @@
 "use client";
-
-import usePageLoad from "@/hooks/usePageLoad";
+import { useRef } from "react";
+import useIsSecVisible from "@/hooks/useIsSecVisible";
 import { ExploreTheEssence } from "@/utils/type";
 import Link from "next/link";
 
@@ -9,6 +9,7 @@ interface ExploreSecProps {
 }
 
 const ExploreCompoent = ({ exploreData }: ExploreSecProps) => {
+  const ref = useRef(null);
   if (!exploreData) return null;
   const {
     box_desktop_image: desktopImgUrl,
@@ -18,22 +19,24 @@ const ExploreCompoent = ({ exploreData }: ExploreSecProps) => {
     heading: secHeading,
   } = exploreData;
 
-  const { isPageLoad } = usePageLoad();
+  const { isSecInViewport } = useIsSecVisible(ref);
   return (
-    <section className="requestSec">
+    <section className="requestSec" ref={ref}>
       <div className="requestBG">
         <img src={desktopImgUrl?.url} alt="" className="desktopImg" />
         <img src={mblImgUrl?.url} alt="" className="mobileImg" />
       </div>
       <div className="requestWrapper requestContent">
         <div className="secHeading">
-          <h2 className={`section-text-up ${isPageLoad ? "newClass" : ""}`}>
+          <h2
+            className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}
+          >
             <span>{secHeading}</span>
           </h2>
           <Link
             href={`${pageUrl}`}
             className={`ctaOne section-text-up ${
-              isPageLoad ? "newClass" : ""
+              isSecInViewport ? "newClass" : ""
             } `}
           >
             <span>

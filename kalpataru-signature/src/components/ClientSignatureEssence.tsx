@@ -28,6 +28,7 @@ interface EssenceProps {
 }
 
 const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
+  
   const pincodeSlider1 = useRef<Slider | null>(null);
   const pincodeSlider2 = useRef<Slider | null>(null);
   const [nav1, setNav1] = useState<Slider | null>(null);

@@ -4,7 +4,10 @@ import BannerComponent from "@/components/BannerComponent";
 import ExploreCompoent from "@/components/ExploreCompoent";
 import PathComponent from "@/components/PathComponent";
 import SliderComponent from "@/components/SliderComponent";
-import {luxuriesSlider, maestrosSlider} from "@/components/ArrowSliderComponent";
+import {
+  luxuriesSlider,
+  maestrosSlider,
+} from "@/components/ArrowSliderComponent";
 
 export default function ProjectDetail({ pageData }: any) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -14,13 +17,28 @@ export default function ProjectDetail({ pageData }: any) {
   const [nav2, setNav2] = useState(null);
   const slider1 = useRef(null);
   const slider2 = useRef(null);
-  const relatedSection = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "related_section");
-  const residencesSignature = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "residences_signature")
-  const residencesLuxuries = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "residences_luxuries")
-  const residencesMaestros = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "maestros_section")
-  const residencesHighlightSection = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "residences_highlight_section")
-  const residencesReraDetails = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "rera_details_section")
-  const residencesRequestPreview = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "request_preview_section")
+  const relatedSection = pageData?.acf?.residences_components?.find(
+    (component: any) => component?.acf_fc_layout === "related_section"
+  );
+  const residencesSignature = pageData?.acf?.residences_components?.find(
+    (component: any) => component?.acf_fc_layout === "residences_signature"
+  );
+  const residencesLuxuries = pageData?.acf?.residences_components?.find(
+    (component: any) => component?.acf_fc_layout === "residences_luxuries"
+  );
+  const residencesMaestros = pageData?.acf?.residences_components?.find(
+    (component: any) => component?.acf_fc_layout === "maestros_section"
+  );
+  const residencesHighlightSection = pageData?.acf?.residences_components?.find(
+    (component: any) =>
+      component?.acf_fc_layout === "residences_highlight_section"
+  );
+  const residencesReraDetails = pageData?.acf?.residences_components?.find(
+    (component: any) => component?.acf_fc_layout === "rera_details_section"
+  );
+  const residencesRequestPreview = pageData?.acf?.residences_components?.find(
+    (component: any) => component?.acf_fc_layout === "request_preview_section"
+  );
 
   const handleAccordionClick = (id: number) => {
     setOpenAccordion(openAccordion === id ? null : id);
@@ -157,13 +175,23 @@ export default function ProjectDetail({ pageData }: any) {
         <section className="signatureSec">
           <div className="signatureWrapper">
             <div className="secHeading">
-              <h2 className="section-text-up"><span>{residencesSignature?.section_heading}</span></h2>
-              <p className="section-text-up"><span>{residencesSignature?.section_description}</span></p>
+              <h2 className="section-text-up">
+                <span>{residencesSignature?.section_heading}</span>
+              </h2>
+              <p className="section-text-up">
+                <span>{residencesSignature?.section_description}</span>
+              </p>
             </div>
           </div>
           <div className="videoBox">
-            <img src={residencesSignature?.desktop_image?.url} className="desktopImg" />
-            <img src={residencesSignature?.mobile_image?.url} className="mobileImg" />
+            <img
+              src={residencesSignature?.desktop_image?.url}
+              className="desktopImg"
+            />
+            <img
+              src={residencesSignature?.mobile_image?.url}
+              className="mobileImg"
+            />
           </div>
         </section>
       )}
@@ -172,31 +200,54 @@ export default function ProjectDetail({ pageData }: any) {
         <section className="luxuriesSlider">
           <div className="signatureWrapper">
             <div className="secHeading">
-              <h2 className="section-text-up"><span>{residencesLuxuries?.section_heading}</span></h2>
+              <h2 className="section-text-up">
+                <span>{residencesLuxuries?.section_heading}</span>
+              </h2>
             </div>
             <div className="wrapper">
               <div className="slider-container">
                 {residencesLuxuries?.luxuries_gallery?.length > 1 && (
                   <div className="slides-numbers" style={{ display: "block" }}>
-                    <span className="active">{String(currentSlide + 1).padStart(2, "0")}</span> 
+                    <span className="active">
+                      {String(currentSlide + 1).padStart(2, "0")}
+                    </span>
                     <span>&nbsp;/&nbsp;</span>
-                    <span className="total">{String(totalHolderSlides).padStart(2, "0")}</span>
+                    <span className="total">
+                      {String(totalHolderSlides).padStart(2, "0")}
+                    </span>
                   </div>
                 )}
                 <div className="slider-holder">
-                  <SliderComponent setting={{...luxuriesSlider, asNavFor: nav1 ?? undefined, beforeChange: (_oldIndex: number, newIndex: number) => {setCurrentSlide(newIndex);},}} ref={slider1}>
-                    {residencesLuxuries?.luxuries_gallery?.map((slide: any, index: number) => (
-                      <div key={index} className="item">
-                        <div className="media-wrap">
-                          <img src={slide.luxuries_desktop_image?.url} className="desktopImg" />
-                          <img src={slide.luxuries_mobile_image?.url} className="mobileImg" />
+                  <SliderComponent
+                    setting={{
+                      ...luxuriesSlider,
+                      asNavFor: nav1 ?? undefined,
+                      beforeChange: (_oldIndex: number, newIndex: number) => {
+                        setCurrentSlide(newIndex);
+                      },
+                    }}
+                    ref={slider1}
+                  >
+                    {residencesLuxuries?.luxuries_gallery?.map(
+                      (slide: any, index: number) => (
+                        <div key={index} className="item">
+                          <div className="media-wrap">
+                            <img
+                              src={slide.luxuries_desktop_image?.url}
+                              className="desktopImg"
+                            />
+                            <img
+                              src={slide.luxuries_mobile_image?.url}
+                              className="mobileImg"
+                            />
+                          </div>
+                          <div className="overlapText">
+                            <img src={slide.luxuries_heading_icon?.url} />
+                            <h3>{slide.luxuries_heading}</h3>
+                          </div>
                         </div>
-                        <div className="overlapText">
-                          <img src={slide.luxuries_heading_icon?.url} />
-                          <h3>{slide.luxuries_heading}</h3>
-                        </div>
-                      </div>
-                    ))}
+                      )
+                    )}
                   </SliderComponent>
                 </div>
               </div>
@@ -208,38 +259,60 @@ export default function ProjectDetail({ pageData }: any) {
       {residencesMaestros && (
         <section className="maestrosSlidersec">
           <div className="secHeading">
-            <h2 className="section-text-up"><span>{residencesMaestros?.section_heading}</span></h2>
-            <p className="section-text-up"><span>{residencesMaestros?.section_description}</span></p>
+            <h2 className="section-text-up">
+              <span>{residencesMaestros?.section_heading}</span>
+            </h2>
+            <p className="section-text-up">
+              <span>{residencesMaestros?.section_description}</span>
+            </p>
           </div>
           <div className="maestrosliderCounter">
             <div className="sliderArrow">
               {residencesMaestros?.maestros_content?.length > 1 && (
                 <div className="slides-numbers" style={{ display: "block" }}>
-                  <span className="active">{String(currentSlide + 1).padStart(2, "0")}</span> 
-                  <span>&nbsp;/&nbsp;</span>  
-                  <span className="total">{String(totalSlides).padStart(2, "0")}</span>
+                  <span className="active">
+                    {String(currentSlide + 1).padStart(2, "0")}
+                  </span>
+                  <span>&nbsp;/&nbsp;</span>
+                  <span className="total">
+                    {String(totalSlides).padStart(2, "0")}
+                  </span>
                 </div>
               )}
             </div>
             <div className="maestrosSlider">
-              <SliderComponent setting={{...maestrosSlider, asNavFor: nav2 ?? undefined, beforeChange: (_oldIndex: number, newIndex: number) => {setCurrentSlide(newIndex);},}} ref={slider2}>
-                {residencesMaestros?.maestros_content?.map((slide: any, index: number) => (
-                  <div key={index} className="innerSliderbox">
-                    <div className="imgDiv">
-                      <img src={slide.maestros_image?.url} alt={slide.maestros_image?.title} />
-                    </div>
-                    <div className="infoDiv">
-                      <div className="headingMain">
-                        <h3>{slide.person_name}</h3>
-                        <h5>{slide.person_designation}</h5>
+              <SliderComponent
+                setting={{
+                  ...maestrosSlider,
+                  asNavFor: nav2 ?? undefined,
+                  beforeChange: (_oldIndex: number, newIndex: number) => {
+                    setCurrentSlide(newIndex);
+                  },
+                }}
+                ref={slider2}
+              >
+                {residencesMaestros?.maestros_content?.map(
+                  (slide: any, index: number) => (
+                    <div key={index} className="innerSliderbox">
+                      <div className="imgDiv">
+                        <img
+                          src={slide.maestros_image?.url}
+                          alt={slide.maestros_image?.title}
+                        />
                       </div>
-                      <div className="subHeadings">
-                        <h4>{slide.heading}</h4>
-                        <p>{slide.description}</p>
+                      <div className="infoDiv">
+                        <div className="headingMain">
+                          <h3>{slide.person_name}</h3>
+                          <h5>{slide.person_designation}</h5>
+                        </div>
+                        <div className="subHeadings">
+                          <h4>{slide.heading}</h4>
+                          <p>{slide.description}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  )
+                )}
               </SliderComponent>
             </div>
           </div>
@@ -250,13 +323,21 @@ export default function ProjectDetail({ pageData }: any) {
         <section className="signatureSec projectdetBeach">
           <div className="signatureWrapper">
             <div className="secHeading">
-              <h2 className="section-text-up"><span>{residencesHighlightSection?.section_heading}</span></h2>
+              <h2 className="section-text-up">
+                <span>{residencesHighlightSection?.section_heading}</span>
+              </h2>
             </div>
           </div>
           <div className="signatureImg">
             <div className="Viewimages">
-              <img src={residencesHighlightSection?.section_desktop_image?.url} className="desktopImg" />
-              <img src={residencesHighlightSection?.section_mobile_image?.url} className="mobileImg" />
+              <img
+                src={residencesHighlightSection?.section_desktop_image?.url}
+                className="desktopImg"
+              />
+              <img
+                src={residencesHighlightSection?.section_mobile_image?.url}
+                className="mobileImg"
+              />
             </div>
             <div className="innerText">
               <h3>{residencesHighlightSection?.box_description}</h3>
@@ -269,25 +350,66 @@ export default function ProjectDetail({ pageData }: any) {
         <section className="reraContainer">
           <ul className="accordion">
             <li>
-              <div className={`mainHeadingdiv toggle ${isMainAccordionOpen ? 'showDiv' : ''}`} onClick={handleMainAccordionClick}>
-                <a href="#" onClick={(e) => e.preventDefault()} className="headingMain">{residencesReraDetails?.rera_heading}</a>
+              <div
+                className={`mainHeadingdiv toggle ${
+                  isMainAccordionOpen ? "showDiv" : ""
+                }`}
+                onClick={handleMainAccordionClick}
+              >
+                <a
+                  href="#"
+                  onClick={(e) => e.preventDefault()}
+                  className="headingMain"
+                >
+                  {residencesReraDetails?.rera_heading}
+                </a>
               </div>
-              <ul className={`inner ${isMainAccordionOpen ? 'show' : ''}`} style={{ display: isMainAccordionOpen ? 'block' : 'none' }}>
-                {residencesReraDetails?.rera_detail_lists?.map((proj: any, index: number)=>(
-                  <li key={index}>
-                    <div className={`innerDescHeading toggle ${openAccordion === index ? 'showDiv' : ''}`} onClick={()=>handleAccordionClick(index)}>
-                      <a href="#" onClick={(e) => e.preventDefault()} className="subHeadings">{proj.rera_list_heading}</a>
-                    </div>
-                    <div className="innerInfo" style={{display: openAccordion === index ? 'block' : 'none', transition: 'all 0.3s ease-in-out'}}>
-                      <div className="descDetils">
-                        <p>
-                          <a href="https://maharera.mahaonline.gov.in/" onClick={(e) => e.preventDefault()} target="_blank">{proj.rera_list_description}</a>
-                        </p>
-                        <div className="scannerImg"><img src={proj.rera_list_image?.url} /></div>
+              <ul
+                className={`inner ${isMainAccordionOpen ? "show" : ""}`}
+                style={{ display: isMainAccordionOpen ? "block" : "none" }}
+              >
+                {residencesReraDetails?.rera_detail_lists?.map(
+                  (proj: any, index: number) => (
+                    <li key={index}>
+                      <div
+                        className={`innerDescHeading toggle ${
+                          openAccordion === index ? "showDiv" : ""
+                        }`}
+                        onClick={() => handleAccordionClick(index)}
+                      >
+                        <a
+                          href="#"
+                          onClick={(e) => e.preventDefault()}
+                          className="subHeadings"
+                        >
+                          {proj.rera_list_heading}
+                        </a>
                       </div>
-                    </div>
-                  </li>
-                ))}
+                      <div
+                        className="innerInfo"
+                        style={{
+                          display: openAccordion === index ? "block" : "none",
+                          transition: "all 0.3s ease-in-out",
+                        }}
+                      >
+                        <div className="descDetils">
+                          <p>
+                            <a
+                              href="https://maharera.mahaonline.gov.in/"
+                              onClick={(e) => e.preventDefault()}
+                              target="_blank"
+                            >
+                              {proj.rera_list_description}
+                            </a>
+                          </p>
+                          <div className="scannerImg">
+                            <img src={proj.rera_list_image?.url} />
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  )
+                )}
               </ul>
             </li>
           </ul>
@@ -297,14 +419,23 @@ export default function ProjectDetail({ pageData }: any) {
       {residencesRequestPreview && (
         <section className="requestSec reqNewSec">
           <div className="requestBG">
-            <img src={residencesRequestPreview?.section_desktop_image?.url} className="desktopImg" />
-            <img src={residencesRequestPreview?.section_mobile_image?.url} className="mobileImg"  />
+            <img
+              src={residencesRequestPreview?.section_desktop_image?.url}
+              className="desktopImg"
+            />
+            <img
+              src={residencesRequestPreview?.section_mobile_image?.url}
+              className="mobileImg"
+            />
           </div>
           <div className="requestWrapper requestContent reqNewContent">
             <div className="secHeading newSecHeading ">
               <h2 className="section-text-up">
                 <div className="trigger">
-                  <span>{residencesRequestPreview?.section_heading} <img src="/images/cta-arrow-white.svg" /></span>
+                  <span>
+                    {residencesRequestPreview?.section_heading}{" "}
+                    <img src="/images/cta-arrow-white.svg" />
+                  </span>
                 </div>
               </h2>
             </div>
@@ -312,9 +443,7 @@ export default function ProjectDetail({ pageData }: any) {
         </section>
       )}
 
-      {relatedSection && (
-        <ExploreCompoent exploreData={relatedSection} />
-      )}
+      {relatedSection && <ExploreCompoent exploreData={relatedSection} />}
 
       <PathComponent
         pageName={pageData?.acf?.breadcrumbs?.current_page_name || ""}

@@ -20,7 +20,6 @@ export interface HouseOfFirstSection {
 
 
 export type PhilosophyComponent =
-  | BannerSection
   | VisionSection
   | HouseOfFirstSection
   | ExploreTheEssence;

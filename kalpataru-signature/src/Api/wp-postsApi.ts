@@ -1,6 +1,6 @@
-export async function fetchPostsData(slug: string) {
+export async function fetchPostsData(postName: string) {
   const res = await fetch(
-    `https://ixdtm.com/projects/kalpataru-signature-wp/wp-json/wp/v2/${slug}`,
+    `https://ixdtm.com/projects/kalpataru-signature-wp/wp-json/wp/v2/${postName}`,
     {
       next: {
         revalidate: 60,
@@ -8,5 +8,5 @@ export async function fetchPostsData(slug: string) {
     }
   );
   const postsData = await res.json();
-  return postsData?.[0];
+  return postsData;
 }
