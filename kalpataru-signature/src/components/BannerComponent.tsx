@@ -17,22 +17,23 @@ const BannerComponent = ({ bannerData }: BannerProps) => {
     banner_sub_heading: bannerSubHeading,
     banner_description: para,
     project_location: address,
+    project_banner_heading: projectBannerHeading = "",
   } = bannerData;
 
   const videoUrl = video_link || banner_video || "";
 
   const { isPageLoad } = usePageLoad();
-  const spanData = mainHeading.split(" ");
+  const spanData = mainHeading ? mainHeading.split(" ") : projectBannerHeading?.split(" ");
 
   return (
     <section className="homebannerSec projectdetBanner">
       <div className="videoBox">
-        {videoUrl ? (
+        {videoUrl || bannerData?.banner_options?.[0]?.banner_video_field ? (
           <video autoPlay muted loop playsInline preload="metadata">
-            <source src={`${videoUrl}`} type="video/mp4" />
+            <source src={`${videoUrl ? videoUrl : bannerData?.banner_options?.[0]?.banner_video_field}`} type="video/mp4" />
           </video>
         ) : (
-          <img src={`${imageUrl}`} alt="" />
+          <img src={`${imageUrl ? imageUrl : bannerData?.banner_options?.[0]?.banner_image_field?.url}`} alt="" />
         )}
       </div>
       <div className="homebannerWrapper homebannerContent">
@@ -40,7 +41,7 @@ const BannerComponent = ({ bannerData }: BannerProps) => {
           <h1
             className={`swift-up-text ${isPageLoad ? "new-swift-up-text" : ""}`}
           >
-            {spanData.map((el: any, i: number) => (
+            {spanData?.map((el: any, i: number) => (
               <span key={el}>
                 <i style={{ transitionDelay: `${i * 0.4}s` }}>{el}&nbsp;</i>
               </span>
