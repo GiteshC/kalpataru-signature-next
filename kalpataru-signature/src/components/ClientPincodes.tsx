@@ -4,144 +4,35 @@ import ExploreCompoent from "@/components/ExploreCompoent";
 import { useEffect, useRef, useState } from "react";
 import { pincodeSlider } from "@/components/ArrowSliderComponent";
 import SliderComponent from "@/components/SliderComponent";
+import SectionObserver from "./SectionObserver";
 
 export default function PincodePage({ pageData }: any) {
   const [nav1, setNav1] = useState(null);
   const slider1 = useRef(null);
-
   const pincodesContentBox = pageData?.acf?.pincodes_content_box;
 
   useEffect(() => {
     setNav1(slider1.current);
   }, []);
 
-  useEffect(() => {
-    const hasBanner = document.querySelector(".animationBanner");
-
-    const addClass = (selector: string, className: string) => {
-      document
-        .querySelectorAll(selector)
-        .forEach((el) => el.classList.add(className));
-    };
-
-    const fadeOut = (selector: string, duration: number) => {
-      document.querySelectorAll(selector).forEach((el) => {
-        (el as HTMLElement).style.transition = `opacity ${duration}ms`;
-        (el as HTMLElement).style.opacity = "0";
-        setTimeout(() => {
-          (el as HTMLElement).style.display = "none";
-        }, duration);
-      });
-    };
-
-    const fadeIn = (selector: string, duration: number) => {
-      document.querySelectorAll(selector).forEach((el) => {
-        (el as HTMLElement).style.opacity = "0";
-        (el as HTMLElement).style.display = "block";
-        (el as HTMLElement).style.transition = `opacity ${duration}ms`;
-        setTimeout(() => {
-          (el as HTMLElement).style.opacity = "1";
-        }, 10);
-      });
-    };
-
-    const swiftUpTextAnimate = () => {
-      const swiftUpElements = document.querySelectorAll(".new-swift-up-text");
-      swiftUpElements.forEach((elem) => {
-        const words = elem.textContent?.trim().split(" ") || [];
-        elem.innerHTML = "";
-        words.forEach((word) => {
-          elem.innerHTML += `<span><i>${word}</i></span> `;
-        });
-        const children = elem.querySelectorAll("span > i");
-        children.forEach((node, index) => {
-          (node as HTMLElement).style.animationDelay = `${index * 0.4}s`;
-        });
-      });
-    };
-
-    if (hasBanner) {
-      addClass(".loader", "loaded");
-      addClass("body", "loaded");
-      fadeIn(".loader", 3000);
-
-      setTimeout(() => {
-        fadeOut(".loader", 3000);
-        addClass(".loaderLogoimg", "loaderImg");
-        addClass("header", "headerNew");
-        addClass(".letter", "letterNew");
-      }, 3000);
-
-      setTimeout(() => {
-        addClass(".headerWrapper ul", "innerMenulink");
-        addClass(".centerLogo", "centerLogonew");
-        addClass(".scrollText", "scrollTextnew");
-        addClass(".swift-up-text", "new-swift-up-text");
-        swiftUpTextAnimate();
-      }, 4000);
-
-      setTimeout(() => {
-        addClass(".bannerTextanimation", "bannerTextanimationnew");
-      }, 5000);
-
-      setTimeout(() => {
-        addClass(".loader", "loaded");
-        addClass("body", "loaded");
-      }, 60000);
-    } else {
-      addClass("header", "headerNew");
-      addClass(".headerWrapper ul", "innerMenulink");
-      addClass(".centerLogo", "centerLogonew");
-      addClass(".scrollText", "scrollTextnew");
-      addClass(".swift-up-text", "new-swift-up-text");
-      swiftUpTextAnimate();
-
-      setTimeout(() => {
-        addClass(".bannerTextanimation", "bannerTextanimationnew");
-      }, 1000);
-    }
-
-    const inViewport = () => {
-      const allElements = document.getElementsByClassName("section-text-up");
-      const windowHeight = window.innerHeight;
-
-      const elems = () => {
-        for (let i = 0; i < allElements.length; i++) {
-          const top = allElements[i].getBoundingClientRect().top;
-          if (top < windowHeight) {
-            allElements[i].classList.add("newClass");
-          } else {
-            allElements[i].classList.remove("newClass");
-          }
-        }
-      };
-
-      elems();
-      window.addEventListener("scroll", elems);
-
-      // Cleanup scroll listener
-      return () => window.removeEventListener("scroll", elems);
-    };
-
-    inViewport();
-  }, []);  
-
   return (
     <div>
       <BannerComponent bannerData={pageData?.acf?.pincodes_banner_section} />
 
       {pincodesContentBox && (
-        <section className="signPincodeSec">
-          <div className="signPindcodeWrapper">
-            <div className="secHeading">
-              <h2 className="section-text-up">
-                <span>{pincodesContentBox?.section_heading}</span>
-              </h2>
-            </div>
-            <div className="signPincodeContainer">
-                {pincodesContentBox?.pincodes_detail_boxes?.map((detailBox : any, index : number)=>(
-                    <div key={index} className="signPincodeContent section-text-up">
-                        <div className="signPincodeImg">
+        <SectionObserver>
+          {(isSecInViewport, ref) => (
+            <section className="signPincodeSec" ref={ref}>
+              <div className="signPindcodeWrapper">
+                <div className="secHeading">
+                  <h2 className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}>
+                    <span>{pincodesContentBox?.section_heading}</span>
+                  </h2>
+                </div>
+                <div className="signPincodeContainer">
+                  {pincodesContentBox?.pincodes_detail_boxes?.map((detailBox : any, index : number)=>(
+                    <div key={index} className={`signPincodeContent section-text-up ${isSecInViewport ? "newClass" : ""}`} style={isSecInViewport ? { transitionDelay: `${index * 0.3}s`} : {}}>
+                      <div className="signPincodeImg">
                         <span className="single-item">
                             <SliderComponent setting={{...pincodeSlider, asNavFor: nav1 ?? undefined}} ref={slider1}>
                                 {detailBox.pincodes_image_slider?.map((image : any, idx : number)=>(
@@ -152,24 +43,26 @@ export default function PincodePage({ pageData }: any) {
                                 ))}
                             </SliderComponent>
                         </span>
-                        </div>
-                        <div className="signPincodedata">
-                        <h3 className="section-text-up">
+                      </div>
+                      <div className="signPincodedata">
+                        <h3 className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}>
                             <span>{detailBox?.pincodes_heading}</span>
                         </h3>
-                        <p className="section-text-up newtext-p">
+                        <p className={`section-text-up newtext-p ${isSecInViewport ? "newClass" : ""}`}>
                             {" "}
                             <span>{detailBox?.pincodes_description}</span>
                         </p>
                         <span>
                             <a className="ctaBluetext" href={detailBox?.cta_link}>{detailBox?.cta_text}{" "}<img src="/images/view-project-arrow.svg" alt="" /></a>
                         </span>
-                        </div>
+                      </div>
                     </div>
-                ))}
-            </div>
-          </div>
-        </section>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+        </SectionObserver>
       )}
 
       <ExploreCompoent exploreData={pageData?.acf?.related_sections} />
