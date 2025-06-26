@@ -9,6 +9,7 @@ import {
   maestrosSlider,
 } from "@/components/ArrowSliderComponent";
 import { ResidencesProjectACF } from "@/utils/residenceType";
+import SectionObserver from "./SectionObserver";
 
 interface ProjectDetailProps {
   pageData: ResidencesProjectACF;
@@ -62,194 +63,158 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
     setNav2(slider2.current);
   }, []);
 
-  useEffect(() => {
-    const hasBanner = document.querySelector(".animationBanner");
-
-    const addClass = (selector: string, className: string) => {
-      document
-        .querySelectorAll(selector)
-        .forEach((el) => el.classList.add(className));
-    };
-
-    const fadeOut = (selector: string, duration: number) => {
-      document.querySelectorAll(selector).forEach((el) => {
-        (el as HTMLElement).style.transition = `opacity ${duration}ms`;
-        (el as HTMLElement).style.opacity = "0";
-        setTimeout(() => {
-          (el as HTMLElement).style.display = "none";
-        }, duration);
-      });
-    };
-
-    const fadeIn = (selector: string, duration: number) => {
-      document.querySelectorAll(selector).forEach((el) => {
-        (el as HTMLElement).style.opacity = "0";
-        (el as HTMLElement).style.display = "block";
-        (el as HTMLElement).style.transition = `opacity ${duration}ms`;
-        setTimeout(() => {
-          (el as HTMLElement).style.opacity = "1";
-        }, 10);
-      });
-    };
-
-    const swiftUpTextAnimate = () => {
-      const swiftUpElements = document.querySelectorAll(".new-swift-up-text");
-      swiftUpElements.forEach((elem) => {
-        const words = elem.textContent?.trim().split(" ") || [];
-        elem.innerHTML = "";
-        words.forEach((word) => {
-          elem.innerHTML += `<span><i>${word}</i></span> `;
-        });
-        const children = elem.querySelectorAll("span > i");
-        children.forEach((node, index) => {
-          (node as HTMLElement).style.animationDelay = `${index * 0.4}s`;
-        });
-      });
-    };
-
-    if (hasBanner) {
-      addClass(".loader", "loaded");
-      addClass("body", "loaded");
-      fadeIn(".loader", 3000);
-
-      setTimeout(() => {
-        fadeOut(".loader", 3000);
-        addClass(".loaderLogoimg", "loaderImg");
-        addClass("header", "headerNew");
-        addClass(".letter", "letterNew");
-      }, 3000);
-
-      setTimeout(() => {
-        addClass(".headerWrapper ul", "innerMenulink");
-        addClass(".centerLogo", "centerLogonew");
-        addClass(".scrollText", "scrollTextnew");
-        addClass(".swift-up-text", "new-swift-up-text");
-        swiftUpTextAnimate();
-      }, 4000);
-
-      setTimeout(() => {
-        addClass(".bannerTextanimation", "bannerTextanimationnew");
-      }, 5000);
-
-      setTimeout(() => {
-        addClass(".loader", "loaded");
-        addClass("body", "loaded");
-      }, 60000);
-    } else {
-      addClass("header", "headerNew");
-      addClass(".headerWrapper ul", "innerMenulink");
-      addClass(".centerLogo", "centerLogonew");
-      addClass(".scrollText", "scrollTextnew");
-      addClass(".swift-up-text", "new-swift-up-text");
-      swiftUpTextAnimate();
-
-      setTimeout(() => {
-        addClass(".bannerTextanimation", "bannerTextanimationnew");
-      }, 1000);
-    }
-
-    const inViewport = () => {
-      const allElements = document.getElementsByClassName("section-text-up");
-      const windowHeight = window.innerHeight;
-
-      const elems = () => {
-        for (let i = 0; i < allElements.length; i++) {
-          const top = allElements[i].getBoundingClientRect().top;
-          if (top < windowHeight) {
-            allElements[i].classList.add("newClass");
-          } else {
-            allElements[i].classList.remove("newClass");
-          }
-        }
-      };
-
-      elems();
-      window.addEventListener("scroll", elems);
-
-      // Cleanup scroll listener
-      return () => window.removeEventListener("scroll", elems);
-    };
-
-    inViewport();
-  }, []);
-
   return (
     <>
       <BannerComponent bannerData={pageData?.acf?.banner_section} />
 
       {residencesSignature && (
-        <section className="signatureSec">
-          <div className="signatureWrapper">
-            <div className="secHeading">
-              <h2 className="section-text-up">
-                <span>{residencesSignature?.section_heading}</span>
-              </h2>
-              <p className="section-text-up">
-                <span>{residencesSignature?.section_description}</span>
-              </p>
-            </div>
-          </div>
-          <div className="videoBox">
-            <img
-              src={residencesSignature?.desktop_image?.url}
-              className="desktopImg"
-            />
-            <img
-              src={residencesSignature?.mobile_image?.url}
-              className="mobileImg"
-            />
-          </div>
-        </section>
+        <SectionObserver>
+          {(isSecInViewport, ref) => (
+            <section className="signatureSec" ref={ref}>
+              <div className="signatureWrapper">
+                <div className="secHeading">
+                  <h2 className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}>
+                    <span>{residencesSignature?.section_heading}</span>
+                  </h2>
+                  <p className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}>
+                    <span>{residencesSignature?.section_description}</span>
+                  </p>
+                </div>
+              </div>
+              <div className="videoBox">
+                <img
+                  src={residencesSignature?.desktop_image?.url}
+                  className="desktopImg"
+                />
+                <img
+                  src={residencesSignature?.mobile_image?.url}
+                  className="mobileImg"
+                />
+              </div>
+            </section>
+          )}
+        </SectionObserver>
       )}
 
       {residencesLuxuries && (
-        <section className="luxuriesSlider">
-          <div className="signatureWrapper">
-            <div className="secHeading">
-              <h2 className="section-text-up">
-                <span>{residencesLuxuries?.section_heading}</span>
-              </h2>
-            </div>
-            <div className="wrapper">
-              <div className="slider-container">
-                {residencesLuxuries?.luxuries_gallery?.length > 1 && (
-                  <div className="slides-numbers" style={{ display: "block" }}>
-                    <span className="active">
-                      {String(currentSlide + 1).padStart(2, "0")}
-                    </span>
-                    <span>&nbsp;/&nbsp;</span>
-                    <span className="total">
-                      {String(totalHolderSlides).padStart(2, "0")}
-                    </span>
+        <SectionObserver>
+          {(isSecInViewport, ref) => (
+            <section className="luxuriesSlider" ref={ref}>
+              <div className="signatureWrapper">
+                <div className="secHeading">
+                  <h2 className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}>
+                    <span>{residencesLuxuries?.section_heading}</span>
+                  </h2>
+                </div>
+                <div className="wrapper">
+                  <div className="slider-container">
+                    {residencesLuxuries?.luxuries_gallery?.length > 1 && (
+                      <div className="slides-numbers" style={{ display: "block" }}>
+                        <span className="active">
+                          {String(currentSlide + 1).padStart(2, "0")}
+                        </span>
+                        <span>&nbsp;/&nbsp;</span>
+                        <span className="total">
+                          {String(totalHolderSlides).padStart(2, "0")}
+                        </span>
+                      </div>
+                    )}
+                    <div className="slider-holder">
+                      <SliderComponent
+                        setting={{
+                          ...luxuriesSlider,
+                          asNavFor: nav1 ?? undefined,
+                          beforeChange: (_oldIndex: number, newIndex: number) => {
+                            setCurrentSlide(newIndex);
+                          },
+                        }}
+                        ref={slider1}
+                      >
+                        {residencesLuxuries?.luxuries_gallery?.map(
+                          (slide: any, index: number) => (
+                            <div key={index} className="item">
+                              <div className="media-wrap">
+                                <img
+                                  src={slide.luxuries_desktop_image?.url}
+                                  className="desktopImg"
+                                />
+                                <img
+                                  src={slide.luxuries_mobile_image?.url}
+                                  className="mobileImg"
+                                />
+                              </div>
+                              <div className="overlapText">
+                                <img src={slide.luxuries_heading_icon?.url} />
+                                <h3>{slide.luxuries_heading}</h3>
+                              </div>
+                            </div>
+                          )
+                        )}
+                      </SliderComponent>
+                    </div>
                   </div>
-                )}
-                <div className="slider-holder">
+                </div>
+              </div>
+            </section>          
+          )}
+        </SectionObserver>
+      )}
+
+      {residencesMaestros && (
+        <SectionObserver>
+          {(isSecInViewport, ref) => (
+            <section className="maestrosSlidersec" ref={ref}>
+              <div className="secHeading">
+                <h2 className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}>
+                  <span>{residencesMaestros?.section_heading}</span>
+                </h2>
+                <p className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}>
+                  <span>{residencesMaestros?.section_description}</span>
+                </p>
+              </div>
+              <div className="maestrosliderCounter">
+                <div className="sliderArrow">
+                  {residencesMaestros?.maestros_content?.length > 1 && (
+                    <div className="slides-numbers" style={{ display: "block" }}>
+                      <span className="active">
+                        {String(currentSlide + 1).padStart(2, "0")}
+                      </span>
+                      <span>&nbsp;/&nbsp;</span>
+                      <span className="total">
+                        {String(totalSlides).padStart(2, "0")}
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <div className="maestrosSlider">
                   <SliderComponent
                     setting={{
-                      ...luxuriesSlider,
-                      asNavFor: nav1 ?? undefined,
+                      ...maestrosSlider,
+                      asNavFor: nav2 ?? undefined,
                       beforeChange: (_oldIndex: number, newIndex: number) => {
                         setCurrentSlide(newIndex);
                       },
                     }}
-                    ref={slider1}
+                    ref={slider2}
                   >
-                    {residencesLuxuries?.luxuries_gallery?.map(
+                    {residencesMaestros?.maestros_content?.map(
                       (slide: any, index: number) => (
-                        <div key={index} className="item">
-                          <div className="media-wrap">
+                        <div key={index} className="innerSliderbox">
+                          <div className="imgDiv">
                             <img
-                              src={slide.luxuries_desktop_image?.url}
-                              className="desktopImg"
-                            />
-                            <img
-                              src={slide.luxuries_mobile_image?.url}
-                              className="mobileImg"
+                              src={slide.maestros_image?.url}
+                              alt={slide.maestros_image?.title}
                             />
                           </div>
-                          <div className="overlapText">
-                            <img src={slide.luxuries_heading_icon?.url} />
-                            <h3>{slide.luxuries_heading}</h3>
+                          <div className="infoDiv">
+                            <div className="headingMain">
+                              <h3>{slide.person_name}</h3>
+                              <h5>{slide.person_designation}</h5>
+                            </div>
+                            <div className="subHeadings">
+                              <h4>{slide.heading}</h4>
+                              <p>{slide.description}</p>
+                            </div>
                           </div>
                         </div>
                       )
@@ -257,196 +222,145 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
                   </SliderComponent>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {residencesMaestros && (
-        <section className="maestrosSlidersec">
-          <div className="secHeading">
-            <h2 className="section-text-up">
-              <span>{residencesMaestros?.section_heading}</span>
-            </h2>
-            <p className="section-text-up">
-              <span>{residencesMaestros?.section_description}</span>
-            </p>
-          </div>
-          <div className="maestrosliderCounter">
-            <div className="sliderArrow">
-              {residencesMaestros?.maestros_content?.length > 1 && (
-                <div className="slides-numbers" style={{ display: "block" }}>
-                  <span className="active">
-                    {String(currentSlide + 1).padStart(2, "0")}
-                  </span>
-                  <span>&nbsp;/&nbsp;</span>
-                  <span className="total">
-                    {String(totalSlides).padStart(2, "0")}
-                  </span>
-                </div>
-              )}
-            </div>
-            <div className="maestrosSlider">
-              <SliderComponent
-                setting={{
-                  ...maestrosSlider,
-                  asNavFor: nav2 ?? undefined,
-                  beforeChange: (_oldIndex: number, newIndex: number) => {
-                    setCurrentSlide(newIndex);
-                  },
-                }}
-                ref={slider2}
-              >
-                {residencesMaestros?.maestros_content?.map(
-                  (slide: any, index: number) => (
-                    <div key={index} className="innerSliderbox">
-                      <div className="imgDiv">
-                        <img
-                          src={slide.maestros_image?.url}
-                          alt={slide.maestros_image?.title}
-                        />
-                      </div>
-                      <div className="infoDiv">
-                        <div className="headingMain">
-                          <h3>{slide.person_name}</h3>
-                          <h5>{slide.person_designation}</h5>
-                        </div>
-                        <div className="subHeadings">
-                          <h4>{slide.heading}</h4>
-                          <p>{slide.description}</p>
-                        </div>
-                      </div>
-                    </div>
-                  )
-                )}
-              </SliderComponent>
-            </div>
-          </div>
-        </section>
+            </section>          
+          )}
+        </SectionObserver>
       )}
 
       {residencesHighlightSection && (
-        <section className="signatureSec projectdetBeach">
-          <div className="signatureWrapper">
-            <div className="secHeading">
-              <h2 className="section-text-up">
-                <span>{residencesHighlightSection?.section_heading}</span>
-              </h2>
-            </div>
-          </div>
-          <div className="signatureImg">
-            <div className="Viewimages">
-              <img
-                src={residencesHighlightSection?.section_desktop_image?.url}
-                className="desktopImg"
-              />
-              <img
-                src={residencesHighlightSection?.section_mobile_image?.url}
-                className="mobileImg"
-              />
-            </div>
-            <div className="innerText">
-              <h3>{residencesHighlightSection?.box_description}</h3>
-            </div>
-          </div>
-        </section>
+        <SectionObserver>
+          {(isSecInViewport, ref) => (
+            <section className="signatureSec projectdetBeach" ref={ref}>
+              <div className="signatureWrapper">
+                <div className="secHeading">
+                  <h2 className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}>
+                    <span>{residencesHighlightSection?.section_heading}</span>
+                  </h2>
+                </div>
+              </div>
+              <div className="signatureImg">
+                <div className="Viewimages">
+                  <img
+                    src={residencesHighlightSection?.section_desktop_image?.url}
+                    className="desktopImg"
+                  />
+                  <img
+                    src={residencesHighlightSection?.section_mobile_image?.url}
+                    className="mobileImg"
+                  />
+                </div>
+                <div className="innerText">
+                  <h3>{residencesHighlightSection?.box_description}</h3>
+                </div>
+              </div>
+            </section>          
+          )}
+        </SectionObserver>
       )}
 
       {residencesReraDetails && (
-        <section className="reraContainer">
-          <ul className="accordion">
-            <li>
-              <div
-                className={`mainHeadingdiv toggle ${
-                  isMainAccordionOpen ? "showDiv" : ""
-                }`}
-                onClick={handleMainAccordionClick}
-              >
-                <a
-                  href="#"
-                  onClick={(e) => e.preventDefault()}
-                  className="headingMain"
-                >
-                  {residencesReraDetails?.rera_heading}
-                </a>
-              </div>
-              <ul
-                className={`inner ${isMainAccordionOpen ? "show" : ""}`}
-                style={{ display: isMainAccordionOpen ? "block" : "none" }}
-              >
-                {residencesReraDetails?.rera_detail_lists?.map(
-                  (proj: any, index: number) => (
-                    <li key={index}>
-                      <div
-                        className={`innerDescHeading toggle ${
-                          openAccordion === index ? "showDiv" : ""
-                        }`}
-                        onClick={() => handleAccordionClick(index)}
-                      >
-                        <a
-                          href="#"
-                          onClick={(e) => e.preventDefault()}
-                          className="subHeadings"
-                        >
-                          {proj.rera_list_heading}
-                        </a>
-                      </div>
-                      <div
-                        className="innerInfo"
-                        style={{
-                          display: openAccordion === index ? "block" : "none",
-                          transition: "all 0.3s ease-in-out",
-                        }}
-                      >
-                        <div className="descDetils">
-                          <p>
+        <SectionObserver>
+          {(isSecInViewport, ref) => (
+            <section className="reraContainer" ref={ref}>
+              <ul className="accordion">
+                <li>
+                  <div
+                    className={`mainHeadingdiv toggle ${
+                      isMainAccordionOpen ? "showDiv" : ""
+                    }`}
+                    onClick={handleMainAccordionClick}
+                  >
+                    <a
+                      href="#"
+                      onClick={(e) => e.preventDefault()}
+                      className="headingMain"
+                    >
+                      {residencesReraDetails?.rera_heading}
+                    </a>
+                  </div>
+                  <ul
+                    className={`inner ${isMainAccordionOpen ? "show" : ""}`}
+                    style={{ display: isMainAccordionOpen ? "block" : "none" }}
+                  >
+                    {residencesReraDetails?.rera_detail_lists?.map(
+                      (proj: any, index: number) => (
+                        <li key={index}>
+                          <div
+                            className={`innerDescHeading toggle ${
+                              openAccordion === index ? "showDiv" : ""
+                            }`}
+                            onClick={() => handleAccordionClick(index)}
+                          >
                             <a
-                              href="https://maharera.mahaonline.gov.in/"
+                              href="#"
                               onClick={(e) => e.preventDefault()}
-                              target="_blank"
+                              className="subHeadings"
                             >
-                              {proj.rera_list_description}
+                              {proj.rera_list_heading}
                             </a>
-                          </p>
-                          <div className="scannerImg">
-                            <img src={proj.rera_list_image?.url} />
                           </div>
-                        </div>
-                      </div>
-                    </li>
-                  )
-                )}
+                          <div
+                            className="innerInfo"
+                            style={{
+                              display: openAccordion === index ? "block" : "none",
+                              transition: "all 0.3s ease-in-out",
+                            }}
+                          >
+                            <div className="descDetils">
+                              <p>
+                                <a
+                                  href="https://maharera.mahaonline.gov.in/"
+                                  onClick={(e) => e.preventDefault()}
+                                  target="_blank"
+                                >
+                                  {proj.rera_list_description}
+                                </a>
+                              </p>
+                              <div className="scannerImg">
+                                <img src={proj.rera_list_image?.url} />
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      )
+                    )}
+                  </ul>
+                </li>
               </ul>
-            </li>
-          </ul>
-        </section>
+            </section>          
+          )}
+        </SectionObserver>
       )}
 
       {residencesRequestPreview && (
-        <section className="requestSec reqNewSec">
-          <div className="requestBG">
-            <img
-              src={residencesRequestPreview?.section_desktop_image?.url}
-              className="desktopImg"
-            />
-            <img
-              src={residencesRequestPreview?.section_mobile_image?.url}
-              className="mobileImg"
-            />
-          </div>
-          <div className="requestWrapper requestContent reqNewContent">
-            <div className="secHeading newSecHeading ">
-              <h2 className="section-text-up">
-                <div className="trigger">
-                  <span>
-                    {residencesRequestPreview?.section_heading}{" "}
-                    <img src="/images/cta-arrow-white.svg" />
-                  </span>
+        <SectionObserver>
+          {(isSecInViewport, ref) => (
+            <section className="requestSec reqNewSec" ref={ref}>
+              <div className="requestBG">
+                <img
+                  src={residencesRequestPreview?.section_desktop_image?.url}
+                  className="desktopImg"
+                />
+                <img
+                  src={residencesRequestPreview?.section_mobile_image?.url}
+                  className="mobileImg"
+                />
+              </div>
+              <div className="requestWrapper requestContent reqNewContent">
+                <div className="secHeading newSecHeading ">
+                  <h2 className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}>
+                    <div className="trigger">
+                      <span>
+                        {residencesRequestPreview?.section_heading}{" "}
+                        <img src="/images/cta-arrow-white.svg" />
+                      </span>
+                    </div>
+                  </h2>
                 </div>
-              </h2>
-            </div>
-          </div>
-        </section>
+              </div>
+            </section>          
+          )}
+        </SectionObserver>
       )}
 
       {relatedSection && <ExploreCompoent exploreData={relatedSection} />}

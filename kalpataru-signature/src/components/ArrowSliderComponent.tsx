@@ -197,7 +197,7 @@ export const pincodeSlider = {
   slidesToScroll: 1,
   arrows: false,
   dots: true,
-  asNavFor: ".signinPincodeSlider",
+  asNavFor: ".single-item",
   autoplay: true,
   infinite: true,
   speed: 500,
