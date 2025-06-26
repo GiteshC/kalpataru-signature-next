@@ -1,6 +1,12 @@
+import { fetchPostsData } from "@/Api/wp-postsApi";
+
+import { ResidenceProjectItem } from "@/utils/residenceType";
 import Link from "next/link";
 
-export function Footer() {
+export async function Footer() {
+  const projectsData: ResidenceProjectItem[] = await fetchPostsData(
+    "residences"
+  );
   return (
     <footer>
       <div className="footerWrapper">
@@ -13,25 +19,33 @@ export function Footer() {
                   id="menu-item-552"
                   className="menu-item menu-item-type-post_type menu-item-object-residences menu-item-552"
                 >
-                  <Link href={"/project-detail"}>Azuro</Link>
+                  <Link href={`/residences/${projectsData?.[2]?.slug}`}>
+                    Azuro
+                  </Link>
                 </li>
                 <li
                   id="menu-item-596"
                   className="menu-item menu-item-type-post_type menu-item-object-residences menu-item-596"
                 >
-                  <Link href={"/project-detail"}>Prive</Link>
+                  <Link href={`/residences/${projectsData?.[1]?.slug}`}>
+                    Prive
+                  </Link>
                 </li>
                 <li
                   id="menu-item-576"
                   className="menu-item menu-item-type-post_type menu-item-object-residences menu-item-576"
                 >
-                  <Link href={"/project-detail"}>Oceana</Link>
+                  <Link href={`/residences/${projectsData?.[3]?.slug}`}>
+                    Oceana
+                  </Link>
                 </li>
                 <li
                   id="menu-item-858"
                   className="menu-item menu-item-type-post_type menu-item-object-residences menu-item-858"
                 >
-                  <Link href={"/project-detail"}>Avana</Link>
+                  <Link href={`/residences/${projectsData?.[0]?.slug}`}>
+                    Avana
+                  </Link>
                 </li>
               </ul>
             </div>

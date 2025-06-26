@@ -4,11 +4,12 @@ import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import "../scss/main.scss";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { ModalProvider } from "@/context/modalContext";
 
 const marcellus = Marcellus({
   weight: "400",
   subsets: ["latin"],
-   display: "swap", 
+  display: "swap",
 });
 
 const urbanist = Urbanist({
@@ -29,10 +30,15 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${marcellus.className} ${urbanist.className}`} cz-shortcut-listen="true">
-        <Header />
-        {children}
-        <Footer />
+      <body
+        className={`${marcellus.className} ${urbanist.className}`}
+        cz-shortcut-listen="true"
+      >
+        <ModalProvider>
+          <Header />
+          {children}
+          <Footer />
+        </ModalProvider>
       </body>
     </html>
   );

@@ -1,16 +1,17 @@
 "use client";
-import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import PrivatePreviewModal from "./PrivatePreviewModal";
+import useModalContext from "@/context/modalContext";
 
 export function Header() {
   const [didScroll, setDidScroll] = useState(false);
   const [lastScrollTop, setLastScrollTop] = useState(0);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popUpDropdown, setPopupDropdown] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log(isModalOpen);
+
+  const { isModalOpen, setIsModalOpen, modalHandler } = useModalContext();
+ 
 
   const delta = 5;
   const headerRef = useRef<HTMLElement>(null);
@@ -25,20 +26,72 @@ export function Header() {
     document.body.classList.remove("hideScrollbar");
     document.documentElement.classList.remove("hideScrollbarhtml");
   };
-
   const dropdownHandler = () => {
     setPopupDropdown(!popUpDropdown);
   };
-
   const linksHandler = () => {
     setIsPopupOpen(false);
     document.body.classList.remove("hideScrollbar");
     document.documentElement.classList.remove("hideScrollbarhtml");
   };
-  const modalHandler = () => {
-    setIsModalOpen(true);
-  };
 
+  useEffect(() => {
+    // Scroll Handler
+    const handleScroll = () => {
+      setDidScroll(true);
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    // Check scroll changes
+    const scrollInterval = setInterval(() => {
+      if (didScroll) {
+        hasScrolled();
+        setDidScroll(false);
+      }
+    }, 0);
+
+    function hasScrolled() {
+      const st = window.pageYOffset || document.documentElement.scrollTop;
+      const navbarHeight = headerRef.current?.offsetHeight || 0;
+
+      if (Math.abs(lastScrollTop - st) <= delta) return;
+
+      if (st > lastScrollTop && st > navbarHeight) {
+        // Scroll Down
+        headerRef.current?.classList.add("nav-up");
+        headerRef.current?.classList.remove("nav-down");
+      } else {
+        // Scroll Up
+        if (st + window.innerHeight < document.body.scrollHeight) {
+          headerRef.current?.classList.add("nav-down");
+          headerRef.current?.classList.remove("nav-up");
+        }
+      }
+
+      setLastScrollTop(st);
+    }
+
+    // Add scroll class to header
+    const handleScrollClass = () => {
+      const header = document.getElementById("main-header");
+      const banner = document.querySelector(".homebannerSec");
+
+      if (banner && header) {
+        if (window.scrollY > banner.clientHeight) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScrollClass);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      clearInterval(scrollInterval);
+    };
+  }, [didScroll, lastScrollTop]);
 
   return (
     <header
@@ -285,13 +338,23 @@ export function Header() {
             <Link href={"/"} onClick={linksHandler}>
               News & Media
             </Link>
-            <a className="trigger reqCta ctaBluetext" onClick={modalHandler}>
+            <a
+              className="trigger reqCta ctaBluetext"
+              onClick={modalHandler}
+            >
               Request a Private Preview <img src="/images/req-arrow.svg" />
             </a>
           </div>
         </nav>
       </div>
-      {isModalOpen ? <PrivatePreviewModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/> : ""}
+      {isModalOpen ? (
+        <PrivatePreviewModal
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
+      ) : (
+        ""
+      )}
     </header>
   );
 }

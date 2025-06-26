@@ -10,6 +10,8 @@ import {
 } from "@/components/ArrowSliderComponent";
 import { ResidencesProjectACF } from "@/utils/residenceType";
 import SectionObserver from "./SectionObserver";
+import useModalContext from "@/context/modalContext";
+import PrivatePreviewModal from "./PrivatePreviewModal";
 
 interface ProjectDetailProps {
   pageData: ResidencesProjectACF;
@@ -23,6 +25,8 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
   const [nav2, setNav2] = useState(null);
   const slider1 = useRef(null);
   const slider2 = useRef(null);
+
+  const { isModalOpen, setIsModalOpen, modalHandler } = useModalContext();
 
   const relatedSection = pageData?.acf?.residences_components?.find(
     (component: any) => component?.acf_fc_layout === "related_section"
@@ -73,10 +77,18 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
             <section className="signatureSec" ref={ref}>
               <div className="signatureWrapper">
                 <div className="secHeading">
-                  <h2 className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}>
+                  <h2
+                    className={`section-text-up ${
+                      isSecInViewport ? "newClass" : ""
+                    }`}
+                  >
                     <span>{residencesSignature?.section_heading}</span>
                   </h2>
-                  <p className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}>
+                  <p
+                    className={`section-text-up ${
+                      isSecInViewport ? "newClass" : ""
+                    }`}
+                  >
                     <span>{residencesSignature?.section_description}</span>
                   </p>
                 </div>
@@ -102,14 +114,21 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
             <section className="luxuriesSlider" ref={ref}>
               <div className="signatureWrapper">
                 <div className="secHeading">
-                  <h2 className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}>
+                  <h2
+                    className={`section-text-up ${
+                      isSecInViewport ? "newClass" : ""
+                    }`}
+                  >
                     <span>{residencesLuxuries?.section_heading}</span>
                   </h2>
                 </div>
                 <div className="wrapper">
                   <div className="slider-container">
                     {residencesLuxuries?.luxuries_gallery?.length > 1 && (
-                      <div className="slides-numbers" style={{ display: "block" }}>
+                      <div
+                        className="slides-numbers"
+                        style={{ display: "block" }}
+                      >
                         <span className="active">
                           {String(currentSlide + 1).padStart(2, "0")}
                         </span>
@@ -124,7 +143,10 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
                         setting={{
                           ...luxuriesSlider,
                           asNavFor: nav1 ?? undefined,
-                          beforeChange: (_oldIndex: number, newIndex: number) => {
+                          beforeChange: (
+                            _oldIndex: number,
+                            newIndex: number
+                          ) => {
                             setCurrentSlide(newIndex);
                           },
                         }}
@@ -155,7 +177,7 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
                   </div>
                 </div>
               </div>
-            </section>          
+            </section>
           )}
         </SectionObserver>
       )}
@@ -165,17 +187,28 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
           {(isSecInViewport, ref) => (
             <section className="maestrosSlidersec" ref={ref}>
               <div className="secHeading">
-                <h2 className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}>
+                <h2
+                  className={`section-text-up ${
+                    isSecInViewport ? "newClass" : ""
+                  }`}
+                >
                   <span>{residencesMaestros?.section_heading}</span>
                 </h2>
-                <p className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}>
+                <p
+                  className={`section-text-up ${
+                    isSecInViewport ? "newClass" : ""
+                  }`}
+                >
                   <span>{residencesMaestros?.section_description}</span>
                 </p>
               </div>
               <div className="maestrosliderCounter">
                 <div className="sliderArrow">
                   {residencesMaestros?.maestros_content?.length > 1 && (
-                    <div className="slides-numbers" style={{ display: "block" }}>
+                    <div
+                      className="slides-numbers"
+                      style={{ display: "block" }}
+                    >
                       <span className="active">
                         {String(currentSlide + 1).padStart(2, "0")}
                       </span>
@@ -222,7 +255,7 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
                   </SliderComponent>
                 </div>
               </div>
-            </section>          
+            </section>
           )}
         </SectionObserver>
       )}
@@ -233,7 +266,11 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
             <section className="signatureSec projectdetBeach" ref={ref}>
               <div className="signatureWrapper">
                 <div className="secHeading">
-                  <h2 className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}>
+                  <h2
+                    className={`section-text-up ${
+                      isSecInViewport ? "newClass" : ""
+                    }`}
+                  >
                     <span>{residencesHighlightSection?.section_heading}</span>
                   </h2>
                 </div>
@@ -253,7 +290,7 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
                   <h3>{residencesHighlightSection?.box_description}</h3>
                 </div>
               </div>
-            </section>          
+            </section>
           )}
         </SectionObserver>
       )}
@@ -302,7 +339,8 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
                           <div
                             className="innerInfo"
                             style={{
-                              display: openAccordion === index ? "block" : "none",
+                              display:
+                                openAccordion === index ? "block" : "none",
                               transition: "all 0.3s ease-in-out",
                             }}
                           >
@@ -327,7 +365,7 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
                   </ul>
                 </li>
               </ul>
-            </section>          
+            </section>
           )}
         </SectionObserver>
       )}
@@ -348,7 +386,12 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
               </div>
               <div className="requestWrapper requestContent reqNewContent">
                 <div className="secHeading newSecHeading ">
-                  <h2 className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}>
+                  <h2
+                    className={`section-text-up ${
+                      isSecInViewport ? "newClass" : ""
+                    }`}
+                    onClick={modalHandler}
+                  >
                     <div className="trigger">
                       <span>
                         {residencesRequestPreview?.section_heading}{" "}
@@ -358,7 +401,7 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
                   </h2>
                 </div>
               </div>
-            </section>          
+            </section>
           )}
         </SectionObserver>
       )}
@@ -367,7 +410,14 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
 
       <PathComponent pathData={pageData?.acf?.breadcrumbs} />
 
-      {/* */}
+      {isModalOpen ? (
+        <PrivatePreviewModal
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+        />
+      ) : (
+        ""
+      )}
     </>
   );
 }

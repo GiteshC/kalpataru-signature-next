@@ -16,7 +16,11 @@ const PrivatePreviewModal = ({ isModalOpen, setIsModalOpen }: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  console.log(formData);
+  const closeModalHandler = () => {
+    setIsModalOpen(false);
+    document.body.classList.remove("hideScrollbar");
+    document.documentElement.classList.remove("hideScrollbarhtml");
+  };
 
   return (
     <div className={`modal ${isModalOpen ? "show-modal" : ""}`}>
@@ -26,20 +30,10 @@ const PrivatePreviewModal = ({ isModalOpen, setIsModalOpen }: any) => {
             <img src="/images/headerlogo.svg" className="desktopImg" />
           </a>
         </div>
-        <span
-          className="close-button"
-          onClick={() => {
-            setIsModalOpen(false);
-          }}
-        >
+        <span className="close-button" onClick={closeModalHandler}>
           <img src="/images/popup-close-icon.svg" className="mobileImg" />
         </span>
-        <span
-          className="close-buttonTwo"
-          onClick={() => {
-            setIsModalOpen(false);
-          }}
-        >
+        <span className="close-buttonTwo" onClick={closeModalHandler}>
           <img src="/images/backarrow-modal.svg" />
         </span>
         <div className="modal-content">
