@@ -28,7 +28,6 @@ interface EssenceProps {
 }
 
 const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
-  
   const pincodeSlider1 = useRef<Slider | null>(null);
   const pincodeSlider2 = useRef<Slider | null>(null);
   const [nav1, setNav1] = useState<Slider | null>(null);
@@ -311,13 +310,7 @@ const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
         <ExploreCompoent exploreData={sectionFour} />
       )}
 
-      <PathComponent
-        pageName="Essence"
-        flag={false}
-        subpage=""
-        path=""
-        pageData={pageData}
-      />
+      <PathComponent pathData={pageData?.acf?.breadcrumbs} />
     </>
   );
 };

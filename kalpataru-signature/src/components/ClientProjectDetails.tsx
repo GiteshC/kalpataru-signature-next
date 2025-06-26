@@ -4,11 +4,14 @@ import BannerComponent from "@/components/BannerComponent";
 import ExploreCompoent from "@/components/ExploreCompoent";
 import PathComponent from "@/components/PathComponent";
 import SliderComponent from "@/components/SliderComponent";
-import {luxuriesSlider, maestrosSlider} from "@/components/ArrowSliderComponent";
+import {
+  luxuriesSlider,
+  maestrosSlider,
+} from "@/components/ArrowSliderComponent";
 import { ResidencesProjectACF } from "@/utils/residenceType";
 
-interface ProjectDetailProps{
-  pageData: ResidencesProjectACF
+interface ProjectDetailProps {
+  pageData: ResidencesProjectACF;
 }
 
 export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
@@ -19,14 +22,29 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
   const [nav2, setNav2] = useState(null);
   const slider1 = useRef(null);
   const slider2 = useRef(null);
-  
-  const relatedSection = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "related_section");
-  const residencesSignature = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "residences_signature")
-  const residencesLuxuries = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "residences_luxuries")
-  const residencesMaestros = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "maestros_section")
-  const residencesHighlightSection = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "residences_highlight_section")
-  const residencesReraDetails = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "rera_details_section")
-  const residencesRequestPreview = pageData?.acf?.residences_components?.find((component: any) => component?.acf_fc_layout === "request_preview_section")
+
+  const relatedSection = pageData?.acf?.residences_components?.find(
+    (component: any) => component?.acf_fc_layout === "related_section"
+  );
+  const residencesSignature = pageData?.acf?.residences_components?.find(
+    (component: any) => component?.acf_fc_layout === "residences_signature"
+  );
+  const residencesLuxuries = pageData?.acf?.residences_components?.find(
+    (component: any) => component?.acf_fc_layout === "residences_luxuries"
+  );
+  const residencesMaestros = pageData?.acf?.residences_components?.find(
+    (component: any) => component?.acf_fc_layout === "maestros_section"
+  );
+  const residencesHighlightSection = pageData?.acf?.residences_components?.find(
+    (component: any) =>
+      component?.acf_fc_layout === "residences_highlight_section"
+  );
+  const residencesReraDetails = pageData?.acf?.residences_components?.find(
+    (component: any) => component?.acf_fc_layout === "rera_details_section"
+  );
+  const residencesRequestPreview = pageData?.acf?.residences_components?.find(
+    (component: any) => component?.acf_fc_layout === "request_preview_section"
+  );
 
   const handleAccordionClick = (id: number) => {
     setOpenAccordion(openAccordion === id ? null : id);
@@ -156,7 +174,7 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
   }, []);
 
   return (
-    <div>
+    <>
       <BannerComponent bannerData={pageData?.acf?.banner_section} />
 
       {residencesSignature && (
@@ -431,63 +449,11 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
         </section>
       )}
 
-      {relatedSection && (<ExploreCompoent exploreData={relatedSection} />)}
+      {relatedSection && <ExploreCompoent exploreData={relatedSection} />}
 
-      <PathComponent pageName={pageData?.acf?.breadcrumbs?.current_page_name || ""} flag={true} subpage={pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_text || ""} path={pageData?.acf?.breadcrumbs?.parent_pages?.[1]?.parent_page_link || ""} pageData={pageData} />
+      <PathComponent pathData={pageData?.acf?.breadcrumbs} />
 
-      {/* <div className="modal">
-        <div className="modalInner">
-          <div className="headerLogo">
-            <a href="index.html">
-              {" "}
-              <img src="/images/headerlogo.svg" className="desktopImg" />
-            </a>
-          </div>
-          <span className="close-button">
-            <img src="/images/popup-close-icon.svg" className="mobileImg" />
-          </span>
-          <span className="close-buttonTwo">
-            <img src="/images/backarrow-modal.svg" />
-          </span>
-          <div className="modal-content">
-            <div className="meetingModal">
-              <h2>Request a Private Preview</h2>
-              <div className="innerForm">
-                <form action="contact.php" method="post">
-                  <input
-                    type="text"
-                    id="name"
-                    name="visitor_name"
-                    placeholder="Name"
-                    required
-                  />
-                  <input
-                    type="email"
-                    id="email"
-                    name="visitor_email"
-                    placeholder="Email ID"
-                    required
-                  />
-                  <div className="inputNumber">
-                    <select id="country" name="country">
-                      <option value={+91}>+91</option>
-                      <option value={+44}>+44</option>
-                      <option value={+51}>+51</option>
-                    </select>
-                    <input
-                      type="tel"
-                      id="phoneNumber"
-                      name="phoneNumber"
-                      placeholder="Phone number"
-                    />
-                  </div>
-                  <button type="submit">I'm Interested</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
-    </div>
+      {/* */}
+    </>
   );
 }

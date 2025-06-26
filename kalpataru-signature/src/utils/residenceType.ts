@@ -1,4 +1,4 @@
-import { BannerSection, ExploreTheEssence, ImageData } from "./type";
+import { BannerSection, Breadcrumbs, ExploreTheEssence, ImageData } from "./type";
 
 export interface ResidenceExploreSection extends ExploreTheEssence {
   related_section_heading?: string;
@@ -49,6 +49,7 @@ export interface ResidenceACF {
   banner_section?: BannerSection;
   related_section?: ResidenceExploreSection;
   residence_projects?: ResidenceProjectItem[];
+  breadcrumbs: Breadcrumbs;
 }
 
 export interface ResidencePageData {

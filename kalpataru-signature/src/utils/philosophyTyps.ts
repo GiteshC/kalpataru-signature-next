@@ -1,4 +1,9 @@
-import { BannerSection, ExploreTheEssence, ImageData } from "./type";
+import {
+  BannerSection,
+  Breadcrumbs,
+  ExploreTheEssence,
+  ImageData,
+} from "./type";
 
 export interface VisionSection {
   acf_fc_layout: "pioneers_section";
@@ -18,18 +23,16 @@ export interface HouseOfFirstSection {
   cta_text?: string;
 }
 
-
 export type PhilosophyComponent =
   | VisionSection
   | HouseOfFirstSection
   | ExploreTheEssence;
 
-
 export interface PhilosophyACF {
   banner_section?: BannerSection;
   philosophy_components?: PhilosophyComponent[];
+  breadcrumbs: Breadcrumbs;
 }
-
 
 export interface PhilosophyPageData {
   acf: PhilosophyACF;

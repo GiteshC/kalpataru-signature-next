@@ -4,6 +4,8 @@ export interface ImageData {
   url?: string;
   alt?: string;
   name?: string;
+  title?: string
+
 }
 
 export interface BannerOptions {
@@ -34,8 +36,20 @@ export interface ExploreTheEssence {
   box_mobile_image?: ImageData;
 }
 
+export interface ParentPages{
+  parent_page_text: string;
+  parent_page_link: string
+}
+
+export interface Breadcrumbs{
+  parent_pages?: ParentPages[]
+  current_page_name?: string
+}
+
+
 export interface ACF {
   banner_section?: BannerSection;
+  breadcrumbs?: Breadcrumbs;
 }
 
 export interface PageData {

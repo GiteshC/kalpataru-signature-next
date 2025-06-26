@@ -1,30 +1,40 @@
+import { Breadcrumbs } from "@/utils/type";
 import Link from "next/link";
 import React from "react";
 
-const PathComponent = ({
-  pageName,
-  flag,
-  subpage,
-  path,
-  pageData
-}: {
-  pageName: string;
-  flag: boolean;
-  subpage: string;
-  path: string,
-  pageData: any
-}) => {
+interface BreadcrumbsSecProps {
+  pathData?: Breadcrumbs;
+}
+
+const PathComponent = ({ pathData }: BreadcrumbsSecProps) => {
+  const { current_page_name, parent_pages } = pathData || {};
+
   return (
     <div className="breadcrumbsSec">
       <p>
-        <Link href={pageData?.acf?.breadcrumbs?.parent_pages?.[0]?.parent_page_link || ""}>Home &nbsp; / &nbsp;</Link>
-        {flag && (
-          <Link href={`${path}`}>{subpage} &nbsp; /&nbsp;</Link>
-        )}
-        {pageName}
+        {parent_pages?.map((page) => (
+          <Link key={page.parent_page_link} href={page.parent_page_link}>
+            {page.parent_page_text} &nbsp; / &nbsp;
+          </Link>
+        ))}
+        {current_page_name}
       </p>
     </div>
   );
 };
 
 export default PathComponent;
+
+// {
+//   pageName,
+//   flag,
+//   subpage,
+//   path,
+//   pageData
+// }: {
+//   pageName: string;
+//   flag: boolean;
+//   subpage: string;
+//   path: string,
+//   pageData: any
+// }

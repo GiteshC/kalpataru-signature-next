@@ -5,6 +5,7 @@ import BannerComponent from "./BannerComponent";
 import { ResidencePageData, ResidenceProjectItem } from "@/utils/residenceType";
 import ExploreCompoent from "./ExploreCompoent";
 import ResidenceProjects from "./ResidenceProjects";
+import PathComponent from "./PathComponent";
 
 interface ResidenceProps {
   pageData: ResidencePageData;
@@ -187,13 +188,7 @@ const ClientSingatureResidences = ({
 
       <ExploreCompoent exploreData={pageData?.acf?.related_section} />
 
-      <div className="breadcrumbsSec">
-        <p>
-          <a href="index.html">Home &nbsp; / &nbsp;</a>{" "}
-          <a href="signature-philosophy.html">Philosophy &nbsp; / &nbsp;</a>{" "}
-          Residences
-        </p>
-      </div>
+      <PathComponent pathData={pageData?.acf?.breadcrumbs} />
     </>
   );
 };

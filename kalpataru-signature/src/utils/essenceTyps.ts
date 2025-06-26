@@ -1,4 +1,4 @@
-import { BannerSection, ExploreTheEssence, ImageData } from "./type";
+import { BannerSection, Breadcrumbs, ExploreTheEssence, ImageData } from "./type";
 
 type PincodeProperty = {
   property_name: string;
@@ -54,6 +54,7 @@ export type EssenceComponent =
 export interface EssenceACF {
   banner_section?: BannerSection;
   essence_components?: EssenceComponent[];
+  breadcrumbs: Breadcrumbs;
 }
 
 export interface EssencePageData {

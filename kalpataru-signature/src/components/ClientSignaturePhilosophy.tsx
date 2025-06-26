@@ -1,17 +1,12 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import BannerComponent from "@/components/BannerComponent";
 import ExploreCompoent from "@/components/ExploreCompoent";
-import useIsSecVisible from "@/hooks/useIsSecVisible";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import { Fancybox } from "@fancyapps/ui";
 import PathComponent from "@/components/PathComponent";
-import {
-  HouseOfFirstSection,
-  PhilosophyPageData,
-  VisionSection,
-} from "@/utils/philosophyTyps";
-import { ExploreTheEssence } from "@/utils/type";
+import { PhilosophyPageData } from "@/utils/philosophyTyps";
+
 import SectionObserver from "./SectionObserver";
 
 interface PhilosophyProps {
@@ -19,9 +14,6 @@ interface PhilosophyProps {
 }
 
 const ClientSignaturePhilosophy = ({ pageData }: PhilosophyProps) => {
-  const sectionThree = pageData?.acf
-    ?.philosophy_components?.[2] as ExploreTheEssence;
-
   useEffect(() => {
     Fancybox.bind("[data-fancybox]", {});
     return () => {
@@ -135,21 +127,13 @@ const ClientSignaturePhilosophy = ({ pageData }: PhilosophyProps) => {
         if (sec?.acf_fc_layout === "related_page_section") {
           return (
             <SectionObserver key={index}>
-              {(isSecInViewport, ref) => (
-                <ExploreCompoent exploreData={sectionThree} />
-              )}
+              {(isSecInViewport, ref) => <ExploreCompoent exploreData={sec} />}
             </SectionObserver>
           );
         }
       })}
 
-      <PathComponent
-        pageName="Philosophy"
-        flag={false}
-        subpage=""
-        path=""
-        pageData={pageData}
-      />
+      <PathComponent pathData = {pageData?.acf?.breadcrumbs}/>
     </>
   );
 };
