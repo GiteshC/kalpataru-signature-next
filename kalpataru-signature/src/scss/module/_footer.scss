@@ -3,11 +3,11 @@
 footer{margin: 200px 0px 70px;
     .footerWrapper{@include wrapper;
         .footerTop{display: flex; flex-flow: wrap; justify-content: space-between; align-items: flex-start; padding-bottom: 50px; border-bottom: 1px solid rgba(0, 0, 0, 0.16);
-            h3{color: #19357F;font-family: $fontMarcellus; @include font24;font-weight: $fontW600; margin-bottom: 20px;}
+            h3{color: #19357F;font-family: $fontMarcellus; font-weight: $fontW600; margin-bottom: 20px; @include font24;}
             .projectsLinks{width: 40%;
                 ul{display: flex; flex-flow: wrap;
                     li{margin-right: 12px; margin-bottom: 32px;width: 23%;
-                        a{color: #5A6EA3;@include font20;font-weight: $fontW500;line-height: 18px;text-decoration-line: none;word-wrap: break-word;position: relative;transition: 0.7s all ease-in-out;
+                        a{color: #5A6EA3;font-weight: $fontW500;line-height: 18px;text-decoration-line: none;word-wrap: break-word;position: relative;transition: 0.7s all ease-in-out; @include font20;
                             &::before{content: "";width: 0;height: 2px;background: #19357F;position: absolute;left: 0;bottom: -6px;display: block; margin: auto;display: block;transition: 0.5s all ease-in;}
                             &:hover{color: #19357F;transition: 0.7s all ease-in-out;&::before{width:100%;}}
                         }
@@ -17,7 +17,7 @@ footer{margin: 200px 0px 70px;
             .quickLinks{width: 30%;
                 ul{display: flex; flex-flow: wrap;
                     li{margin-right: 12px; margin-bottom: 32px;width: 45%;
-                        a{color: #5A6EA3;@include font20;font-weight: $fontW500;line-height: 18px;text-decoration-line: none;word-wrap: break-word;position: relative;transition: 0.7s all ease-in-out;
+                        a{color: #5A6EA3;font-weight: $fontW500;line-height: 18px;text-decoration-line: none;word-wrap: break-word;position: relative;transition: 0.7s all ease-in-out; @include font20;
                             &::before{content: "";width: 0;height: 2px;background: #19357F;position: absolute;left: 0;bottom: -6px;display: block; margin: auto;display: block;transition: 0.5s all ease-in;}
                             &:hover{color: #19357F;transition: 0.7s all ease-in-out;&::before{width:100%;}}
                         }
@@ -43,11 +43,11 @@ footer{margin: 200px 0px 70px;
             }
         }
         .footerBottom{padding-top: 50px; display: flex; flex-flow: wrap; justify-content: space-between; align-items: center;
-            p{color: #5A6EA3;@include font18; font-weight: $fontW400;line-height: 18px;}
+            p{color: #5A6EA3; font-weight: $fontW400;line-height: 18px; @include font18;}
             ul{display: flex; flex-flow: wrap;
                 li{margin-right: 55px;
                     &:last-child{margin-right: 0px;}
-                    a{color: rgba(25, 53, 127, 0.80);@include font18; font-weight: $fontW500;line-height: 18px;}
+                    a{color: rgba(25, 53, 127, 0.80); font-weight: $fontW500;line-height: 18px; @include font18;}
                 }
             }
         }
@@ -230,15 +230,15 @@ footer{margin: 200px 0px 70px;
         }
         .modal-content {position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);
             .meetingModal{
-                h2{@include font48;font-weight: $fontW500;line-height: normal;color: #fff;text-align: center;}
+                h2{font-weight: $fontW500;line-height: normal;color: #fff;text-align: center; @include font48;}
                 .innerForm{margin-top: 64px;
-                    label {display: block;@include font18;color: #fff;font-weight: $fontW600;line-height: normal;text-transform: capitalize;padding-bottom: 12px;margin-left: 24px;text-align: left;
+                    label {display: block;color: #fff;font-weight: $fontW600;line-height: normal;text-transform: capitalize;padding-bottom: 12px;margin-left: 24px;text-align: left; @include font18;
                         span{color: #DA0000;}
                     }
-                    input, select{@include font20;font-weight: $fontW600;line-height: normal;color: #fff;border-radius: 20px; border: 1px solid #3C3C3C;background: rgba(0, 0, 0, 0.28);-webkit-backdrop-filter:blur(27.5px); backdrop-filter: blur(27.5px); padding: 24px;width: 100%;margin-bottom: 24px;}
+                    input, select{font-weight: $fontW600;line-height: normal;color: #fff;border-radius: 20px; border: 1px solid #3C3C3C;background: rgba(0, 0, 0, 0.28);-webkit-backdrop-filter:blur(27.5px); backdrop-filter: blur(27.5px); padding: 24px;width: 100%;margin-bottom: 24px; @include font20;}
 
                     .react-tel-input{border-radius: 20px; border: 1px solid #3C3C3C; background: rgba(0, 0, 0, 0.28);
-                        input{@include font20;font-weight: $fontW600;line-height: normal;color: #fff;border-radius: 20px;;background: rgba(0, 0, 0, 0.28);-webkit-backdrop-filter:blur(27.5px); backdrop-filter: blur(27.5px); padding: 24px;width: 100%;margin-bottom: 24px; height: auto; padding-left: 75px;
+                        input{font-weight: $fontW600;line-height: normal;color: #fff;border-radius: 20px;;background: rgba(0, 0, 0, 0.28);-webkit-backdrop-filter:blur(27.5px); backdrop-filter: blur(27.5px); padding: 24px;width: 100%;margin-bottom: 24px; height: auto; padding-left: 75px; @include font20;
                             &::placeholder{color: #8A8A8A;}
                         }
                         .flag-dropdown {background: rgba(0, 0, 0, 0.28); border: none;  border-radius: 20px;
@@ -259,7 +259,7 @@ footer{margin: 200px 0px 70px;
                         .intl-tel-input .selected-flag{padding: 0px !important;}
                     }
                     input[type='submit']{
-                        cursor: pointer;@include font20;font-weight: $fontW600;text-transform: capitalize;line-height: normal;color: #fff;width: 100%;padding: 24px;border-radius: 18px;border: 2px solid #FFF;background: rgba(0, 0, 0, 0.28);backdrop-filter: blur(27.5px);margin-top: 64px;
+                        cursor: pointer;font-weight: $fontW600;text-transform: capitalize;line-height: normal;color: #fff;width: 100%;padding: 24px;border-radius: 18px;border: 2px solid #FFF;background: rgba(0, 0, 0, 0.28);backdrop-filter: blur(27.5px);margin-top: 64px; @include font20;
                     }
                 }
             }  
@@ -378,7 +378,7 @@ footer{margin: 200px 0px 70px;
 
 
 .breadcrumbsSec{text-align: center;margin-top: 114px;
-    p{color: #19357F;font-family: $fontUrbanist;@include font28;font-weight: $fontW700;line-height: 157%;
+    p{color: #19357F;font-family: $fontUrbanist;font-weight: $fontW700;line-height: 157%; @include font28;
         a{color: #8A8A8A;font-weight: $fontW500;}
     }
     @media screen and (max-width:1600px) {

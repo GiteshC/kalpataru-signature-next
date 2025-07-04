@@ -82,7 +82,7 @@
 }
 
 .projectdetTabslider{
-    .secHeading p{@include font24; font-weight: $fontW600; color: #5A6EA3;letter-spacing: 0.24px;line-height: normal;margin-top: 16px;span{color: #5A6EA3;}}
+    .secHeading p{ font-weight: $fontW600; color: #5A6EA3;letter-spacing: 0.24px;line-height: normal;margin-top: 16px; @include font24;span{color: #5A6EA3;}}
     @media screen and (max-width:1600px) {
         .secHeading p{margin-top: 14px}
     }
@@ -93,7 +93,7 @@
 
 .luxuriesSlider{
     .signatureWrapper{
-        .secHeading p{@include font24; font-weight: $fontW600; color: #5A6EA3;letter-spacing: 0.24px;line-height: normal;margin-top: 16px;span{color: #5A6EA3;}}
+        .secHeading p{font-weight: $fontW600; color: #5A6EA3;letter-spacing: 0.24px;line-height: normal;margin-top: 16px; @include font24;span{color: #5A6EA3;}}
     }
     @media screen and (max-width:1600px) {
        .signatureWrapper .secHeading p{margin-top: 14px}
@@ -108,11 +108,11 @@
     .slider-container{position: relative;@include wrapper;}
     .eventDetails{position: relative;margin: 0px 20px 200px;
         .eventName{position: absolute;top: 50%;transform: translateY(-50%);left: 0;right: 0;text-align: center;
-            h3{@include font48;font-weight: $fontW400;font-family: $fontMarcellus;text-transform: uppercase;line-height: normal;color: #fff;}
-            h4{@include font24;font-weight: $fontW600;line-height: normal;color: #fff;margin-bottom: 8px;}
+            h3{font-weight: $fontW400;font-family: $fontMarcellus;text-transform: uppercase;line-height: normal;color: #fff; @include font48;}
+            h4{font-weight: $fontW600;line-height: normal;color: #fff;margin-bottom: 8px; @include font24;}
         }
         .eventDate{position: absolute;bottom: 32px;left: 0;right: 0;text-align: center;
-            p{@include font24;font-weight: $fontW600;line-height: normal;color: #fff;letter-spacing: 0.24px;}
+            p{font-weight: $fontW600;line-height: normal;color: #fff;letter-spacing: 0.24px; @include font24;}
         }
     }
     .slides-numbers {display: none;left: 0;right: 0;text-align: center;position: absolute;bottom: 90px;z-index: 2;
@@ -181,15 +181,15 @@
     }
 }
 
-.followUsonsec{@include wrapper;margin-bottom: 160px;
+.followUsonsec{margin-bottom: 160px; @include wrapper;
     .secHeading{text-align: center; margin: 160px auto 70px;width: 80%;margin-left: auto;
-        h2{color: #19357F;@include font64; font-weight: $fontW400;font-family: $fontMarcellus; text-transform: uppercase;span i {color: #000;}}
-        p{color: #5A6EA3;@include font20; font-weight: $fontW500;font-family: $fontUrbanist; line-height: 32px; margin-bottom: 20px;span{color: #5A6EA3;}}
+        h2{color: #19357F;font-weight: $fontW400;font-family: $fontMarcellus; text-transform: uppercase;@include font64; span i {color: #000;}}
+        p{color: #5A6EA3; font-weight: $fontW500;font-family: $fontUrbanist; line-height: 32px; margin-bottom: 20px;@include font20; span{color: #5A6EA3;}}
     }
     .socialmediaDesc{position: relative;
         .followusContent{position: absolute;top: 50%;transform: translateY(-50%);right: 0;left: 0;text-align: center;
-            h3{@include font48;font-weight: $fontW400;font-family: $fontMarcellus;line-height: normal;color: #fff;}
-            a{@include font28;font-weight: $fontW600;line-height: normal;color: #fff;text-decoration: underline;font-style: normal;margin: 48px 0px;display: block;}
+            h3{font-weight: $fontW400;font-family: $fontMarcellus;line-height: normal;color: #fff; @include font48;}
+            a{font-weight: $fontW600;line-height: normal;color: #fff;text-decoration: underline;font-style: normal;margin: 48px 0px;display: block; @include font28;}
             ul{display: flex;align-items: center;justify-content: center;
                 li{a{width: 38px;height: 38px;border-radius: 50%;border: 2px solid #fff;display: inline-flex;align-items: center;justify-content: center;background: transparent;margin:0px 20px 0px 0px;}
                     &:last-child a{margin: 0px;}

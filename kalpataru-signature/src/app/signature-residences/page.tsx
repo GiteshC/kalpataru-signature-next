@@ -7,7 +7,7 @@ import {
 } from "@/utils/residenceType";
 import { fetchPostsData } from "@/Api/wp-postsApi";
 
-function normalizeResidenceExplore(raw: any): ResidenceExploreSection {
+function normalizeResidenceExplore(raw: ResidenceExploreSection | undefined) {
   return {
     heading: raw?.related_section_heading,
     cta_text: raw?.related_section_cta,

@@ -3,7 +3,7 @@
 .signPincodeSec{
     .signPindcodeWrapper{@include wrapper;
         .secHeading{display: flex;margin:120px auto 80px;justify-content: center; width: 80%;
-            h2{color: #19357F; text-align: center; @include font64; font-style: normal; font-family: $fontMarcellus; font-weight: $fontW400; text-transform: uppercase;}
+            h2{color: #19357F; text-align: center;  font-style: normal; font-family: $fontMarcellus; font-weight: $fontW400; text-transform: uppercase; @include font64;}
         }
         .signPincodeContainer{
             .signPincodeContent{display: flex; align-items: center; justify-content: space-between; margin-bottom: 160px;
@@ -26,13 +26,13 @@
                     }
                 }
                 .signPincodedata{width: calc(49% - 118px);
-                    p{color: #5A6EA3; font-family:$fontUrbanist; @include font24; font-weight: $fontW500; margin-bottom: 4px;span{color: #5A6EA3;}}
-                    h3{ color:#1D3F9C; font-family: $fontMarcellus; @include font42; font-weight: $fontW400; text-transform: uppercase; margin-bottom: 10px;}
+                    p{color: #5A6EA3; font-family:$fontUrbanist;  font-weight: $fontW500; margin-bottom: 4px;@include font24; span{color: #5A6EA3;}}
+                    h3{ color:#1D3F9C; font-family: $fontMarcellus;  font-weight: $fontW400; text-transform: uppercase; margin-bottom: 10px; @include font42;}
                     .newtext-p{margin-bottom: 31px;}
                     .singPincodedatalist{margin-bottom: 64px;
                         ul{
                             li{display: flex; align-items: center; margin-bottom: 17px;
-                                p{@include font20; font-family: $fontUrbanist; font-weight: $fontW500; color: #000; padding-left:25px; }
+                                p{font-family: $fontUrbanist; font-weight: $fontW500; color: #000; padding-left:25px; @include font20; }
                             }
                         }
                     }
