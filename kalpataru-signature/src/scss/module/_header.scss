@@ -25,7 +25,7 @@ header{position: fixed;top: 0;left: 0;right: 0;transition: top 0.5s ease-in-out;
             .hamburgerDiv .button_container span{background: #19357F;transition: 0.6s all ease-in-out;}
         }
     }
-    .headerWrapper{@include wrapper;display: flex;align-items: center;justify-content: space-between;margin: 20px 0px;position: relative;
+    .headerWrapper{display: flex;align-items: center;justify-content: space-between;margin: 20px 0px;position: relative; @include wrapper;
         .rightMenu, .leftMenu{width: 30%}
         .rightMenu{text-align: center;display: flex;justify-content: flex-end}
         .centerLogo{width: 78px;height: auto;transition: 1s all ease-out;
@@ -36,7 +36,7 @@ header{position: fixed;top: 0;left: 0;right: 0;transition: top 0.5s ease-in-out;
         ul{display: flex;align-items: center;position: absolute;transition: 1s all ease-in-out;
                 &.innerMenulink{top: 50%;transform: translateY(-50%);transition: 1s all ease-in-out;}
             li{
-                a{position: relative;@include font18;font-weight: $fontW500;letter-spacing: 0.09px;text-transform: capitalize;color: #FFF;margin-right: 66px;opacity: 0;
+                a{position: relative;font-weight: $fontW500;letter-spacing: 0.09px;text-transform: capitalize;color: #FFF;margin-right: 66px;opacity: 0; @include font18;
                     &::before{content: "";width: 0;height: 2px;background: #FFF;position: absolute;left: 0;bottom: -6px;display: block; margin: auto;display: block;transition: 0.5s all ease-in;}
                     &:hover{&::before{width: 100%;}}
                 }
@@ -60,7 +60,7 @@ header{position: fixed;top: 0;left: 0;right: 0;transition: top 0.5s ease-in-out;
         }
     }
     .overlay {
-        position: fixed;z-index: 6;left: 0;top: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.46);backdrop-filter: blur(47.5px); opacity: 0; visibility: hidden;  transform: scale(1.1);transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;overflow-y: auto;-ms-overflow-style: none; scrollbar-width: none; @include wrapper;padding-top: 32px;padding-bottom: 32px;
+        position: fixed;z-index: 6;left: 0;top: 0;width: 100%;height: 100%;background: rgba(0, 0, 0, 0.46);backdrop-filter: blur(47.5px); opacity: 0; visibility: hidden;  transform: scale(1.1);transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;overflow-y: auto;-ms-overflow-style: none; scrollbar-width: none; padding-top: 32px;padding-bottom: 32px; @include wrapper;
         &::-webkit-scrollbar {display: none; }
         &.open{opacity: 1;visibility: visible;transform: scale(1.0);transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;}
         &.overlayClose{height: 0;}
@@ -72,7 +72,7 @@ header{position: fixed;top: 0;left: 0;right: 0;transition: top 0.5s ease-in-out;
                 &::-webkit-scrollbar {display: none; }
                 &.innerMenulink{top: unset;transform: unset;}
                 li{position: relative;opacity: 1;padding: 28px;text-align: center;
-                    a{@include font64;color: #FFF;text-decoration: none;font-weight: $fontW400;font-family: $fontMarcellus;line-height: normal;text-align: center;letter-spacing: 0.32px;padding-right: 0px;text-transform: unset; cursor: pointer;
+                    a{color: #FFF;text-decoration: none;font-weight: $fontW400;font-family: $fontMarcellus;line-height: normal;text-align: center;letter-spacing: 0.32px;padding-right: 0px;text-transform: unset; cursor: pointer; @include font64;
                         &::before{content: unset;}
                     }
                     &.hideDesk{display: none;}
@@ -90,7 +90,7 @@ header{position: fixed;top: 0;left: 0;right: 0;transition: top 0.5s ease-in-out;
                             ul{
                                 li{margin-bottom: 42px;padding: 0px;
                                     &:last-child{margin-bottom: 0px;}
-                                    a{@include font28;font-weight: $fontW400;letter-spacing: 0.98px;font-family: $fontMarcellus;text-transform: uppercase;text-decoration: none;}
+                                    a{font-weight: $fontW400;letter-spacing: 0.98px;font-family: $fontMarcellus;text-transform: uppercase;text-decoration: none; @include font28;}
                                 }
                             }
                         }
@@ -105,7 +105,7 @@ header{position: fixed;top: 0;left: 0;right: 0;transition: top 0.5s ease-in-out;
                 .reqCta{cursor: pointer; display: flex; padding-right: 5px;
                     img{width: 10px;}
                 }
-                a{@include font22;font-weight: $fontW400;color: #fff;line-height: normal;padding-right: 0px;
+                a{font-weight: $fontW400;color: #fff;line-height: normal;padding-right: 0px; @include font22;
                     // &:first-child{border-right: 2px solid #AFAFAF;padding-right: 12px;margin-right: 8px;}
                 }
             }
@@ -283,7 +283,7 @@ header{position: fixed;top: 0;left: 0;right: 0;transition: top 0.5s ease-in-out;
                     .reqCta{display: block; margin-top: 15px;text-transform: uppercase;font-family: $fontMarcellus;margin-top: 0;
                         img{width: 6px;}
                     }
-                    a{@include font14;font-weight: $fontW500;line-height: normal;padding-right: 0px;margin-top: 32px;font-size: 14px;
+                    a{font-weight: $fontW500;line-height: normal;padding-right: 0px;margin-top: 32px;font-size: 14px; @include font14;
                         // &:first-child{border-right: 2px solid #AFAFAF;padding-right: 12px;margin-right: 8px;}
                     }
                 }

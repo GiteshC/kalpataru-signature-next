@@ -5,8 +5,8 @@
         .news-media-slider{height: 100%;
             .newsmediaInner{position: relative;
                 .secHeading{width: 50%; margin: 0 auto;position: absolute;top: 50%;transform: translateY(-50%);left: 0;right: 0;
-                    h3{@include font28;font-family: $fontMarcellus;font-weight: $fontW400; text-transform: uppercase; color: #FFF; line-height: 96%; letter-spacing: 0.56px; text-align: center; padding-bottom: 16px; }
-                    h2{color: #FFF; text-align: center; font-family: $fontUrbanist; @include font48; font-weight: $fontW500; padding-bottom: 28px;}
+                    h3{font-family: $fontMarcellus;font-weight: $fontW400; text-transform: uppercase; color: #FFF; line-height: 96%; letter-spacing: 0.56px; text-align: center; padding-bottom: 16px; @include font28; }
+                    h2{color: #FFF; text-align: center; font-family: $fontUrbanist; font-weight: $fontW500; padding-bottom: 28px; @include font48;}
                     a{color: #FFF;display: block;text-align: center;img{width: auto;height: auto;}}
                 }
             }
@@ -66,21 +66,21 @@
 .newsMediaSec{margin-bottom: 200px;
     .newsMediaSecWrapper{@include wrapper;
         .secHeading{display: flex; margin:100px auto 54px auto;justify-content: center;
-            h2{color: #19357F; text-align: center; @include font64; font-style: normal; font-family: $fontMarcellus; font-weight: $fontW400; text-transform: uppercase; letter-spacing: 1.5px;}
+            h2{color: #19357F; text-align: center; font-style: normal; font-family: $fontMarcellus; font-weight: $fontW400; text-transform: uppercase; letter-spacing: 1.5px; @include font64;}
         }
         .serach-container{display: flex; justify-content: space-between; align-items: center; width: 60%; margin: 0 auto 82px; background: #FFF;  padding:32px 48px;
             .search-box{display:flex; justify-content: space-between; align-items: center; width: 80%; padding-right: 32px;  border-right: 2px solid #E9E9E9;
-                input{width: 85%;color: #ACAFB9;font-family: $fontUrbanist;@include font24;font-weight: $fontW500;
+                input{width: 85%;color: #ACAFB9;font-family: $fontUrbanist;font-weight: $fontW500; @include font24;
                     &:focus{&::placeholder{opacity: 0.6;};&::-ms-input-placeholder{opacity: 0.6;}; &::-webkit-input-placeholder{opacity: 0.6;};&:-moz-placeholder{opacity: 0.6;};}
-                    &::-ms-input-placeholder {color: #ACAFB9;font-family: $fontUrbanist;@include font24;font-weight: $fontW500;}
-                    &::placeholder {color: #ACAFB9;font-family: $fontUrbanist;@include font24;font-weight: $fontW500;}
-                    &::-webkit-input-placeholder{color: #ACAFB9;font-family: $fontUrbanist;@include font24;font-weight: $fontW500;}
-                    &:-moz-placeholder{color: #ACAFB9;font-family: $fontUrbanist;@include font24;font-weight: $fontW500;}
+                    &::-ms-input-placeholder {color: #ACAFB9;font-family: $fontUrbanist;font-weight: $fontW500; @include font24;}
+                    &::placeholder {color: #ACAFB9;font-family: $fontUrbanist;font-weight: $fontW500; @include font24;}
+                    &::-webkit-input-placeholder{color: #ACAFB9;font-family: $fontUrbanist;font-weight: $fontW500; @include font24;}
+                    &:-moz-placeholder{color: #ACAFB9;font-family: $fontUrbanist;font-weight: $fontW500; @include font24;}
                 }
                 .search-img{margin-left: auto;background: #FFF; width: 24px;}
             }
             .select-container{width: calc(20% - 25px); display: flex; align-items: center;
-                select{color: #ACAFB9; font-family: $fontUrbanist; @include font24; font-weight: $fontW500; padding-right: 30px; cursor: pointer; appearance: none;-moz-appearance: none; -webkit-appearance: none; background: url('/images/news-media-search-arrow.svg')no-repeat 100% 50%;}
+                select{color: #ACAFB9; font-family: $fontUrbanist; font-weight: $fontW500; padding-right: 30px; cursor: pointer; appearance: none;-moz-appearance: none; -webkit-appearance: none; background: url('/images/news-media-search-arrow.svg')no-repeat 100% 50%; @include font24;}
             }
         }
         .newsMediaContainer{
@@ -105,13 +105,13 @@
                 }
                 .card-content{width: 65%; display: flex; flex-flow: wrap;
                     .card-date{width: 20%;
-                        p{color: #19357F; font-family: $fontUrbanist; @include font24; font-weight: $fontW600; opacity: 0.6; margin-bottom: 27px; transition: all 1s linear;} 
+                        p{color: #19357F; font-family: $fontUrbanist; font-weight: $fontW600; opacity: 0.6; margin-bottom: 27px; transition: all 1s linear; @include font24;} 
                     }
                     .card-news{width: 80%; margin-left: auto;
-                        p{color: #19357F; font-family: $fontUrbanist; @include font20;font-weight: $fontW600; margin-bottom: 27px; opacity: 0.6; transition: all 1s linear; }
+                        p{color: #19357F; font-family: $fontUrbanist;font-weight: $fontW600; margin-bottom: 27px; opacity: 0.6; transition: all 1s linear; @include font20;}
                     }
                     .card-description{width: 80%; margin-left: auto;
-                        h3{color: #19357F; font-family: $fontUrbanist; @include font48; font-weight: $fontW500; margin-bottom: 59px;  opacity: 0.6; transition: all 1s linear;}
+                        h3{color: #19357F; font-family: $fontUrbanist; font-weight: $fontW500; margin-bottom: 59px;  opacity: 0.6; transition: all 1s linear; @include font48; }
                         .read-more-icon{opacity: 0; transition: all 1s linear; font-size: 20px;}
                     }
                 }
@@ -123,7 +123,7 @@
             
         }
         .pagination-container{margin:100px 0px 0px;text-align: center;
-            .pagination-link{@include font48;color: #19357F;margin: 0px 10px;cursor: pointer;background-color: transparent;font-weight: $fontW500;font-family: $fontMarcellus;}
+            .pagination-link{color: #19357F;margin: 0px 10px;cursor: pointer;background-color: transparent;font-weight: $fontW500;font-family: $fontMarcellus; @include font48;}
             .prevArrow, .nextArrow{
                 margin-right: 10px;
                 &.nextArrow{margin-left: 10px;}
@@ -132,7 +132,7 @@
             }
         }
         .no-data-found{text-align: center;
-            p{@include font24;font-weight: $fontW500;color: #19357F;font-family: $fontMarcellus;}
+            p{font-weight: $fontW500;color: #19357F;font-family: $fontMarcellus; @include font24;}
         }
     }
     @media all and (max-width: 1800px){

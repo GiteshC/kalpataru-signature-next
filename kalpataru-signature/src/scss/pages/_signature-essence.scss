@@ -3,8 +3,8 @@
 .pincodesMapsec{margin-bottom: 150px;
     .signatureWrapper{@include wrapper;
         .secHeading{text-align: center; margin: 0px auto 70px;width: 80%;margin-left: auto;
-            h2{color: #19357F;@include font64; font-weight: $fontW400;font-family: $fontMarcellus; text-transform: uppercase;span i {color: #000;}}
-            p{color: #19357F;@include font20; font-weight: $fontW500;font-family: $fontUrbanist; line-height: 32px; margin-bottom: 20px;}
+            h2{color: #19357F; font-weight: $fontW400;font-family: $fontMarcellus; text-transform: uppercase;@include font64; span i {color: #000;}}
+            p{color: #19357F; font-weight: $fontW500;font-family: $fontUrbanist; line-height: 32px; margin-bottom: 20px; @include font20;}
         }
     }
     .pincodesMap{position: relative;overflow: hidden;
@@ -32,8 +32,8 @@
                         }
                     }
                     .pincodeDetails{width: 40%;margin-left: 36px;
-                        h3{@include font42;font-weight: $fontW400;font-family: $fontMarcellus;line-height: normal;color: #19357F; }
-                        p{@include font20;font-weight: $fontW500;line-height: normal;color: #5A6EA3;margin: 8px 0px 28px;width: 80%; }
+                        h3{font-weight: $fontW400;font-family: $fontMarcellus;line-height: normal;color: #19357F;@include font42; }
+                        p{font-weight: $fontW500;line-height: normal;color: #5A6EA3;margin: 8px 0px 28px;width: 80%;@include font20; }
                         a{text-transform: none;
                             img {display: inline-block !important;}
                         }
@@ -236,12 +236,12 @@
         .innerBoxes{position: relative; margin: 0px 120px;display: flex !important; align-items: flex-start;justify-content: space-between; width: auto !important;
             .videoMaindiv{width: 38%}
             .textDiv{
-                h2 {@include font64;font-weight: $fontW400;font-family: $fontMarcellus;position: relative;color: #19357F;line-height: normal;text-transform: uppercase}
-                h3{@include font42;font-weight: $fontW400;font-family: $fontMarcellus;color: #68718B;line-height: normal;margin-top: 15px;}
+                h2 {font-weight: $fontW400;font-family: $fontMarcellus;position: relative;color: #19357F;line-height: normal;text-transform: uppercase; @include font64;}
+                h3{font-weight: $fontW400;font-family: $fontMarcellus;color: #68718B;line-height: normal;margin-top: 15px; @include font42;}
             }
             .bottomText{margin-top: 38px;
-                h4{@include font24;font-weight: $fontW600;color: #19357F;line-height: normal;}
-                p{@include font24;font-weight: $fontW400;color: #5A6EA3;line-height: normal;margin-top: 6px;}
+                h4{font-weight: $fontW600;color: #19357F;line-height: normal; @include font24;}
+                p{font-weight: $fontW400;color: #5A6EA3;line-height: normal;margin-top: 6px; @include font24;}
             }
             .videoDiv{width: 60%;margin-left: auto;
                 img{width: 100%;height: 100%;object-fit: cover;}
@@ -265,8 +265,8 @@
     }
     .slides-numbers {display: none; margin: 0px 50px;
         span{font-family: $fontMarcellus;font-weight: $fontW400;color: #5A6EA3;}
-        .active {margin-right: 0px;@include font32;color: #19357F;}
-        .total {margin-left: 0px;@include font14;color: #5A6EA3;}
+        .active {margin-right: 0px;color: #19357F; @include font32;}
+        .total {margin-left: 0px;color: #5A6EA3; @include font14;}
     }
     @media screen and (max-width:1920px) {
         .videoWrapperslider .innerBoxes .bottomText{top: 32%;}
@@ -363,15 +363,15 @@
 .residentsSec{margin-bottom: 160px;position: relative;
     .residentsWrapper{display: flex;justify-content: space-between;
         .secHeading{padding-left: 134px;width: 37%;margin-top: 65px;
-            h2{@include font64;font-weight: $fontW400;font-family: $fontMarcellus;color: #19357F;line-height: normal;}
-            p{@include font40;font-weight: $fontW500;color: #5A6EA3;line-height: normal;margin-top: 24px;}
+            h2{font-weight: $fontW400;font-family: $fontMarcellus;color: #19357F;line-height: normal; @include font64;}
+            p{font-weight: $fontW500;color: #5A6EA3;line-height: normal;margin-top: 24px; @include font40;}
         }
         .resCounterslider{width: 56%;
             .slick-list{padding-left: 15px;}
             .slides-numbersnew {left: 11%;text-align: center;position: absolute;bottom: 0px;z-index: 2;
                 span{font-family: $fontMarcellus;font-weight: $fontW400;color: #5A6EA3;}
-                .active {margin-right: -2px;@include font32;color: #19357F;}
-                .total {margin-left: -3px;@include font14;color: #5A6EA3;}
+                .active {margin-right: -2px;color: #19357F; @include font32;}
+                .total {margin-left: -3px;color: #5A6EA3; @include font14;}
             }
             .residentSlider{
                 .innerBoxes{border: 1px solid #EBEBEB;background: #FBFBFB;margin:0px 12px; width: auto !important;
@@ -380,8 +380,8 @@
                         .popupButton{position: absolute;top: 50%;transform: translateY(-50%);right: 0;left: 0;width: 50px;height: 50px;margin: 0 auto;}
                     }
                     .descriptionBox{padding: 32px 32px 60px;
-                        h3{@include font28;font-weight: $fontW600;color: #19357F;line-height: normal;}
-                        p{@include font20;font-weight: $fontW400;color: #5A6EA3;line-height: normal;margin-top: 18px;}
+                        h3{font-weight: $fontW600;color: #19357F;line-height: normal; @include font28;}
+                        p{font-weight: $fontW400;color: #5A6EA3;line-height: normal;margin-top: 18px; @include font20;}
                     }
                 }
                 .slick-prev,.slick-next {position: absolute;bottom: 0px;top: unset;outline: none;display: flex;align-items: center;justify-content: center;cursor: pointer;z-index: 2;transition: 0.3s all ease-in-out;

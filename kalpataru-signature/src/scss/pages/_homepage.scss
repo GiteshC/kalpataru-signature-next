@@ -8,13 +8,13 @@
     .homebannerWrapper{
         &.homebannerContent{position: absolute; width: 100%; height: 100%; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: center;
             .secHeading{text-align: center; br{display: none}
-                h1{color: #FFF;@include font100;font-family: $fontMarcellus; font-weight: $fontW400;letter-spacing: 2px;text-transform: uppercase;font-style: normal;line-height: 1;}
-                p{color: #FFF !important;@include font30; font-weight: $fontW500;letter-spacing: 0.3px; width: 60%; margin: 0 auto;}
+                h1{color: #FFF;font-family: $fontMarcellus; font-weight: $fontW400;letter-spacing: 2px;text-transform: uppercase;font-style: normal;line-height: 1; @include font100;}
+                p{color: #FFF !important; font-weight: $fontW500;letter-spacing: 0.3px; width: 60%; margin: 0 auto; @include font30;}
             }
         }
     }
     .scrollText{position: absolute;bottom: -100px;right: 0;left: 0;text-align: center;transition: 2s all ease-in-out;
-        h3{@include font18; font-weight: $fontW600; color: #FFF;line-height: normal;letter-spacing: 0.09px;}
+        h3{ font-weight: $fontW600; color: #FFF;line-height: normal;letter-spacing: 0.09px; @include font18;}
         &.scrollTextnew{bottom: 32px;transition: 2s all ease-in-out;}
     }
     @media screen and (max-width:1600px) {margin-bottom: 120px;
@@ -42,8 +42,7 @@
     @media screen and (max-width:1024px) {
         .homebannerWrapper{
             &.homebannerContent{
-                .secHeading{
-                    @include wrapper;
+                .secHeading{@include wrapper;
                     h1{min-height: unset;
                     }
                     p{width: 100%;}
@@ -70,8 +69,8 @@
 .signatureSec{margin-bottom: 160px;
     .signatureWrapper{@include wrapper;
         .secHeading{text-align: center; margin: 0px auto 70px;width: 80%;margin-left: auto;
-            h2{color: #19357F;@include font64; font-weight: $fontW400;font-family: $fontMarcellus; text-transform: uppercase;span i {color: #000;}}
-            p{color: #5A6EA3;@include font20; font-weight: $fontW500;font-family: $fontUrbanist; line-height: 32px; margin-bottom: 20px;margin-top: 8px;span{color: #5A6EA3;}}
+            h2{color: #19357F; font-weight: $fontW400;font-family: $fontMarcellus; text-transform: uppercase;span i {color: #000;} @include font64;}
+            p{color: #5A6EA3; font-weight: $fontW500;font-family: $fontUrbanist; line-height: 32px; margin-bottom: 20px;margin-top: 8px;span{color: #5A6EA3;} @include font20;}
         }
     }
     .videoBox{
@@ -83,7 +82,7 @@
             video{position: absolute;top: 0; left: 0; right: 0; width: 100%; height: 100%; object-fit: cover;}
             iframe{width: 100%;height: 665px;}
         }
-        a{position: absolute;bottom: 0;left: 0;right: 0;margin: auto;text-align: center;color: #FFF;@include font20;font-weight: $fontW600;letter-spacing: 0.2px; margin-bottom: 34px;}
+        a{position: absolute;bottom: 0;left: 0;right: 0;margin: auto;text-align: center;color: #FFF;font-weight: $fontW600;letter-spacing: 0.2px; margin-bottom: 34px; @include font20;}
     }
 
     @media screen and (max-width:1600px) {margin-bottom: 120px;
@@ -144,7 +143,7 @@
     .requestWrapper{
         &.requestContent{position: absolute;top: 0; left: 0; right: 0; width: 100%; height: 100%;display: flex; justify-content: center; align-items: center;}
         .secHeading{text-align: center;@include wrapper;
-            h2{color: #FFF;@include font64; font-weight: $fontW400;font-family: $fontMarcellus;letter-spacing: 1.44px;text-transform: uppercase; margin-bottom: 24px;
+            h2{color: #FFF; font-weight: $fontW400;font-family: $fontMarcellus;letter-spacing: 1.44px;text-transform: uppercase; margin-bottom: 24px; @include font64;
                 span{color: #FFF !important;}
             }
             a{span{color: #fff;display: flex;}}
@@ -180,7 +179,7 @@
 .reqNewSec{margin:120px 0;
     .reqNewContent{
         .newSecHeading{
-            h2{color: #FFF;@include font42; font-weight: $fontW400;font-family: $fontMarcellus;text-transform: none; letter-spacing: 0; margin-bottom: 24px;
+            h2{color: #FFF; font-weight: $fontW400;font-family: $fontMarcellus;text-transform: none; letter-spacing: 0; margin-bottom: 24px;@include font42;
                 span{color: #FFF !important; display: flex; align-items: center; cursor: pointer;
                     img{margin-left: 12px; width: 9px; margin-right: 10px; transition: 0.3s all ease-in-out;}
                     &:hover{color: #FFFFFF;

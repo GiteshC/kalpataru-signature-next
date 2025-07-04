@@ -1,5 +1,4 @@
 import ClientSignatureEssence from "@/components/ClientSignatureEssence";
-import ShimmerUi from "@/components/ShimmerUi";
 import { fetchPageData } from "@/Api/wp-api";
 import { EssencePageData } from "@/utils/essenceTyps";
 

@@ -4,13 +4,13 @@
     .sec-wrapper{@include wrapper;
         .philosophy-container{display: flex; justify-content: space-between;
             .philosophy-one{width: calc(39% - 25px);
-                p{color: #19357F; @include font24; font-family: $fontUrbanist; font-weight: $fontW500; line-height: 132%; margin-bottom: 28px;}
-                .tag-name{@include font20; color: #19357F; font-family: $fontUrbanist; font-weight: $fontW500; margin-bottom: 0;}
+                p{color: #19357F;  font-family: $fontUrbanist; font-weight: $fontW500; line-height: 132%; margin-bottom: 28px; @include font24;}
+                .tag-name{ color: #19357F; font-family: $fontUrbanist; font-weight: $fontW500; margin-bottom: 0; @include font20;}
                 img{margin-bottom: 14px;}
             }
             .philosophy-two{width: calc(61% - 200px);
                 img{margin-bottom: 14px}
-                .tag-name{@include font20; color: #19357F; font-family: $fontUrbanist; font-weight: $fontW500;}
+                .tag-name{ color: #19357F; font-family: $fontUrbanist; font-weight: $fontW500; @include font20;}
             }
         }
     }
@@ -64,8 +64,8 @@
 .philo-vision-section{margin-bottom: 160px;
     .vision-wrapper{
         .visionHeadingSec{width: 80%; margin: 0 auto 64px; text-align: center;
-            h2{color: #19357F;font-family: $fontMarcellus; @include font64; text-transform:uppercase; font-weight: $fontW400; margin-bottom: 16px;}
-            p{color: #5A6EA3;font-family: $fontUrbanist; @include font24; font-weight: $fontW600; letter-spacing: 0.24px;span{color: #5A6EA3;}}
+            h2{color: #19357F;font-family: $fontMarcellus; text-transform:uppercase; font-weight: $fontW400; margin-bottom: 16px; @include font64;}
+            p{color: #5A6EA3;font-family: $fontUrbanist; font-weight: $fontW600; letter-spacing: 0.24px; @include font24; span{color: #5A6EA3;}}
         }
         .visionVideoSec{width: 100%; position: relative;
             .secVideoBox{position: relative;
@@ -74,7 +74,7 @@
             }
         }
         .secVideoContent{position: absolute;bottom: 64px; width: 40%; left: 50%; transform: translate(-50%);
-            p{color: #FFF; text-align: center; font-family: $fontUrbanist; @include font24; font-weight: $fontW600; letter-spacing: 0.24px; }
+            p{color: #FFF; text-align: center; font-family: $fontUrbanist; font-weight: $fontW600; letter-spacing: 0.24px; @include font24;}
         }
         
     }
@@ -162,7 +162,7 @@
 .philo-houseOfFirst-sec{
     .vision-wrapper{width: 100%;
         .visionVideoSec{
-           a{color: #FFF; text-align: center; font-family: $fontUrbanist; @include font20; font-weight: $fontW600; letter-spacing: 0.2px; position: absolute; bottom: 54px; width: 40%; left: 50%; transform: translate(-50%)}
+           a{color: #FFF; text-align: center; font-family: $fontUrbanist; font-weight: $fontW600; letter-spacing: 0.2px; position: absolute; bottom: 54px; width: 40%; left: 50%; transform: translate(-50%); @include font20; }
            .secVideoContent{ position: absolute;bottom: 50%; width: 40%; left: 50%; transform: translate(-50%);
             }
 
@@ -227,11 +227,11 @@
                 .img-box{margin-right: 300px; position: relative;
                     .slider-img-content{  display: flex; align-items: center;  position: absolute; bottom: 24px;left: 22px;
                         .text-content-box{
-                            .text-one{ color: #FFF; font-family: $fontUrbanist; @include font18; font-weight: $fontW500;
+                            .text-one{ color: #FFF; font-family: $fontUrbanist; font-weight: $fontW500; @include font18;
                                 span{font-weight: $fontW600; color: #FFF; font-family: $fontUrbanist; @include font18;}
                             }
-                            .text-two{color: #FFF; font-family: $fontUrbanist; @include font20; font-weight: $fontW500; letter-spacing: 0.7px;
-                                span{color: #FFF; font-family: $fontUrbanist; @include font24; font-weight: $fontW500; letter-spacing: 0.84px;
+                            .text-two{color: #FFF; font-family: $fontUrbanist; font-weight: $fontW500; letter-spacing: 0.7px; @include font20;
+                                span{color: #FFF; font-family: $fontUrbanist; font-weight: $fontW500; letter-spacing: 0.84px; @include font24;
                                 }
                             }
                         }

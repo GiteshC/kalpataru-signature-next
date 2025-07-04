@@ -624,7 +624,9 @@ body{
 }
 
 @mixin font18 {
-    font-size: 18px;
+    &{
+        font-size: 18px;
+    }
 
     @media screen and (max-width:1600px) {
         font-size: 14px;
@@ -675,83 +677,85 @@ img {max-width: 100%;}
 .slick-track {display: flex !important;}
 .slick-slide {height: inherit !important;}
 
-.ctaOne {padding: 20px 40px;@include font18;font-weight: $fontW600;display: inline-flex;align-items: center;justify-content: center;cursor: pointer;border-radius: 18px;  color: #FFFFFF;text-decoration: none; transition: 0.5s all ease-in-out;
-    img{margin-left: 10px; margin-right:14px;transition: 0.3s all ease-in-out;}
+.ctaOne {
+
+    &{img{margin-left: 10px; margin-right:14px;transition: 0.3s all ease-in-out;}}
+
     &:hover{color: #FFFFFF;
         img{ transition: 0.3s all ease-in-out; transform: translateX(50%);}
     }
+
     &:active,&:visited,&:focus,&:focus-visible{color: #FFFFFF;}
-    @media screen and (max-width:1600px) {
-        padding: 18px 35px;
+    @media screen and (max-width:1600px) {padding: 18px 35px;
     }
-    @media screen and (max-width:1400px) {
-        padding: 16px 30px;
+    @media screen and (max-width:1400px) {padding: 16px 30px;
     }
-    @media screen and (max-width:1200px) {
-        padding: 14px 25px;
+    @media screen and (max-width:1200px) {padding: 14px 25px;
     }
-    @media screen and (max-width:720px) {
-        padding: 14px 22px;
-        font-size: 12px;
-        img{ transform: translateX(0%);}
+    @media screen and (max-width:720px) {padding: 14px 22px;font-size: 12px;
+       &{ img{ transform: translateX(0%);}}
     }
+    &{padding: 20px 40px;  font-weight: $fontW600;display: inline-flex;align-items: center;justify-content: center;cursor: pointer;border-radius: 18px;  color: #FFFFFF;text-decoration: none; transition: 0.5s all ease-in-out; @include font18;}
 }
 
-.ctaBluetext { @include font22;line-height: normal;font-weight: $fontW600;display: inline-flex;align-items: center;cursor: pointer;text-decoration: none;color: #19357F;text-decoration: none; display: inline-block; padding-right: 5px;
-    img{margin-left: 10px; transition: 0.3s all ease-in-out;display: inline-block;vertical-align: middle;}
+.ctaBluetext {
+
+   &{ img{margin-left: 10px; transition: 0.3s all ease-in-out;display: inline-block;vertical-align: middle;}}
+
     &:hover{color: #19357F;
         img{transform: translateX(50%);transition: 0.3s all ease-in-out;}
     }
+
     &:active,&:visited,&:focus,&:focus-visible{color: #19357F;}
    
     @media screen and (max-width:1600px) {
-        img{margin-left: 8px;width: 8px;}   
+        &{img{margin-left: 8px;width: 8px;}}   
     }
     @media screen and (max-width:1400px) {
-        img{width: 7px;}
+        &{img{width: 7px;}}
     }
     @media screen and (max-width:1200px) {
-        img{margin-left: 6px;}  
+        &{img{margin-left: 6px;}}  
     }
-    @media screen and (max-width:720px) {
-        font-size: 16px;
-        img{margin-left: 6px;width: 6px;}
+    @media screen and (max-width:720px) {font-size: 16px;
+        &{img{margin-left: 6px;width: 6px;}}
         &:hover{
-            img{transform: translateX(0%); }
+            &{img{transform: translateX(0%); }}
         }  
     }
+    &{line-height: normal;font-weight: $fontW600;display: inline-flex;align-items: center;cursor: pointer;text-decoration: none;color: #19357F;text-decoration: none; display: inline-block; padding-right: 5px; @include font22;}
 }
 
 ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     color: #949494;
+    line-height:normal;
     font-weight: $fontW500;
     @include font18;
-    line-height:normal;
 }
 
 ::-moz-placeholder {
     /* Firefox 19+ */
     color: #949494;
+    line-height:normal;
     font-weight: $fontW500;
     @include font18;
-    line-height:normal;
 }
 
 :-ms-input-placeholder {
     /* IE 10+ */
     color: #949494;
+    line-height:normal;
     font-weight: $fontW500;
     @include font18;
-    line-height:normal;
 }
 
 :-moz-placeholder {
     /* Firefox 18- */
     color: #949494;
+    line-height:normal;
     font-weight: $fontW500;
     @include font18;
-    line-height:normal;
 }
 
 .fancybox-toolbar{opacity: 1; visibility: visible;}

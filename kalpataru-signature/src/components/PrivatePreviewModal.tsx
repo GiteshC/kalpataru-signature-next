@@ -16,6 +16,33 @@ const PrivatePreviewModal = ({ isModalOpen, setIsModalOpen }: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const formSubmitHandler = async (e: any) => {
+    e.preventDefault();
+
+    const data = new FormData();
+    data.append("visitor_name", formData.visitorName);
+    data.append("visitor_email", formData.visitorEmail);
+    data.append("phoneid", formData.visitorPhone);
+
+    await fetch(
+      "https://ixdtm.com/projects/kalpataru-signature-wp/wp-json/contact-form-7/v1/contact-forms/840/feedback",
+      {
+        method: "POST",
+        body: data,
+        headers: {
+          Accept: "application/json",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Form Submitted", data);
+      })
+      .catch((error) => {
+        console.error("Form Submission Error", error);
+      });
+  };
+
   const closeModalHandler = () => {
     setIsModalOpen(false);
     document.body.classList.remove("hideScrollbar");
@@ -88,7 +115,7 @@ const PrivatePreviewModal = ({ isModalOpen, setIsModalOpen }: any) => {
                     placeholder="Phone number"
                   />
                 </div> */}
-                <p>
+                <p onClick={formSubmitHandler}>
                   <input
                     className="wpcf7-form-control wpcf7-submit has-spinner"
                     type="submit"
