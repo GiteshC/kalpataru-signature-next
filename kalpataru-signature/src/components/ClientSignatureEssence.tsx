@@ -22,6 +22,7 @@ import {
   SignaturePinCode,
 } from "@/utils/essenceTyps";
 import { ExploreTheEssence } from "@/utils/type";
+import Image from "next/image";
 
 interface EssenceProps {
   pageData: EssencePageData;
@@ -109,9 +110,9 @@ const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
                   }}
                   ref={pincodeSlider1}
                 >
-                  {sectionOne?.pincodes_properties?.map((el) => (
+                  {sectionOne?.pincodes_properties?.map((el: any) => (
                     <div className="bgMaps" key={el?.pincode_area_image?.id}>
-                      <img src={el?.pincode_area_image?.url} />
+                      <Image src={el?.pincode_area_image?.url} alt="" />
                     </div>
                   ))}
                 </SliderComponent>
@@ -137,31 +138,28 @@ const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
                     }}
                     ref={pincodeSlider2}
                   >
-                    {sectionOne?.pincodes_properties?.map((card, i) => (
+                    {sectionOne?.pincodes_properties?.map((card: any, i) => (
                       <div className="innerContent" key={i}>
                         <div className="imgDiv">
                           <div className="bigImg">
-                            <img
-                              src={
-                                card?.property_images?.property_big_image?.url
-                              }
+                            <Image src={card?.property_images?.property_big_image?.url} alt=""
                             />
                           </div>
                           <div className="smallImg">
                             <div className="innerSmallimg">
-                              <img
+                              <Image
                                 src={
                                   card?.property_images
                                     ?.property_small_image_one?.url
-                                }
+                                } alt=""
                               />
                             </div>
                             <div className="innerSmallimg">
-                              <img
+                              <Image
                                 src={
                                   card?.property_images
                                     ?.property_small_image_two?.url
-                                }
+                                } alt=""
                               />
                             </div>
                           </div>
@@ -171,7 +169,7 @@ const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
                           <p>{card?.property_description}</p>
                           <Link href={"/pincodes"} className="ctaBluetext">
                             {card?.cta_text}
-                            <img src="images/pincode-arrow.svg" />
+                            <Image src="images/pincode-arrow.svg" alt="" />
                           </Link>
                         </div>
                       </div>
@@ -217,9 +215,9 @@ const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
                         href={el.video_link}
                       >
                         <div className="video">
-                          <img src={el.video_thumbnail.url} />
+                          <Image src={el.video_thumbnail.url} alt=""/>
                           <div className="popupButton">
-                            <img
+                            <Image
                               src="images/resident-slider-arrow.svg"
                               alt=""
                               title=""
@@ -283,10 +281,10 @@ const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
                   {sectionThree.testimonials_content?.map((el: any) => (
                     <div className="innerBoxes" key={el.video_thumbnail.id}>
                       <div className="videoBox">
-                        <img src={el.video_thumbnail.url} />
+                        <Image src={el.video_thumbnail.url} alt=""/>
                         <div className="popupButton">
                           <a data-fancybox data-ratio="4" href={el.video_link}>
-                            <img
+                            <Image
                               src="images/resident-slider-arrow.svg"
                               alt=""
                               title=""

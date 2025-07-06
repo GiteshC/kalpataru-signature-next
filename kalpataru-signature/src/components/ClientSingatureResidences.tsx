@@ -6,6 +6,7 @@ import { ResidencePageData, ResidenceProjectItem } from "@/utils/residenceType";
 import ExploreCompoent from "./ExploreCompoent";
 import ResidenceProjects from "./ResidenceProjects";
 import PathComponent from "./PathComponent";
+import Image from "next/image";
 
 interface ResidenceProps {
   pageData: ResidencePageData;
@@ -42,120 +43,9 @@ const ClientSingatureResidences = ({
     setFilterProjectData(searchData);
   };
 
-  // useEffect(() => {
-  //   const hasBanner = document.querySelector(".animationBanner");
-
-  //   const addClass = (selector: string, className: string) => {
-  //     document
-  //       .querySelectorAll(selector)
-  //       .forEach((el) => el.classList.add(className));
-  //   };
-
-  //   const fadeOut = (selector: string, duration: number) => {
-  //     document.querySelectorAll(selector).forEach((el) => {
-  //       (el as HTMLElement).style.transition = `opacity ${duration}ms`;
-  //       (el as HTMLElement).style.opacity = "0";
-  //       setTimeout(() => {
-  //         (el as HTMLElement).style.display = "none";
-  //       }, duration);
-  //     });
-  //   };
-
-  //   const fadeIn = (selector: string, duration: number) => {
-  //     document.querySelectorAll(selector).forEach((el) => {
-  //       (el as HTMLElement).style.opacity = "0";
-  //       (el as HTMLElement).style.display = "block";
-  //       (el as HTMLElement).style.transition = `opacity ${duration}ms`;
-  //       setTimeout(() => {
-  //         (el as HTMLElement).style.opacity = "1";
-  //       }, 10);
-  //     });
-  //   };
-
-  //   const swiftUpTextAnimate = () => {
-  //     const swiftUpElements = document.querySelectorAll(".new-swift-up-text");
-  //     swiftUpElements.forEach((elem) => {
-  //       const words = elem.textContent?.trim().split(" ") || [];
-  //       elem.innerHTML = "";
-  //       words.forEach((word) => {
-  //         elem.innerHTML += `<span><i>${word}</i></span> `;
-  //       });
-  //       const children = elem.querySelectorAll("span > i");
-  //       children.forEach((node, index) => {
-  //         (node as HTMLElement).style.animationDelay = `${index * 0.4}s`;
-  //       });
-  //     });
-  //   };
-
-  //   if (hasBanner) {
-  //     addClass(".loader", "loaded");
-  //     addClass("body", "loaded");
-  //     fadeIn(".loader", 3000);
-
-  //     setTimeout(() => {
-  //       fadeOut(".loader", 3000);
-  //       addClass(".loaderLogoimg", "loaderImg");
-  //       addClass("header", "headerNew");
-  //       addClass(".letter", "letterNew");
-  //     }, 3000);
-
-  //     setTimeout(() => {
-  //       addClass(".headerWrapper ul", "innerMenulink");
-  //       addClass(".centerLogo", "centerLogonew");
-  //       addClass(".scrollText", "scrollTextnew");
-  //       addClass(".swift-up-text", "new-swift-up-text");
-  //       swiftUpTextAnimate();
-  //     }, 4000);
-
-  //     setTimeout(() => {
-  //       addClass(".bannerTextanimation", "bannerTextanimationnew");
-  //     }, 5000);
-
-  //     setTimeout(() => {
-  //       addClass(".loader", "loaded");
-  //       addClass("body", "loaded");
-  //     }, 60000);
-  //   } else {
-  //     addClass("header", "headerNew");
-  //     addClass(".headerWrapper ul", "innerMenulink");
-  //     addClass(".centerLogo", "centerLogonew");
-  //     addClass(".scrollText", "scrollTextnew");
-  //     addClass(".swift-up-text", "new-swift-up-text");
-  //     swiftUpTextAnimate();
-
-  //     setTimeout(() => {
-  //       addClass(".bannerTextanimation", "bannerTextanimationnew");
-  //     }, 1000);
-  //   }
-
-  //   const inViewport = () => {
-  //     const allElements = document.getElementsByClassName("section-text-up");
-  //     const windowHeight = window.innerHeight;
-
-  //     const elems = () => {
-  //       for (let i = 0; i < allElements.length; i++) {
-  //         const top = allElements[i].getBoundingClientRect().top;
-  //         if (top < windowHeight) {
-  //           allElements[i].classList.add("newClass");
-  //         } else {
-  //           allElements[i].classList.remove("newClass");
-  //         }
-  //       }
-  //     };
-
-  //     elems();
-  //     window.addEventListener("scroll", elems);
-
-  //     // Cleanup scroll listener
-  //     return () => window.removeEventListener("scroll", elems);
-  //   };
-
-  //   inViewport();
-  // }, []);
-
   useEffect(() => {
     searchResult(resProjectData, searchText);
-  }, [searchText]);
+  }, [resProjectData, searchText]);
 
   return (
     <>
@@ -175,7 +65,7 @@ const ClientSingatureResidences = ({
               }}
             />
             <button className="searchimg-div">
-              <img src="/images/search-icon.svg" alt="" />
+              <Image src="/images/search-icon.svg" alt="" />
             </button>
           </div>
         </div>

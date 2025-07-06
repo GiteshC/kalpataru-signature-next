@@ -6,6 +6,7 @@ import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import { Fancybox } from "@fancyapps/ui";
 import PathComponent from "@/components/PathComponent";
 import { PhilosophyPageData } from "@/utils/philosophyTyps";
+import Image from "next/image";
 
 import SectionObserver from "./SectionObserver";
 
@@ -24,7 +25,7 @@ const ClientSignaturePhilosophy = ({ pageData }: PhilosophyProps) => {
   return (
     <>
       <BannerComponent bannerData={pageData?.acf?.banner_section} />
-      {pageData?.acf?.philosophy_components?.map((sec, index) => {
+      {pageData?.acf?.philosophy_components?.map((sec: any, index) => {
         if (sec?.acf_fc_layout === "pioneers_section") {
           return (
             <SectionObserver key={index}>
@@ -49,12 +50,12 @@ const ClientSignaturePhilosophy = ({ pageData }: PhilosophyProps) => {
                     </div>
                     <div className="visionVideoSec">
                       <div className="secVideoBox">
-                        <img
+                        <Image
                           src={sec?.section_desktop_image?.url}
                           alt=""
                           className="desktopImg"
                         />
-                        <img
+                        <Image
                           src={sec?.section_mobile_image?.url}
                           alt=""
                           className="mobileImg"
@@ -126,9 +127,7 @@ const ClientSignaturePhilosophy = ({ pageData }: PhilosophyProps) => {
 
         if (sec?.acf_fc_layout === "related_page_section") {
           return (
-            <SectionObserver key={index}>
-              {(isSecInViewport, ref) => <ExploreCompoent exploreData={sec} />}
-            </SectionObserver>
+            <ExploreCompoent exploreData={sec} />
           );
         }
       })}

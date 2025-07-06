@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import BannerComponent from "@/components/BannerComponent";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 import { Fancybox } from "@fancyapps/ui";
@@ -7,6 +7,7 @@ import { HomepagePageData } from "@/utils/homepageTyps";
 import SectionObserver from "./SectionObserver";
 import PrivatePreviewModal from "./PrivatePreviewModal";
 import useModalContext from "@/context/modalContext";
+import Image from "next/image";
 
 interface HomepageProps {
   pageData: HomepagePageData;
@@ -53,12 +54,12 @@ const ClientHomepage = ({ pageData }: HomepageProps) => {
                     >
                       <span>
                         {sec?.section_cta_text}{" "}
-                        <img src="/images/cta-arrow.svg" alt="" />
+                        <Image src="/images/cta-arrow.svg" alt="" />
                       </span>
                     </a>
                   </div>
                 </div>
-                <div className="signatureVideo" ref={ref}>
+                <div className="signatureVideo">
                   <div className="videoBox">
                     <video autoPlay muted loop playsInline preload="metadata">
                       <source src={sec?.short_video} type="video/mp4" />
@@ -77,14 +78,14 @@ const ClientHomepage = ({ pageData }: HomepageProps) => {
         {(isSecInViewport, ref) => (
           <section className="requestSec reqNewSec" ref={ref}>
             <div className="requestBG">
-              <img
-                src={pageData.acf.request_section?.bg_image.url}
-                alt={pageData.acf.request_section?.bg_image.title}
+              <Image
+                src={`${pageData.acf.request_section?.bg_image.url}`}
+                alt={`${pageData.acf.request_section?.bg_image.title}`}
                 className="desktopImg"
               />
-              <img
-                src={pageData.acf.request_section?.bg_image_mobile.url}
-                alt={pageData.acf.request_section?.bg_image_mobile.title}
+              <Image
+                src={`${pageData.acf.request_section?.bg_image_mobile.url}`}
+                alt={`${pageData.acf.request_section?.bg_image_mobile.title}`}
                 className="mobileImg"
               />
             </div>
@@ -99,7 +100,7 @@ const ClientHomepage = ({ pageData }: HomepageProps) => {
                   <div className="trigger">
                     <span>
                       {pageData.acf.request_section?.section_heading}
-                      <img src="/images/cta-arrow-white.svg" alt="" />
+                      <Image src="/images/cta-arrow-white.svg" alt="" />
                     </span>
                   </div>
                 </h2>

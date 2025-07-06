@@ -13,6 +13,19 @@ export interface BannerImageOption {
   banner_video_field?: string;
 }
 
+type ResidencesComponentData = {
+  acf_fc_layout? : string;
+  section_heading? : string;
+  section_description? : string;
+  desktop_image? : ImageData;
+  mobile_image? : ImageData;
+}
+
+type ParentPages = {
+  parent_page_text? : string;
+  parent_page_link? : string;
+}
+
 export interface ResidenceProjectItem {
   id: number;
   slug: string;
@@ -35,10 +48,10 @@ export interface ResidenceProjectItem {
       banner_options?: BannerImageOption[];
     };
     breadcrumbs?: {
-      parent_pages: any[]; // You can make it more strict if needed
+      parent_pages: ParentPages[]; // You can make it more strict if needed
       current_page_name?: string;
     };
-    residences_components?: any[]; // Define component types if needed
+    residences_components?: ResidencesComponentData[]; // Define component types if needed
   };
   date: string;
   modified: string;

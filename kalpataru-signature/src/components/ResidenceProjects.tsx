@@ -1,5 +1,6 @@
 import { ResidenceProjectItem } from "@/utils/residenceType";
 import Link from "next/link";
+import Image from "next/image";
 
 interface FilterprojectDataProps {
   filterprojectData: ResidenceProjectItem[];
@@ -17,7 +18,7 @@ const ResidenceProjects = ({ filterprojectData }: FilterprojectDataProps) => {
           <div className="signature-image">
             {project?.acf?.banner_section?.banner_options?.[0]
               ?.banner_image_field?.url ? (
-              <img
+              <Image
                 src={
                   project?.acf?.banner_section?.banner_options?.[0]
                     ?.banner_image_field?.url
@@ -25,7 +26,7 @@ const ResidenceProjects = ({ filterprojectData }: FilterprojectDataProps) => {
                 alt=""
               />
             ) : (
-              <img src="/images/kalpataru-azuro.webp" alt="" />
+              <Image src="/images/kalpataru-azuro.webp" alt="" />
             )}
           </div>
           <div className="signature-content">
@@ -39,7 +40,7 @@ const ResidenceProjects = ({ filterprojectData }: FilterprojectDataProps) => {
               {project?.acf?.banner_section?.project_listing_description}
             </p>
             <Link href={`/residences/${project?.slug}`} className="ctaBluetext ">
-              View Project <img src="images/signature-cta-arrow.svg" alt="" />
+              View Project <Image src="images/signature-cta-arrow.svg" alt="" />
             </Link>
           </div>
         </div>

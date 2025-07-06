@@ -9,6 +9,7 @@ import SectionObserver from "./SectionObserver";
 import { Fancybox } from "@fancyapps/ui";
 import ExploreCompoent from "./ExploreCompoent";
 import PathComponent from "./PathComponent";
+import Image from "next/image";
 
 interface ExperienceProps {
   pageData: ExperiencePageData;
@@ -16,7 +17,6 @@ interface ExperienceProps {
 
 const ClientSingatureExprience = ({ pageData }: ExperienceProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = 2;
 
   useEffect(() => {
     Fancybox.bind("[data-fancybox]", {});
@@ -52,7 +52,7 @@ const ClientSingatureExprience = ({ pageData }: ExperienceProps) => {
                       </p>
                     </div>
                     <div className="imgSection">
-                      {sec?.experience_of_living?.map((imageCard) => (
+                      {sec?.experience_of_living?.map((imageCard: any) => (
                         <div
                           key={imageCard?.experience_image?.id}
                           className={`innerImg section-text-up ${
@@ -65,12 +65,12 @@ const ClientSingatureExprience = ({ pageData }: ExperienceProps) => {
                               data-ratio="2"
                               href={imageCard?.experience_video_link}
                             >
-                              <img
+                              <Image
                                 src={imageCard?.experience_image?.url}
                                 alt=""
                               />
                               <div className="popupButton">
-                                <img
+                                <Image
                                   src="/images/resident-slider-arrow.svg"
                                   alt=""
                                   title=""
@@ -91,12 +91,12 @@ const ClientSingatureExprience = ({ pageData }: ExperienceProps) => {
                             data-ratio="2"
                             href="https://www.youtube.com/embed/XenKI94naI0?autoplay=1&amp;mute=1"
                           >
-                            <img
+                            <Image
                               src="images/madhurbaya-avanatestimonial-thumbnail-bigimg.webp"
                               alt=""
                             />
                             <div className="popupButton">
-                              <img
+                              <Image
                                 src="/images/resident-slider-arrow.svg"
                                 alt=""
                                 title=""
@@ -116,12 +116,12 @@ const ClientSingatureExprience = ({ pageData }: ExperienceProps) => {
                             data-ratio="2"
                             href="https://www.youtube.com/embed/viptE0F8Jv8?autoplay=1&amp;mute=1"
                           >
-                            <img
+                            <Image
                               src="images/mr-santhanam-amodatestimonial-bigimg.webp"
                               alt=""
                             />
                             <div className="popupButton">
-                              <img
+                              <Image
                                 src="/images/resident-slider-arrow.svg"
                                 alt=""
                                 title=""
@@ -191,9 +191,9 @@ const ClientSingatureExprience = ({ pageData }: ExperienceProps) => {
                             key={card?.event_image?.id}
                           >
                             <div className="eventImg">
-                              <img
-                                src={card?.event_image?.url}
-                                alt={card?.event_image?.title}
+                              <Image
+                                src={`${card?.event_image?.url}`}
+                                alt={`${card?.event_image?.title}`}
                               />
                             </div>
                             <div className="eventName">
@@ -213,9 +213,7 @@ const ClientSingatureExprience = ({ pageData }: ExperienceProps) => {
 
         if (sec?.acf_fc_layout === "related_page_section") {
           return (
-            <SectionObserver key={index}>
-              {(isSecInViewport, ref) => <ExploreCompoent exploreData={sec} />}
-            </SectionObserver>
+            <ExploreCompoent key={index} exploreData={sec} />
           );
         }
       })}

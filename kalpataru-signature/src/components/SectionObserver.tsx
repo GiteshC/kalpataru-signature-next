@@ -1,10 +1,10 @@
 "use client";
 
 import useIsSecVisible from "@/hooks/useIsSecVisible";
-import React, { useRef } from "react";
+import React, { RefObject, useRef } from "react";
 
 type SectionProps = {
-  children: (isSecInViewport: boolean, ref: any) => React.ReactNode;
+  children: (isSecInViewport: boolean, ref: RefObject<HTMLElement | null>) => React.ReactNode;
 };
 
 const SectionObserver = ({ children }: SectionProps) => {

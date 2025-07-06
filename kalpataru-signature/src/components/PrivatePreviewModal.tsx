@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
+import Image from "next/image";
 
 const PrivatePreviewModal = ({ isModalOpen, setIsModalOpen }: any) => {
   const [formData, setFormData] = useState({
@@ -54,14 +55,14 @@ const PrivatePreviewModal = ({ isModalOpen, setIsModalOpen }: any) => {
       <div className="modalInner">
         <div className="headerLogo">
           <a href="">
-            <img src="/images/headerlogo.svg" className="desktopImg" />
+            <Image src="/images/headerlogo.svg" className="desktopImg" alt="" />
           </a>
         </div>
         <span className="close-button" onClick={closeModalHandler}>
-          <img src="/images/popup-close-icon.svg" className="mobileImg" />
+          <Image src="/images/popup-close-icon.svg" className="mobileImg" alt="" />
         </span>
         <span className="close-buttonTwo" onClick={closeModalHandler}>
-          <img src="/images/backarrow-modal.svg" />
+          <Image src="/images/backarrow-modal.svg" alt="" />
         </span>
         <div className="modal-content">
           <div className="meetingModal">

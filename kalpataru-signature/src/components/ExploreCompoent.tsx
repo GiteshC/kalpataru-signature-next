@@ -3,13 +3,16 @@ import { useRef } from "react";
 import useIsSecVisible from "@/hooks/useIsSecVisible";
 import { ExploreTheEssence } from "@/utils/type";
 import Link from "next/link";
+import Image from "next/image";
 
 interface ExploreSecProps {
   exploreData?: ExploreTheEssence;
 }
 
-const ExploreCompoent = ({ exploreData }: ExploreSecProps) => {
+const   ExploreCompoent = ({ exploreData }: ExploreSecProps) => {  
   const ref = useRef(null);
+  const { isSecInViewport } = useIsSecVisible(ref);
+
   if (!exploreData) return null;
   const {
     box_desktop_image: desktopImgUrl,
@@ -22,12 +25,11 @@ const ExploreCompoent = ({ exploreData }: ExploreSecProps) => {
 
   const secHeading = heading || section_heading || "";
 
-  const { isSecInViewport } = useIsSecVisible(ref);
   return (
     <section className="requestSec" ref={ref}>
       <div className="requestBG">
-        <img src={desktopImgUrl?.url} alt="" className="desktopImg" />
-        <img src={mblImgUrl?.url} alt="" className="mobileImg" />
+        <Image src={`${desktopImgUrl?.url}`} alt="" className="desktopImg" />
+        <Image src={`${mblImgUrl?.url}`} alt="" className="mobileImg" />
       </div>
       <div className="requestWrapper requestContent">
         <div className="secHeading">
@@ -44,7 +46,7 @@ const ExploreCompoent = ({ exploreData }: ExploreSecProps) => {
           >
             <span>
               {subHeading}
-              <img src="/images/cta-arrow-white.svg" alt="" />
+              <Image src="/images/cta-arrow-white.svg" alt="" />
             </span>
           </Link>
         </div>
