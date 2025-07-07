@@ -9,6 +9,7 @@ import SectionObserver from "./SectionObserver";
 import { Fancybox } from "@fancyapps/ui";
 import ExploreCompoent from "./ExploreCompoent";
 import PathComponent from "./PathComponent";
+import Image from "next/image";
 
 interface ExperienceProps {
   pageData: ExperiencePageData;
@@ -16,7 +17,6 @@ interface ExperienceProps {
 
 const ClientSingatureExprience = ({ pageData }: ExperienceProps) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = 2;
 
   useEffect(() => {
     Fancybox.bind("[data-fancybox]", {});
@@ -65,71 +65,26 @@ const ClientSingatureExprience = ({ pageData }: ExperienceProps) => {
                               data-ratio="2"
                               href={imageCard?.experience_video_link}
                             >
-                              <img
-                                src={imageCard?.experience_image?.url}
+                              <Image
+                                src={imageCard?.experience_image?.url || ""}
                                 alt=""
+                                width={imageCard?.experience_image?.width}
+                                height={imageCard?.experience_image?.height}
+                                style={{ width: "100%", height: "auto" }}
                               />
                               <div className="popupButton">
-                                <img
+                                <Image
                                   src="/images/resident-slider-arrow.svg"
                                   alt=""
-                                  title=""
+                                  width={0}
+                                  height={0}
+                                  style={{ width: "auto", height: "auto" }}
                                 />
                               </div>
                             </a>
                           </span>
                         </div>
                       ))}
-                      {/* <div
-                        className={`innerImg section-text-up ${
-                          experienceSection ? "newClass" : ""
-                        }`}
-                      >
-                        <span>
-                          <a
-                            data-fancybox=""
-                            data-ratio="2"
-                            href="https://www.youtube.com/embed/XenKI94naI0?autoplay=1&amp;mute=1"
-                          >
-                            <img
-                              src="images/madhurbaya-avanatestimonial-thumbnail-bigimg.webp"
-                              alt=""
-                            />
-                            <div className="popupButton">
-                              <img
-                                src="/images/resident-slider-arrow.svg"
-                                alt=""
-                                title=""
-                              />
-                            </div>
-                          </a>
-                        </span>
-                      </div>
-                      <div
-                        className={`innerImg section-text-up ${
-                          experienceSection ? "newClass" : ""
-                        }`}
-                      >
-                        <span>
-                          <a
-                            data-fancybox=""
-                            data-ratio="2"
-                            href="https://www.youtube.com/embed/viptE0F8Jv8?autoplay=1&amp;mute=1"
-                          >
-                            <img
-                              src="images/mr-santhanam-amodatestimonial-bigimg.webp"
-                              alt=""
-                            />
-                            <div className="popupButton">
-                              <img
-                                src="/images/resident-slider-arrow.svg"
-                                alt=""
-                                title=""
-                              />
-                            </div>
-                          </a>
-                        </span>
-                      </div> */}
                     </div>
                   </div>
                 </section>
@@ -191,9 +146,12 @@ const ClientSingatureExprience = ({ pageData }: ExperienceProps) => {
                             key={card?.event_image?.id}
                           >
                             <div className="eventImg">
-                              <img
-                                src={card?.event_image?.url}
-                                alt={card?.event_image?.title}
+                              <Image
+                                src={card?.event_image?.url || ""}
+                                alt={card?.event_image?.title || ""}
+                                width={card?.event_image?.width}
+                                height={card?.event_image?.height}
+                                style={{ width: "100%", height: "auto" }}
                               />
                             </div>
                             <div className="eventName">
@@ -214,13 +172,13 @@ const ClientSingatureExprience = ({ pageData }: ExperienceProps) => {
         if (sec?.acf_fc_layout === "related_page_section") {
           return (
             <SectionObserver key={index}>
-              {(isSecInViewport, ref) => <ExploreCompoent exploreData={sec} />}
+              {() => <ExploreCompoent exploreData={sec} />}
             </SectionObserver>
           );
         }
       })}
 
-      <PathComponent pathData = {pageData?.acf?.breadcrumbs}/>
+      <PathComponent pathData={pageData?.acf?.breadcrumbs} />
     </>
   );
 };

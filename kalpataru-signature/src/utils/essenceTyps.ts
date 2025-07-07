@@ -22,7 +22,7 @@ type EssenceVideoProperty = {
   video_link: string;
 };
 
-type ResidentsSecProperty = {
+export type ResidentsSecProperty = {
   video_heading: string;
   video_link: string;
   video_thumbnail: ImageData;

@@ -8,6 +8,7 @@ import PathComponent from "@/components/PathComponent";
 import { PhilosophyPageData } from "@/utils/philosophyTyps";
 
 import SectionObserver from "./SectionObserver";
+import Image from "next/image";
 
 interface PhilosophyProps {
   pageData: PhilosophyPageData;
@@ -49,14 +50,18 @@ const ClientSignaturePhilosophy = ({ pageData }: PhilosophyProps) => {
                     </div>
                     <div className="visionVideoSec">
                       <div className="secVideoBox">
-                        <img
-                          src={sec?.section_desktop_image?.url}
+                        <Image
+                          src={sec?.section_desktop_image?.url || ""}
                           alt=""
+                          width={sec?.section_desktop_image?.width}
+                          height={sec?.section_desktop_image?.height}
                           className="desktopImg"
                         />
-                        <img
-                          src={sec?.section_mobile_image?.url}
+                        <Image
+                          src={sec?.section_mobile_image?.url || ""}
                           alt=""
+                          width={sec?.section_mobile_image?.width}
+                          height={sec?.section_mobile_image?.height}
                           className="mobileImg"
                         />
                       </div>
@@ -127,13 +132,13 @@ const ClientSignaturePhilosophy = ({ pageData }: PhilosophyProps) => {
         if (sec?.acf_fc_layout === "related_page_section") {
           return (
             <SectionObserver key={index}>
-              {(isSecInViewport, ref) => <ExploreCompoent exploreData={sec} />}
+              {() => <ExploreCompoent exploreData={sec} />}
             </SectionObserver>
           );
         }
       })}
 
-      <PathComponent pathData = {pageData?.acf?.breadcrumbs}/>
+      <PathComponent pathData={pageData?.acf?.breadcrumbs} />
     </>
   );
 };

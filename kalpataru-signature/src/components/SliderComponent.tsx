@@ -1,12 +1,17 @@
 "use client";
 
-import React from "react";
-import Slider from "react-slick";
+import React, { ReactNode, ForwardedRef } from "react";
+import Slider, { Settings as SliderSettings } from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+type SliderComponentProps = {
+  setting: SliderSettings;
+  children: ReactNode;
+};
+
 const SliderComponent = React.forwardRef(
-  ({ setting, children}: { setting: any; children: any }, ref: any) => {
+  ({ setting, children }: SliderComponentProps, ref: ForwardedRef<Slider>) => {
     return (
       <Slider {...setting} ref={ref}>
         {children}
@@ -14,5 +19,7 @@ const SliderComponent = React.forwardRef(
     );
   }
 );
+
+SliderComponent.displayName = "SliderComponent";
 
 export default SliderComponent;

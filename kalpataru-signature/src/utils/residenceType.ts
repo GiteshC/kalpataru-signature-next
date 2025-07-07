@@ -34,11 +34,6 @@ export interface ResidenceProjectItem {
       project_location?: string;
       banner_options?: BannerImageOption[];
     };
-    breadcrumbs?: {
-      parent_pages: any[]; // You can make it more strict if needed
-      current_page_name?: string;
-    };
-    residences_components?: any[]; // Define component types if needed
   };
   date: string;
   modified: string;

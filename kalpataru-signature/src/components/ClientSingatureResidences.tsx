@@ -6,6 +6,7 @@ import { ResidencePageData, ResidenceProjectItem } from "@/utils/residenceType";
 import ExploreCompoent from "./ExploreCompoent";
 import ResidenceProjects from "./ResidenceProjects";
 import PathComponent from "./PathComponent";
+import Image from "next/image";
 
 interface ResidenceProps {
   pageData: ResidencePageData;
@@ -16,10 +17,10 @@ const ClientSingatureResidences = ({
   pageData,
   projectsData,
 }: ResidenceProps) => {
-  const [resProjectData, setResProjectData] = useState(projectsData);
   const [filterprojectData, setFilterProjectData] = useState(projectsData);
   const [searchText, setSearchText] = useState("");
-
+  const resProjectData = projectsData;
+  
   const searchResult = (
     resProjectData: ResidenceProjectItem[],
     searchText: string
@@ -155,7 +156,7 @@ const ClientSingatureResidences = ({
 
   useEffect(() => {
     searchResult(resProjectData, searchText);
-  }, [searchText]);
+  }, [searchText, resProjectData]);
 
   return (
     <>
@@ -175,7 +176,13 @@ const ClientSingatureResidences = ({
               }}
             />
             <button className="searchimg-div">
-              <img src="/images/search-icon.svg" alt="" />
+              <Image
+                src="/images/search-icon.svg"
+                alt=""
+                width={0}
+                height={0}
+                style={{ width: "auto", height: "auto" }}
+              />
             </button>
           </div>
         </div>

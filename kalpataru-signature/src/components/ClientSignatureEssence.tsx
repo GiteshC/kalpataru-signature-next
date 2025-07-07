@@ -19,9 +19,11 @@ import {
   EssencePageData,
   EssenceVideoSec,
   ResidentsSec,
+  ResidentsSecProperty,
   SignaturePinCode,
 } from "@/utils/essenceTyps";
 import { ExploreTheEssence } from "@/utils/type";
+import Image from "next/image";
 
 interface EssenceProps {
   pageData: EssencePageData;
@@ -111,7 +113,13 @@ const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
                 >
                   {sectionOne?.pincodes_properties?.map((el) => (
                     <div className="bgMaps" key={el?.pincode_area_image?.id}>
-                      <img src={el?.pincode_area_image?.url} />
+                      <Image
+                        src={el?.pincode_area_image?.url || ""}
+                        alt={el?.pincode_area_image?.title || ""}
+                        width={el?.pincode_area_image?.width}
+                        height={el?.pincode_area_image?.height}
+                        style={{ width: "100%", height: "auto" }}
+                      />
                     </div>
                   ))}
                 </SliderComponent>
@@ -141,27 +149,57 @@ const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
                       <div className="innerContent" key={i}>
                         <div className="imgDiv">
                           <div className="bigImg">
-                            <img
+                            <Image
                               src={
-                                card?.property_images?.property_big_image?.url
+                                card?.property_images?.property_big_image
+                                  ?.url || ""
                               }
+                              alt=""
+                              width={
+                                card?.property_images?.property_big_image?.width
+                              }
+                              height={
+                                card?.property_images?.property_big_image
+                                  ?.height
+                              }
+                              style={{ width: "100%", height: "auto" }}
                             />
                           </div>
                           <div className="smallImg">
                             <div className="innerSmallimg">
-                              <img
+                              <Image
                                 src={
                                   card?.property_images
-                                    ?.property_small_image_one?.url
+                                    ?.property_small_image_one?.url || ""
                                 }
+                                alt=""
+                                width={
+                                  card?.property_images
+                                    ?.property_small_image_one?.width
+                                }
+                                height={
+                                  card?.property_images
+                                    ?.property_small_image_one?.height
+                                }
+                                style={{ width: "100%", height: "auto" }}
                               />
                             </div>
                             <div className="innerSmallimg">
-                              <img
+                              <Image
                                 src={
                                   card?.property_images
-                                    ?.property_small_image_two?.url
+                                    ?.property_small_image_two?.url || ""
                                 }
+                                alt=""
+                                width={
+                                  card?.property_images
+                                    ?.property_small_image_two?.width
+                                }
+                                height={
+                                  card?.property_images
+                                    ?.property_small_image_two?.height
+                                }
+                                style={{ width: "100%", height: "auto" }}
                               />
                             </div>
                           </div>
@@ -171,7 +209,13 @@ const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
                           <p>{card?.property_description}</p>
                           <Link href={"/pincodes"} className="ctaBluetext">
                             {card?.cta_text}
-                            <img src="images/pincode-arrow.svg" />
+                            <Image
+                              src="images/pincode-arrow.svg"
+                              alt=""
+                              width={0}
+                              height={0}
+                              style={{ width: "auto", height: "auto" }}
+                            />
                           </Link>
                         </div>
                       </div>
@@ -197,7 +241,7 @@ const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
                   },
                 }}
               >
-                {sectionTwo?.interview_content?.map((el: any) => (
+                {sectionTwo?.interview_content?.map((el) => (
                   <div key={el.video_thumbnail.id} className="innerBoxes">
                     <div className="videoMaindiv">
                       <div className="textDiv">
@@ -217,12 +261,21 @@ const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
                         href={el.video_link}
                       >
                         <div className="video">
-                          <img src={el.video_thumbnail.url} />
+                          <Image
+                            src={el.video_thumbnail.url || ""}
+                            alt=""
+                            width={el.video_thumbnail.width}
+                            height={el.video_thumbnail.height}
+                            style={{ width: "auto", height: "auto" }}
+                          />
                           <div className="popupButton">
-                            <img
+                            <Image
                               src="images/resident-slider-arrow.svg"
                               alt=""
                               title=""
+                              width={0}
+                              height={0}
+                              style={{ width: "auto", height: "auto" }}
                             />
                           </div>
                         </div>
@@ -280,25 +333,40 @@ const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
               </div> */}
               <div className="residentSlider">
                 <SliderComponent setting={{ ...residentSlider }}>
-                  {sectionThree.testimonials_content?.map((el: any) => (
-                    <div className="innerBoxes" key={el.video_thumbnail.id}>
-                      <div className="videoBox">
-                        <img src={el.video_thumbnail.url} />
-                        <div className="popupButton">
-                          <a data-fancybox data-ratio="4" href={el.video_link}>
-                            <img
-                              src="images/resident-slider-arrow.svg"
-                              alt=""
-                              title=""
-                            />
-                          </a>
+                  {sectionThree.testimonials_content?.map(
+                    (el: ResidentsSecProperty) => (
+                      <div className="innerBoxes" key={el.video_thumbnail.id}>
+                        <div className="videoBox">
+                          <Image
+                            src={el.video_thumbnail.url || ""}
+                            alt=""
+                            width={el.video_thumbnail.width}
+                            height={el.video_thumbnail.height}
+                            style={{ width: "auto", height: "auto" }}
+                          />
+                          <div className="popupButton">
+                            <a
+                              data-fancybox
+                              data-ratio="4"
+                              href={el.video_link}
+                            >
+                              <Image
+                                src="images/resident-slider-arrow.svg"
+                                alt=""
+                                title=""
+                                width={0}
+                                height={0}
+                                style={{ width: "auto", height: "auto" }}
+                              />
+                            </a>
+                          </div>
+                        </div>
+                        <div className="descriptionBox">
+                          <h3>{el.video_heading}</h3>
                         </div>
                       </div>
-                      <div className="descriptionBox">
-                        <h3>{el.video_heading}</h3>
-                      </div>
-                    </div>
-                  ))}
+                    )
+                  )}
                 </SliderComponent>
               </div>
             </div>

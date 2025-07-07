@@ -16,7 +16,7 @@ const useIsSecVisible = (
     return () => {
       observer.disconnect();
     };
-  }, [ref?.current]);
+  }, [ref]);
 
   return { isSecInViewport };
 };

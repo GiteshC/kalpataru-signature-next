@@ -5,6 +5,8 @@ export interface ImageData {
   alt?: string;
   name?: string;
   title?: string
+  width?: number
+  height?: number
 
 }
 
@@ -24,7 +26,7 @@ export interface BannerSection {
   project_location?: string;
   project_banner_heading?: string;
   banner_video_field?: string;
-  banner_image_field?: any;
+  banner_image_field?: string;
 }
 
 export interface ExploreTheEssence {
