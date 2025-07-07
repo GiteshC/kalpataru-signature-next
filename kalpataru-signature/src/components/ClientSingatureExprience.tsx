@@ -52,7 +52,7 @@ const ClientSingatureExprience = ({ pageData }: ExperienceProps) => {
                       </p>
                     </div>
                     <div className="imgSection">
-                      {sec?.experience_of_living?.map((imageCard) => (
+                      {sec?.experience_of_living?.map((imageCard: any) => (
                         <div
                           key={imageCard?.experience_image?.id}
                           className={`innerImg section-text-up ${

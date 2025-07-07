@@ -111,7 +111,7 @@ const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
                   }}
                   ref={pincodeSlider1}
                 >
-                  {sectionOne?.pincodes_properties?.map((el) => (
+                  {sectionOne?.pincodes_properties?.map((el: any) => (
                     <div className="bgMaps" key={el?.pincode_area_image?.id}>
                       <Image
                         src={el?.pincode_area_image?.url || ""}
@@ -145,7 +145,7 @@ const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
                     }}
                     ref={pincodeSlider2}
                   >
-                    {sectionOne?.pincodes_properties?.map((card, i) => (
+                    {sectionOne?.pincodes_properties?.map((card: any, i) => (
                       <div className="innerContent" key={i}>
                         <div className="imgDiv">
                           <div className="bigImg">

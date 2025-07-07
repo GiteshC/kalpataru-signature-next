@@ -9,7 +9,7 @@ interface ExploreSecProps {
   exploreData?: ExploreTheEssence;
 }
 
-const ExploreCompoent = ({ exploreData }: ExploreSecProps) => {
+const   ExploreCompoent = ({ exploreData }: ExploreSecProps) => {  
   const ref = useRef(null);
   const { isSecInViewport } = useIsSecVisible(ref);
 
@@ -73,17 +73,3 @@ const ExploreCompoent = ({ exploreData }: ExploreSecProps) => {
 };
 
 export default ExploreCompoent;
-
-//   {
-//   desktopImgUrl,
-//   mblImgUrl,
-//   secHeading,
-//   subHeading,
-//   pageUrl,
-// }: {
-//   desktopImgUrl: any;
-//   mblImgUrl: any;
-//   secHeading: any;
-//   subHeading: any;
-//   pageUrl: any;
-// }

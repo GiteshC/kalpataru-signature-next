@@ -13,6 +13,19 @@ export interface BannerImageOption {
   banner_video_field?: string;
 }
 
+type ResidencesComponentData = {
+  acf_fc_layout? : string;
+  section_heading? : string;
+  section_description? : string;
+  desktop_image? : ImageData;
+  mobile_image? : ImageData;
+}
+
+type ParentPages = {
+  parent_page_text? : string;
+  parent_page_link? : string;
+}
+
 export interface ResidenceProjectItem {
   id: number;
   slug: string;

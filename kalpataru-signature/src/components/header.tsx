@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import PrivatePreviewModal from "./PrivatePreviewModal";
 import useModalContext from "@/context/modalContext";
+import Image from "next/image";
 
 export function Header() {
   const [didScroll, setDidScroll] = useState(false);
@@ -271,11 +272,11 @@ export function Header() {
       <div className={`overlay ${isPopupOpen ? "open" : ""}`} id="overlay">
         <div className="popupmenuLogo">
           <Link href={"/"} onClick={linksHandler}>
-            <img src="/images/headerlogo.svg" alt="" title="" />
+            <Image src="/images/headerlogo.svg" alt="" title="" />
           </Link>
         </div>
         <button className="closeButtonmenu" onClick={closeHandler}>
-          <img src="/images/popup-close-icon.svg" alt="" title="" />
+          <Image src="/images/popup-close-icon.svg" alt="" title="" />
         </button>
         <nav className="overlay-menu">
           <ul>
@@ -307,7 +308,7 @@ export function Header() {
             >
               <a>
                 Our Collection
-                <img
+                <Image
                   src="/images/header-mbl-dropdown-arrow.svg"
                   alt=""
                   title=""
@@ -342,7 +343,7 @@ export function Header() {
               className="trigger reqCta ctaBluetext"
               onClick={modalHandler}
             >
-              Request a Private Preview <img src="/images/req-arrow.svg" />
+              Request a Private Preview <Image src="/images/req-arrow.svg" alt="" />
             </a>
           </div>
         </nav>

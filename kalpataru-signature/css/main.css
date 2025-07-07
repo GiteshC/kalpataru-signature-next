@@ -1,0 +1,12 @@
+@use 'module/_header.scss';
+@use 'module/_footer.scss';
+@use 'pages/_homepage.scss';
+@use 'pages/_project-details.scss';
+@use 'pages/_signature-essence.scss';
+@use 'pages/_signature-residences.scss';
+@use 'pages/_pincodes.scss';
+@use 'pages/news-media.scss';
+@use 'pages/_signature-experience.scss';
+@use 'pages/signature-philosophy.scss';
+@use 'pages/privacy-policy';
+/*# sourceMappingURL=main.css.map */

@@ -12,6 +12,7 @@ import { ResidencesProjectACF } from "@/utils/residenceType";
 import SectionObserver from "./SectionObserver";
 import useModalContext from "@/context/modalContext";
 import PrivatePreviewModal from "./PrivatePreviewModal";
+import Image from "next/image";
 
 interface ProjectDetailProps {
   pageData: ResidencesProjectACF;
@@ -94,13 +95,13 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
                 </div>
               </div>
               <div className="videoBox">
-                <img
+                <Image
                   src={residencesSignature?.desktop_image?.url}
-                  className="desktopImg"
+                  className="desktopImg" alt=""
                 />
-                <img
+                <Image
                   src={residencesSignature?.mobile_image?.url}
-                  className="mobileImg"
+                  className="mobileImg" alt=""
                 />
               </div>
             </section>
@@ -156,17 +157,17 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
                           (slide: any, index: number) => (
                             <div key={index} className="item">
                               <div className="media-wrap">
-                                <img
+                                <Image
                                   src={slide.luxuries_desktop_image?.url}
-                                  className="desktopImg"
+                                  className="desktopImg" alt=""
                                 />
-                                <img
+                                <Image
                                   src={slide.luxuries_mobile_image?.url}
-                                  className="mobileImg"
+                                  className="mobileImg" alt=""
                                 />
                               </div>
                               <div className="overlapText">
-                                <img src={slide.luxuries_heading_icon?.url} />
+                                <Image src={slide.luxuries_heading_icon?.url} alt="" />
                                 <h3>{slide.luxuries_heading}</h3>
                               </div>
                             </div>
@@ -234,7 +235,7 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
                       (slide: any, index: number) => (
                         <div key={index} className="innerSliderbox">
                           <div className="imgDiv">
-                            <img
+                            <Image
                               src={slide.maestros_image?.url}
                               alt={slide.maestros_image?.title}
                             />
@@ -277,13 +278,13 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
               </div>
               <div className="signatureImg">
                 <div className="Viewimages">
-                  <img
+                  <Image
                     src={residencesHighlightSection?.section_desktop_image?.url}
-                    className="desktopImg"
+                    className="desktopImg" alt=""
                   />
-                  <img
+                  <Image
                     src={residencesHighlightSection?.section_mobile_image?.url}
-                    className="mobileImg"
+                    className="mobileImg" alt=""
                   />
                 </div>
                 <div className="innerText">
@@ -355,7 +356,7 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
                                 </a>
                               </p>
                               <div className="scannerImg">
-                                <img src={proj.rera_list_image?.url} />
+                                <Image src={proj.rera_list_image?.url} alt=""/>
                               </div>
                             </div>
                           </div>
@@ -375,13 +376,13 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
           {(isSecInViewport, ref) => (
             <section className="requestSec reqNewSec" ref={ref}>
               <div className="requestBG">
-                <img
+                <Image
                   src={residencesRequestPreview?.section_desktop_image?.url}
-                  className="desktopImg"
+                  className="desktopImg" alt=""
                 />
-                <img
+                <Image
                   src={residencesRequestPreview?.section_mobile_image?.url}
-                  className="mobileImg"
+                  className="mobileImg" alt=""
                 />
               </div>
               <div className="requestWrapper requestContent reqNewContent">
@@ -395,7 +396,7 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps | any) {
                     <div className="trigger">
                       <span>
                         {residencesRequestPreview?.section_heading}{" "}
-                        <img src="/images/cta-arrow-white.svg" />
+                        <Image src="/images/cta-arrow-white.svg" alt="" />
                       </span>
                     </div>
                   </h2>
