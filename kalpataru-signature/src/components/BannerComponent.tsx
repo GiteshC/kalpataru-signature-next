@@ -51,6 +51,9 @@ const BannerComponent = ({ bannerData }: BannerProps) => {
                 : bannerData?.banner_options?.[0]?.banner_image_field?.url
             }`}
             alt=""
+            width={0}
+            height={0}
+            style={{ width: "100%", height: "auto" }}
           />
         )}
       </div>

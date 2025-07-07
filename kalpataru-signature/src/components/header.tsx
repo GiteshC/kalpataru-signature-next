@@ -12,7 +12,6 @@ export function Header() {
   const [popUpDropdown, setPopupDropdown] = useState(false);
 
   const { isModalOpen, setIsModalOpen, modalHandler } = useModalContext();
- 
 
   const delta = 5;
   const headerRef = useRef<HTMLElement>(null);
@@ -272,11 +271,25 @@ export function Header() {
       <div className={`overlay ${isPopupOpen ? "open" : ""}`} id="overlay">
         <div className="popupmenuLogo">
           <Link href={"/"} onClick={linksHandler}>
-            <Image src="/images/headerlogo.svg" alt="" title="" />
+            <Image
+              src="/images/headerlogo.svg"
+              alt=""
+              title=""
+              width={0}
+              height={0}
+              style={{ width: "100%", height: "auto" }}
+            />
           </Link>
         </div>
         <button className="closeButtonmenu" onClick={closeHandler}>
-          <Image src="/images/popup-close-icon.svg" alt="" title="" />
+          <Image
+            src="/images/popup-close-icon.svg"
+            alt=""
+            title=""
+            width={0}
+            height={0}
+            style={{ width: "100%", height: "auto" }}
+          />
         </button>
         <nav className="overlay-menu">
           <ul>
@@ -311,7 +324,9 @@ export function Header() {
                 <Image
                   src="/images/header-mbl-dropdown-arrow.svg"
                   alt=""
-                  title=""
+                  width={0}
+                  height={0}
+                  style={{ width: "100%", height: "auto" }}
                 />
               </a>
               <div className="dropdownMbl">
@@ -339,11 +354,15 @@ export function Header() {
             <Link href={"/"} onClick={linksHandler}>
               News & Media
             </Link>
-            <a
-              className="trigger reqCta ctaBluetext"
-              onClick={modalHandler}
-            >
-              Request a Private Preview <Image src="/images/req-arrow.svg" alt="" />
+            <a className="trigger reqCta ctaBluetext" onClick={modalHandler}>
+              Request a Private Preview{" "}
+              <Image
+                src="/images/req-arrow.svg"
+                alt=""
+                width={0}
+                height={0}
+                style={{ width: "100%", height: "auto" }}
+              />
             </a>
           </div>
         </nav>

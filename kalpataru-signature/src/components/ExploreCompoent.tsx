@@ -9,7 +9,7 @@ interface ExploreSecProps {
   exploreData?: ExploreTheEssence;
 }
 
-const   ExploreCompoent = ({ exploreData }: ExploreSecProps) => {  
+const ExploreCompoent = ({ exploreData }: ExploreSecProps) => {
   const ref = useRef(null);
   const { isSecInViewport } = useIsSecVisible(ref);
 
@@ -32,6 +32,7 @@ const   ExploreCompoent = ({ exploreData }: ExploreSecProps) => {
           alt=""
           width={desktopImgUrl?.width}
           height={desktopImgUrl?.height}
+          style={{ width: "100%", height: "auto" }}
           className="desktopImg"
         />
         <Image
@@ -39,6 +40,7 @@ const   ExploreCompoent = ({ exploreData }: ExploreSecProps) => {
           alt=""
           width={mblImgUrl?.width}
           height={mblImgUrl?.height}
+          style={{ width: "100%", height: "auto" }}
           className="mobileImg"
         />
       </div>
