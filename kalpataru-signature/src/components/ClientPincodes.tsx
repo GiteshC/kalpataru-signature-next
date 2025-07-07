@@ -43,8 +43,8 @@ export default function PincodePage({ pageData }: PincodePageDataProps) {
                             <SliderComponent setting={{...pincodeSlider, asNavFor: nav1 ?? undefined}} ref={slider1}>
                                 {detailBox.pincodes_image_slider?.map((image, idx : number)=>(
                                     <div key={idx}>
-                                        <Image src={image.pincode_desktop_image?.url || ''} className="desktopImg" alt="" width={800} height={600} />
-                                        <Image src={image.pincode_mobile_image?.url || ''} className="mobileImg" alt="" width={400} height={300} />
+                                        <Image src={image.pincode_desktop_image?.url || ''} className="desktopImg" alt="" width={image.pincode_desktop_image?.width} height={image.pincode_desktop_image?.height} style={{ width: "100%", height: "auto" }} />
+                                        <Image src={image.pincode_mobile_image?.url || ''} className="mobileImg" alt="" width={image.pincode_mobile_image?.width} height={image.pincode_mobile_image?.height} style={{ width: "100%", height: "auto" }} />
                                     </div>
                                 ))}
                             </SliderComponent>
@@ -59,7 +59,7 @@ export default function PincodePage({ pageData }: PincodePageDataProps) {
                             <span>{detailBox?.pincodes_description}</span>
                         </p>
                         <span>
-                            <a className="ctaBluetext" href={detailBox?.cta_link}>{detailBox?.cta_text}{" "}<Image src="/images/view-project-arrow.svg" alt="" width={16} height={16} /></a>
+                            <a className="ctaBluetext" href={detailBox?.cta_link}>{detailBox?.cta_text}{" "}<Image src="/images/view-project-arrow.svg" alt="" width={0} height={0} style={{ width: "auto", height: "auto" }} /></a>
                         </span>
                       </div>
                     </div>
