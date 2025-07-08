@@ -13,19 +13,6 @@ export interface BannerImageOption {
   banner_video_field?: string;
 }
 
-type ResidencesComponentData = {
-  acf_fc_layout? : string;
-  section_heading? : string;
-  section_description? : string;
-  desktop_image? : ImageData;
-  mobile_image? : ImageData;
-}
-
-type ParentPages = {
-  parent_page_text? : string;
-  parent_page_link? : string;
-}
-
 export interface ResidenceProjectItem {
   id: number;
   slug: string;
@@ -65,14 +52,14 @@ export interface ResidencePageData {
 }
 
 //Residences Page API Types
-type LuxuriesGallery = {
+export interface LuxuriesGallery {
   luxuries_heading_icon? : ImageData;
   luxuries_heading? : string;
   luxuries_desktop_image? : ImageData;
   luxuries_mobile_image? : ImageData;
 }
 
-type MaestrosContent = {
+export interface MaestrosContent {
   maestros_image? : ImageData;
   person_name? : string;
   person_designation? : string;
@@ -80,14 +67,14 @@ type MaestrosContent = {
   description? : string;
 }
 
-type ReraDetailListsGallery = {
+export interface ReraDetailListsGallery {
   rera_list_heading? : string;
   rera_list_description? : string;
   rera_list_image? : ImageData;
 }
 
 export interface RelatedSection {
-  acf_fc_layout: "related_section";
+  acf_fc_layout?: "related_section";
   heading?: string;
   cta_text?: string;
   cta_link?: string;
@@ -96,7 +83,7 @@ export interface RelatedSection {
 }
 
 export interface ResidencesSignature {
-  acf_fc_layout: "residences_signature";
+  acf_fc_layout?: "residences_signature";
   section_heading?: string;
   section_description?: string;
   desktop_image?: ImageData;
@@ -104,20 +91,20 @@ export interface ResidencesSignature {
 }
 
 export interface ResidencesMaestros {
-  acf_fc_layout: "maestros_section";
+  acf_fc_layout?: "maestros_section";
   section_heading?: string;
   section_description?: string;
-  maestros_content : MaestrosContent[]
+  maestros_content? : MaestrosContent[]
 }
 
 export interface ResidencesLuxuries {
-  acf_fc_layout: "residences_luxuries";
+  acf_fc_layout?: "residences_luxuries";
   section_heading?: string;
   luxuries_gallery : LuxuriesGallery[]
 }
 
 export interface ResidencesHighlightSection {
-  acf_fc_layout: "residences_highlight_section";
+  acf_fc_layout?: "residences_highlight_section";
   section_heading?: string;
   section_desktop_image? : ImageData;
   section_mobile_image? : ImageData;
@@ -125,13 +112,13 @@ export interface ResidencesHighlightSection {
 }
 
 export interface ResidencesReraDetails {
-  acf_fc_layout: "rera_details_section";
+  acf_fc_layout?: "rera_details_section";
   rera_heading?: string;
   rera_detail_lists : ReraDetailListsGallery[]
 }
 
 export interface ResidencesRequestPreview {
-  acf_fc_layout: "request_preview_section";
+  acf_fc_layout?: "request_preview_section";
   section_heading?: string;
   section_desktop_image? : ImageData;
   section_mobile_image? : ImageData;
@@ -139,6 +126,12 @@ export interface ResidencesRequestPreview {
 
 export type ResidencesComponent = RelatedSection | ResidencesSignature | ResidencesLuxuries | ResidencesMaestros | ResidencesHighlightSection | ResidencesReraDetails | ResidencesRequestPreview;
 
+type ResidencesACFData = {
+  banner_section?: BannerSection;
+  residences_components?: ResidencesComponent[];
+  breadcrumbs?: Breadcrumbs;
+}
+
 export interface ResidencesProjectACF {
-  acf?: ResidencesComponent[];
+  acf?: ResidencesACFData;
 }

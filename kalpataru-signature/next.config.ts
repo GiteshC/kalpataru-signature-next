@@ -3,11 +3,13 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   sassOptions: {},
   images: {
+    domains: ['ixdtm.com'],
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "ixdtm.com",
-        pathname: "/projects/kalpataru-signature-wp/wp-content/uploads/**",
+        protocol: 'https',
+        hostname: 'ixdtm.com',
+        port: '',
+        pathname: '/**',
       },
     ],
   },
