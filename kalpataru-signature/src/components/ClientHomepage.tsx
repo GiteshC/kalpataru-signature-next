@@ -104,7 +104,7 @@ const ClientHomepage = ({ pageData }: HomepageProps) => {
                   <div className="trigger">
                     <span>
                       {pageData.acf.request_section?.section_heading}
-                      <Image src="/images/cta-arrow-white.svg" alt="" width={24} height={24} />
+                      <Image src="/images/cta-arrow-white.svg" alt="" width={0} height={0} style={{ width: "100%", height: "auto" }} />
                     </span>
                   </div>
                 </h2>
