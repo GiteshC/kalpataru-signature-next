@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import SliderComponent from "./SliderComponent";
 import { experienceSlider } from "./ArrowSliderComponent";
-import { ExperiencePageData } from "@/utils/experienceType";
+import { ExperiencePageData, ExperienceLiving } from "@/utils/experienceType";
 import BannerComponent from "./BannerComponent";
 import SectionObserver from "./SectionObserver";
 import { Fancybox } from "@fancyapps/ui";
@@ -52,7 +52,7 @@ const ClientSingatureExprience = ({ pageData }: ExperienceProps) => {
                       </p>
                     </div>
                     <div className="imgSection">
-                      {sec?.experience_of_living?.map((imageCard: any) => (
+                      {sec?.experience_of_living?.map((imageCard: ExperienceLiving) => (
                         <div
                           key={imageCard?.experience_image?.id}
                           className={`innerImg section-text-up ${

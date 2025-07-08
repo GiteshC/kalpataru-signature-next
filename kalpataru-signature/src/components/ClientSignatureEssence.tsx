@@ -21,6 +21,7 @@ import {
   ResidentsSec,
   ResidentsSecProperty,
   SignaturePinCode,
+  PincodeProperty,
 } from "@/utils/essenceTyps";
 import { ExploreTheEssence } from "@/utils/type";
 import Image from "next/image";
@@ -111,7 +112,7 @@ const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
                   }}
                   ref={pincodeSlider1}
                 >
-                  {sectionOne?.pincodes_properties?.map((el: any) => (
+                  {sectionOne?.pincodes_properties?.map((el: PincodeProperty) => (
                     <div className="bgMaps" key={el?.pincode_area_image?.id}>
                       <Image
                         src={el?.pincode_area_image?.url || ""}
@@ -145,7 +146,7 @@ const ClientSignatureEssence = ({ pageData }: EssenceProps) => {
                     }}
                     ref={pincodeSlider2}
                   >
-                    {sectionOne?.pincodes_properties?.map((card: any, i) => (
+                    {sectionOne?.pincodes_properties?.map((card: PincodeProperty, i) => (
                       <div className="innerContent" key={i}>
                         <div className="imgDiv">
                           <div className="bigImg">
