@@ -1,6 +1,6 @@
 import { BannerSection, Breadcrumbs, ExploreTheEssence, ImageData } from "./type";
 
-type PincodeProperty = {
+export interface PincodeProperty {
   property_name: string;
   property_description: string;
   cta_text: string;
