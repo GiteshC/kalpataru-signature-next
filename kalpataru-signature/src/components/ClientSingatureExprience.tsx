@@ -155,8 +155,8 @@ const ClientSingatureExprience = ({ pageData }: ExperienceProps) => {
                               />
                             </div>
                             <div className="eventName">
-                              <h4>{card?.event_name}</h4>
-                              <h3>{card?.event_date}</h3>
+                              <h4>{card?.event_date}</h4>
+                              <h3>{card?.event_name}</h3>
                             </div>
                           </div>
                         ))}
