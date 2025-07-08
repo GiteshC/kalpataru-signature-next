@@ -5,19 +5,24 @@ import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import Image from "next/image";
 
-const PrivatePreviewModal = ({ isModalOpen, setIsModalOpen }: any) => {
+interface PrivatePreviewModalProps {
+  isModalOpen: boolean;
+  setIsModalOpen: (open: boolean) => void;
+}
+
+const PrivatePreviewModal = ({ isModalOpen, setIsModalOpen }: PrivatePreviewModalProps) => {
   const [formData, setFormData] = useState({
     visitorName: "",
     visitorEmail: "",
     visitorPhone: "",
   });
 
-  const formHandler = (e: any) => {
+  const formHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const formSubmitHandler = async (e: any) => {
+  const formSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const data = new FormData();
@@ -55,20 +60,20 @@ const PrivatePreviewModal = ({ isModalOpen, setIsModalOpen }: any) => {
       <div className="modalInner">
         <div className="headerLogo">
           <a href="">
-            <Image src="/images/headerlogo.svg" className="desktopImg" alt="" />
+            <Image src="/images/headerlogo.svg" className="desktopImg" width={0} height={0} style={{ width: "auto", height: "auto" }} alt="" />
           </a>
         </div>
         <span className="close-button" onClick={closeModalHandler}>
-          <Image src="/images/popup-close-icon.svg" className="mobileImg" alt="" />
+          <Image src="/images/popup-close-icon.svg" className="mobileImg" width={0} height={0} style={{ width: "auto", height: "auto" }} alt="" />
         </span>
         <span className="close-buttonTwo" onClick={closeModalHandler}>
-          <Image src="/images/backarrow-modal.svg" alt="" />
+          <Image src="/images/backarrow-modal.svg" width={0} height={0} style={{ width: "auto", height: "auto" }} alt="" />
         </span>
         <div className="modal-content">
           <div className="meetingModal">
             <h2>Request a Private Preview</h2>
             <div className="innerForm">
-              <form action="contact.php" method="post">
+              <form action="contact.php" method="post" onSubmit={formSubmitHandler}>
                 <input
                   type="text"
                   id="name"
@@ -116,7 +121,7 @@ const PrivatePreviewModal = ({ isModalOpen, setIsModalOpen }: any) => {
                     placeholder="Phone number"
                   />
                 </div> */}
-                <p onClick={formSubmitHandler}>
+                <p>
                   <input
                     className="wpcf7-form-control wpcf7-submit has-spinner"
                     type="submit"
