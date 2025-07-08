@@ -54,7 +54,7 @@ const ClientHomepage = ({ pageData }: HomepageProps) => {
                     >
                       <span>
                         {sec?.section_cta_text}{" "}
-                        <Image src="/images/cta-arrow.svg" alt="" width={24} height={24} />
+                        <Image src="/images/cta-arrow.svg" alt="" width={0} height={0} style={{ width: "auto", height: "auto" }} />
                       </span>
                     </a>
                   </div>
@@ -82,15 +82,15 @@ const ClientHomepage = ({ pageData }: HomepageProps) => {
                 src={`${pageData.acf.request_section?.bg_image.url}`}
                 alt={`${pageData.acf.request_section?.bg_image.title}`}
                 className="desktopImg"
-                width={1920}
-                height={1080}
+                width={pageData.acf.request_section?.bg_image.width}
+                height={pageData.acf.request_section?.bg_image.height}
               />
               <Image
                 src={`${pageData.acf.request_section?.bg_image_mobile.url}`}
                 alt={`${pageData.acf.request_section?.bg_image_mobile.title}`}
                 className="mobileImg"
-                width={768}
-                height={1024}
+                width={pageData.acf.request_section?.bg_image_mobile.width}
+                height={pageData.acf.request_section?.bg_image_mobile.height}
               />
             </div>
             <div className="requestWrapper requestContent reqNewContent">
@@ -104,7 +104,7 @@ const ClientHomepage = ({ pageData }: HomepageProps) => {
                   <div className="trigger">
                     <span>
                       {pageData.acf.request_section?.section_heading}
-                      <Image src="/images/cta-arrow-white.svg" alt="" width={24} height={24} />
+                      <Image src="/images/cta-arrow-white.svg" alt="" width={0} height={0} style={{ width: "auto", height: "auto" }} />
                     </span>
                   </div>
                 </h2>
