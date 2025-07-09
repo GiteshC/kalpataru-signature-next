@@ -54,9 +54,8 @@ export default function PincodePage({ pageData }: PincodePageDataProps) {
                         <h3 className={`section-text-up ${isSecInViewport ? "newClass" : ""}`}>
                             <span>{detailBox?.pincodes_heading}</span>
                         </h3>
-                        <p className={`section-text-up newtext-p ${isSecInViewport ? "newClass" : ""}`}>
-                            {" "}
-                            <span>{detailBox?.pincodes_description}</span>
+                        <p className={`section-text-up newtext-p ${isSecInViewport ? "newClass" : ""}`}>{" "}
+                          <span>{detailBox?.pincodes_description}</span>
                         </p>
                         <span>
                             <a className="ctaBluetext" href={detailBox?.cta_link}>{detailBox?.cta_text}{" "}<Image src="/images/view-project-arrow.svg" alt="" width={0} height={0} style={{ width: "auto", height: "auto" }} /></a>
