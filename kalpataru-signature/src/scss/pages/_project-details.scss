@@ -142,7 +142,7 @@
     }
    
     .slider-container {position: relative;
-        .item {
+        .item {scale: 0.8;transition: 0.3s all ease-out;
             margin: 0px 220px 0px 0px;
             position: relative;
             .overlapText{position: absolute;bottom: 32px;left: 32px;display: flex;align-items: center;
@@ -155,6 +155,9 @@
             .total {color: #5A6EA3;margin-left: -3px;@include font24;}
         }
         .slider-holder{
+            .slick-slider{
+                .slick-slide{scale: 0.8;transition: 0.3s all ease-out;}
+            }
             .slick-prev,.slick-next {font-size: 0px; background: transparent; border: none;}
         }
     }

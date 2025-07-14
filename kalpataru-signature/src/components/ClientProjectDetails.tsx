@@ -134,15 +134,15 @@ export default function ProjectDetail({ pageData }: ProjectDetailProps) {
                             <div key={index} className="item">
                               <div className="media-wrap">
                                 {slide.luxuries_desktop_image?.url && (
-                                  <Image src={slide?.luxuries_desktop_image?.url} className="desktopImg" alt="" width={slide?.luxuries_desktop_image?.width} height={slide?.luxuries_desktop_image?.height} style={{ width: "100%", height: "auto" }} />
+                                  <Image src={slide?.luxuries_desktop_image?.url} className="desktopImg" alt="" width={slide?.luxuries_desktop_image?.width} height={slide?.luxuries_desktop_image?.height} style={{ width: "auto", height: "auto" }} />
                                 )}
                                 {slide.luxuries_mobile_image?.url && (
-                                  <Image src={slide?.luxuries_mobile_image?.url} className="mobileImg" alt="" width={slide?.luxuries_mobile_image?.width} height={slide?.luxuries_mobile_image?.height} style={{ width: "100%", height: "auto" }} />
+                                  <Image src={slide?.luxuries_mobile_image?.url} className="mobileImg" alt="" width={slide?.luxuries_mobile_image?.width} height={slide?.luxuries_mobile_image?.height} style={{ width: "auto", height: "auto" }} />
                                 )}
                               </div>
                               <div className="overlapText">
                                 {slide.luxuries_heading_icon?.url && (
-                                  <Image src={slide?.luxuries_heading_icon?.url} alt="" width={slide?.luxuries_heading_icon?.width} height={slide?.luxuries_heading_icon?.height} style={{ width: "100%", height: "auto" }} />
+                                  <Image src={slide?.luxuries_heading_icon?.url} alt="" width={slide?.luxuries_heading_icon?.width} height={slide?.luxuries_heading_icon?.height} style={{ width: "auto", height: "auto" }} />
                                 )}
                                 <h3>{slide.luxuries_heading}</h3>
                               </div>

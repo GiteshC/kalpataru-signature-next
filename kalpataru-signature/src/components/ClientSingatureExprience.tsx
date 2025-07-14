@@ -123,7 +123,7 @@ const ClientSingatureExprience = ({ pageData }: ExperienceProps) => {
                       <span className="active">
                         {String(currentSlide + 1).padStart(2, "0")}
                       </span>
-                      <span>/</span>
+                      <span>&nbsp;/&nbsp;</span>
                       <span className="total">
                         {String(sec?.event_content?.length).padStart(2, "0")}
                       </span>

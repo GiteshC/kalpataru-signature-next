@@ -288,7 +288,7 @@ export function Header() {
             title=""
             width={0}
             height={0}
-            style={{ width: "100%", height: "auto" }}
+            style={{ width: "auto", height: "auto" }}
           />
         </button>
         <nav className="overlay-menu">
@@ -321,13 +321,7 @@ export function Header() {
             >
               <a>
                 Our Collection
-                <Image
-                  src="/images/header-mbl-dropdown-arrow.svg"
-                  alt=""
-                  width={0}
-                  height={0}
-                  style={{ width: "100%", height: "auto" }}
-                />
+                <Image src="/images/header-mbl-dropdown-arrow.svg" alt="" width={0} height={0} style={{ width: "20px", height: "auto" }} />
               </a>
               <div className="dropdownMbl">
                 <ul>
@@ -361,7 +355,7 @@ export function Header() {
                 alt=""
                 width={0}
                 height={0}
-                style={{ width: "100%", height: "auto" }}
+                style={{ height: "auto" }}
               />
             </a>
           </div>

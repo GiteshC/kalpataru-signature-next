@@ -104,6 +104,7 @@ header{position: fixed;top: 0;left: 0;right: 0;transition: top 0.5s ease-in-out;
             .headerminiLinks{text-align: left;margin-top: 20px; display: flex; justify-content: space-between;
                 .reqCta{cursor: pointer; display: flex; padding-right: 5px;
                     img{width: 10px;}
+                    Image{width: 10px;}
                 }
                 a{font-weight: $fontW400;color: #fff;line-height: normal;padding-right: 0px; @include font22;
                     // &:first-child{border-right: 2px solid #AFAFAF;padding-right: 12px;margin-right: 8px;}
@@ -281,7 +282,7 @@ header{position: fixed;top: 0;left: 0;right: 0;transition: top 0.5s ease-in-out;
                 
                 .headerminiLinks{text-align: center;flex-direction: column-reverse;margin-top: 16px;
                     .reqCta{display: block; margin-top: 15px;text-transform: uppercase;font-family: $fontMarcellus;margin-top: 0;
-                        img{width: 6px;}
+                        img, Image{width: 6px;}
                     }
                     a{font-weight: $fontW500;line-height: normal;padding-right: 0px;margin-top: 32px;font-size: 14px; @include font14;
                         // &:first-child{border-right: 2px solid #AFAFAF;padding-right: 12px;margin-right: 8px;}
