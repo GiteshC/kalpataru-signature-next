@@ -90,6 +90,7 @@ const ClientHomepage = ({ pageData }: HomepageProps) => {
                 className="desktopImg"
                 width={pageData.acf.request_section?.bg_image.width}
                 height={pageData.acf.request_section?.bg_image.height}
+                style={{ width: "100%", height: "auto" }}
               />
               <Image
                 src={`${pageData.acf.request_section?.bg_image_mobile.url}`}
@@ -97,6 +98,7 @@ const ClientHomepage = ({ pageData }: HomepageProps) => {
                 className="mobileImg"
                 width={pageData.acf.request_section?.bg_image_mobile.width}
                 height={pageData.acf.request_section?.bg_image_mobile.height}
+                style={{ width: "100%", height: "auto" }}
               />
             </div>
             <div className="requestWrapper requestContent reqNewContent">
